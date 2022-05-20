@@ -18,12 +18,16 @@ Vous pouvez supposer que chaque entrée aura exactement une solution.
 - Complexité d'exécution:
 - Complexité d'espace:
 
+
 ## Facile
+branch: solution_easy-<id>
 ### 001 - Somme de deux nombres
 - Solution : voire PythonCore.twoSum(self, nums, target)
 - Complexité d'exécution : O(n) pour la recherche des 2 nombres dans nums
 - Complexité d'espace : O(n) pour l'espace occupée par le dictionnaire
 
 ## Intermédiaire
+branch: solution_middle-<id>
 
 ## Difficile
+branch: solution_hard-<id>

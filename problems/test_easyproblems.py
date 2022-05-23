@@ -62,6 +62,29 @@ class TestEasyProblems(unittest.TestCase):
         actual = EasyProblems.reverse_integer(123)
         self.assertEqual(expected, actual)  # add assertion here
 
+    """
+    009 Palindrome Number
+    """
+
+    def test_1_character_palindrome(self):
+        expected = True
+        actual = EasyProblems.is_palindrome(1)
+        self.assertEqual(expected, actual)  # add assertion here
+
+    def test_odd_character_len_palindrome(self):
+        expected = True
+        actual = EasyProblems.is_palindrome(14341)
+        self.assertEqual(expected, actual)  # add assertion here
+
+    def test_even_character_len_palindrome(self):
+        expected = True
+        actual = EasyProblems.is_palindrome(1441)
+        self.assertEqual(expected, actual)  # add assertion here
+
+    def test_non_palindrome(self):
+        expected = False
+        actual = EasyProblems.is_palindrome(1471)
+        self.assertEqual(expected, actual)  # add assertion here
 
 if __name__ == '__main__':
     unittest.main()

@@ -3,6 +3,8 @@ EasyProblem class tests.
 """
 import unittest
 from problems.easyproblems import EasyProblems
+
+
 # from problems.easyproblems import sum_two_numbers
 
 
@@ -29,7 +31,7 @@ class TestEasyProblems(unittest.TestCase):
         expected = []
         actual = EasyProblems.sum_two_numbers([7, 3, 5], 4)
         self.assertEqual(expected, actual)  # add assertion here
-    
+
     def test_sum_two_numbers_with_empty_list(self):
         expected = []
         actual = EasyProblems.sum_two_numbers([], 8)
@@ -44,18 +46,15 @@ class TestEasyProblems(unittest.TestCase):
         actual = EasyProblems.reverse_integer(-1)
         self.assertEqual(expected, actual)  # add assertion here
 
-
     def test_reverse_1_digit_positive_integer(self):
         expected = 0
         actual = EasyProblems.reverse_integer(0)
         self.assertEqual(expected, actual)  # add assertion here
 
-
     def test_reverse_3_digits_negative_integer(self):
         expected = -321
         actual = EasyProblems.reverse_integer(-123)
         self.assertEqual(expected, actual)  # add assertion here
-
 
     def test_reverse_3_digits_positive_integer(self):
         expected = 321
@@ -85,6 +84,98 @@ class TestEasyProblems(unittest.TestCase):
         expected = False
         actual = EasyProblems.is_palindrome(1471)
         self.assertEqual(expected, actual)  # add assertion here
+
+    """
+    013 Roman to Integer
+    Exemple 1: I renvoie 1 <br/>
+    Exemple 2: V renvoie 5 <br/>
+    Exemple 3: X renvoie 10 <br/>
+    Exemple 4: L renvoie 50 <br/>
+    Exemple 5: C renvoie 100 <br/>
+    Exemple 6: D renvoie 500 <br/>
+    Exemple 7: M renvoie 1000 <br/>
+    Exemple 8: III renvoie 3 <br/>
+    Exemple 9: IV renvoie 4 <br/>
+    Exemple 10: MCMLXXXVIII renvoie 1988 <br/>
+    Exemple 11: MMXXII renvoie 2022 <br/>
+    Exemple 12: MMMCMXCIX renvoie 3999 <br/>
+    """
+
+    def test_roman_I_to_integer_1(self):
+        expected = 1
+        actual = EasyProblems.convert_roman_to_integer('I')
+        self.assertEqual(expected, actual)  # add assertion here
+
+    def test_roman_III_to_integer_3(self):
+        expected = 3
+        actual = EasyProblems.convert_roman_to_integer('III')
+        self.assertEqual(expected, actual)  # add assertion here
+
+    def test_roman_IV_to_integer_4(self):
+        expected = 4
+        actual = EasyProblems.convert_roman_to_integer('IV')
+        self.assertEqual(expected, actual)  # add assertion here
+
+    def test_roman_MMMMCMXCIX_to_integer_1988(self):
+        expected = 1988
+        actual = EasyProblems.convert_roman_to_integer('MCMLXXXVIII')
+        self.assertEqual(expected, actual)  # add assertion here
+
+    def test_roman_MMXXII_to_integer_2022(self):
+        expected = 2022
+        actual = EasyProblems.convert_roman_to_integer('MMXXII')
+        self.assertEqual(expected, actual)  # add assertion here
+
+    def test_roman_MMMCMXCIX_to_integer_3999(self):
+        expected = 3999
+        actual = EasyProblems.convert_roman_to_integer('MMMCMXCIX')
+        self.assertEqual(expected, actual)  # add assertion here
+
+    """
+    013 Roman to Integer - Optimal Solution
+    Exemple 1: I renvoie 1 <br/>
+    Exemple 2: V renvoie 5 <br/>
+    Exemple 3: X renvoie 10 <br/>
+    Exemple 4: L renvoie 50 <br/>
+    Exemple 5: C renvoie 100 <br/>
+    Exemple 6: D renvoie 500 <br/>
+    Exemple 7: M renvoie 1000 <br/>
+    Exemple 8: III renvoie 3 <br/>
+    Exemple 9: IV renvoie 4 <br/>
+    Exemple 10: MCMLXXXVIII renvoie 1988 <br/>
+    Exemple 11: MMXXII renvoie 2022 <br/>
+    Exemple 12: MMMCMXCIX renvoie 3999 <br/>
+    """
+    def test_roman_I_to_integer_1_optimal_solution(self):
+        expected = 1
+        actual = EasyProblems.convert_roman_to_integer_optimal_solution('I')
+        self.assertEqual(expected, actual)  # add assertion here
+
+    def test_roman_III_to_integer_3_optimal_solution(self):
+        expected = 3
+        actual = EasyProblems.convert_roman_to_integer_optimal_solution('III')
+        self.assertEqual(expected, actual)  # add assertion here
+
+    def test_roman_IV_to_integer_4_optimal_solution(self):
+        expected = 4
+        actual = EasyProblems.convert_roman_to_integer_optimal_solution('IV')
+        self.assertEqual(expected, actual)  # add assertion here
+
+    def test_roman_MMMMCMXCIX_to_integer_1988_optimal_solution(self):
+        expected = 1988
+        actual = EasyProblems.convert_roman_to_integer_optimal_solution('MCMLXXXVIII')
+        self.assertEqual(expected, actual)  # add assertion here
+
+    def test_roman_MMXXII_to_integer_2022_optimal_solution(self):
+        expected = 2022
+        actual = EasyProblems.convert_roman_to_integer_optimal_solution('MMXXII')
+        self.assertEqual(expected, actual)  # add assertion here
+
+    def test_roman_MMMCMXCIX_to_integer_3999_optimal_solution(self):
+        expected = 3999
+        actual = EasyProblems.convert_roman_to_integer_optimal_solution('MMMCMXCIX')
+        self.assertEqual(expected, actual)  # add assertion here
+
 
 if __name__ == '__main__':
     unittest.main()

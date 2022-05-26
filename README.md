@@ -30,8 +30,27 @@ Exemple 2: 1111 renvoie True <br/>
 Exemple 3: 13731 renvoie True <br/>
 Exemple 4: 123 renvoie False <br/>
 
+### 013 De Romain à Entier
+Étant donné un chiffre romain, convertissez-le en un nombre entier. <br/>
+L'entrée est garantie dans l'intervalle de 1 à 3999. <br/>
+Exemple 1: I renvoie 1 <br/>
+Exemple 2: V renvoie 5 <br/>
+Exemple 3: X renvoie 10 <br/>
+Exemple 4: L renvoie 50 <br/>
+Exemple 5: C renvoie 100 <br/>
+Exemple 6: D renvoie 500 <br/>
+Exemple 7: M renvoie 1000 <br/>
+Exemple 8: III renvoie 3 <br/>
+Exemple 9: IV renvoie 4 <br/>
+Exemple 10: MCMLXXXVIII renvoie 1988 <br/>
+Exemple 11: MMXXII renvoie 2022 <br/>
+Exemple 12: MMMCMXCIX renvoie 3999 <br/>
+
+---
+
 ## Problèmes à difficulté moyenne
 
+---
 
 ## Problèmes difficiles
 

@@ -46,6 +46,12 @@ Exemple 10: MCMLXXXVIII renvoie 1988 <br/>
 Exemple 11: MMXXII renvoie 2022 <br/>
 Exemple 12: MMMCMXCIX renvoie 3999 <br/>
 
+### 014 Préfixe commun le plus long
+Écrivez une fonction pour trouver le préfixe commun le plus long parmi un tableau de chaînes de caractères.
+Exemple 1: ['django', 'python', 'exit', 'framework'] renvoie ''
+Exemple 2: ['papaye', 'python', 'papa', 'pater'] renvoie 'p'
+Exemple 3: ['examen', 'example', 'examinateur', 'examiner'] renvoie 'exam'
+
 ---
 
 ## Problèmes à difficulté moyenne

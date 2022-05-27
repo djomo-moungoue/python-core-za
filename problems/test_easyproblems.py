@@ -146,6 +146,7 @@ class TestEasyProblems(unittest.TestCase):
     Exemple 11: MMXXII renvoie 2022 <br/>
     Exemple 12: MMMCMXCIX renvoie 3999 <br/>
     """
+
     def test_roman_I_to_integer_1_optimal_solution(self):
         expected = 1
         actual = EasyProblems.convert_roman_to_integer_optimal_solution('I')
@@ -176,6 +177,49 @@ class TestEasyProblems(unittest.TestCase):
         actual = EasyProblems.convert_roman_to_integer_optimal_solution('MMMCMXCIX')
         self.assertEqual(expected, actual)  # add assertion here
 
+    """
+    014 Longest Common Prefix
+    Exemple 1: ['django', 'python', 'exit', 'framework'] renvoie ''
+    Exemple 2: ['papaye', 'python', 'papa', 'pater'] renvoie 'p'
+    Exemple 3: ['examen', 'example', 'examinateur', 'examiner'] renvoie 'exam'
+    """
+
+    def test_find_empty_string(self):
+        expected = ''
+        actual = EasyProblems.find_longest_common_prefix(['django', 'python', 'exit', 'framework'])
+        self.assertEqual(expected, actual)  # add assertion here
+
+    def test_find_p(self):
+        expected = 'p'
+        actual = EasyProblems.find_longest_common_prefix(['papaye', 'python', 'papa', 'pater'])
+        self.assertEqual(expected, actual)  # add assertion here
+
+    def test_find_exam(self):
+        expected = 'exam'
+        actual = EasyProblems.find_longest_common_prefix(['examen', 'example', 'examinateur', 'examiner'])
+        self.assertEqual(expected, actual)  # add assertion here
+
+    """
+    014 Longest Common Prefix
+    Exemple 1: ['django', 'python', 'exit', 'framework'] renvoie ''
+    Exemple 2: ['papaye', 'python', 'papa', 'pater'] renvoie 'p'
+    Exemple 3: ['examen', 'example', 'examinateur', 'examiner'] renvoie 'exam'
+    """
+
+    def test_find_empty_string_optimal_solution(self):
+        expected = ''
+        actual = EasyProblems.find_longest_common_prefix_optimal_solution(['django', 'python', 'exit', 'framework'])
+        self.assertEqual(expected, actual)  # add assertion here
+
+    def test_find_p_optimal_solution(self):
+        expected = 'p'
+        actual = EasyProblems.find_longest_common_prefix_optimal_solution(['papaye', 'python', 'papa', 'pater'])
+        self.assertEqual(expected, actual)  # add assertion here
+
+    def test_find_exam_optimal_solution(self):
+        expected = 'exam'
+        actual = EasyProblems.find_longest_common_prefix_optimal_solution(['examen', 'example', 'examinateur', 'examiner'])
+        self.assertEqual(expected, actual)  # add assertion here
 
 if __name__ == '__main__':
     unittest.main()

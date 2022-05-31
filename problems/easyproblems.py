@@ -250,16 +250,72 @@ class EasyProblems:
         for b in brackets:
             if b in match:
                 stack.append(b)
-                print(" if stack = " + str(stack) + " and b = " + b)
             else:
-                notstack = not stack
-                stackpop = match[stack.pop()]
-                if notstack or stackpop != b:
-                    print("stack = " + str(stack))
+                if not stack or match[stack.pop()] != b:
                     return False
-                print("else not stack = " + str(notstack) + " stack = " + str(stack) +" match[stack.pop()] = "+stackpop+" and b = " + b)
         return not stack
 
+    @classmethod
+    def merge_two_sorted_lists(cls, queue1, queue2):
+        """
+        Explication:
+        Aussi longtemps qu'aucune file d'attente n'est vide, pousser le plus petit parmi chaque premier élément des
+        2 files d'attentes sur la pile.
+        Si une des files d'attende est vide, pousser tous les éléments de l'autre file sur la pile.
+        Temps: O(m+n)
+        Espace: O(n+m)
+        :param queue1:
+        :param queue2:
+        :return:
+        """
+        stack = []
+        while queue1 and queue2:
+            """
+            equivalent to while len(queue1) > 0 and len(queue2) > 0:
+            or while bool(queue1) and bool(queue2):
+            because bool([]) = False and bool(['not empty']) = True
+            """
+            if queue1[0] < queue2[0]:
+                stack.append(queue1.pop(0))
+            else:
+                stack.append(queue2.pop(0))
+        stack.extend(queue1 or queue2)
+        """
+        equivalent to if queue1: stack.extend(queue1) else: stack.extend(queue2)
+        """
+        return stack
+
+    """
+    Explication:
+    Tant qu'il y a des noeuds dans les deux listes, on établit un lien avec le noeud de tête le plus bas et on
+    incrémente cette liste. Enfin, établissez un lien avec la liste des noeuds restants.
+    Temps: O(m+n)
+    Espace: O(1)
+    :param linkedlist1:
+    :param linkedlist2:
+    :return:
+    Fail during execution because the list object has no attribute 'val'
+
+    class ListNode(object):
+        def __init__(self, x):
+            self.val = x
+            self.next = None
+
+    @classmethod
+    def merge_two_sorted_lists_optimal_solution(cls, linkedlist1, linkedlist2):
+  
+
+        prev = dummy = EasyProblems.ListNode(None)
+        while linkedlist1 and linkedlist2:
+            if linkedlist1.val < linkedlist2.val:
+                prev.next = linkedlist1
+                linkedlist1 = linkedlist1.next
+            else:
+                prev.next = linkedlist2
+                linkedlist2 = linkedlist2.next
+        prev.next = linkedlist1 or linkedlist2
+        return dummy.next
+    """
 
 if __name__ == '__main__':
     pass

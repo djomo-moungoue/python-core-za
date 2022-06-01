@@ -76,7 +76,7 @@ Contraintes : <br/>
 1 <= s.length <= 104
 s se compose uniquement de parenthèses '()[]{}'.
 
-### Fusionner deux listes triées
+### 021 Fusionner deux listes triées
 On vous donne les têtes de deux listes chaînées triées, list1 et list2.
 Fusionnez les deux listes en une seule liste triée. La liste doit être faite en épissant les noeuds des deux premières listes.
 Retournez la tête de la liste fusionnée.
@@ -97,6 +97,40 @@ Contraintes :
 Le nombre de nœuds dans les deux listes est compris dans l'intervalle [0, 50].
 -100 <= Node.val <= 100
 La liste1 et la liste2 sont triées dans un ordre non décroissant.
+
+### 026 Suppression des doublons dans un tableau trié
+Étant donné un tableau d'entiers nums triés par ordre non décroissant, supprimez les doublons en place de sorte que chaque élément unique n'apparaisse qu'une seule fois. L'ordre relatif des éléments doit rester le même.
+Comme il est impossible de modifier la longueur du tableau dans certains langages, il faut plutôt faire en sorte que le résultat soit placé dans la première partie du tableau nums. Plus formellement, s'il reste k éléments après avoir supprimé les doublons, alors les k premiers éléments de nums doivent contenir le résultat final. Ce que vous laissez au-delà des k premiers éléments n'a pas d'importance.
+Retournez k après avoir placé le résultat final dans les k premiers emplacements de nums.
+N'allouez pas d'espace supplémentaire pour un autre tableau. Vous devez le faire en modifiant le tableau d'entrée en place avec O(1) de mémoire supplémentaire.
+
+Juge personnalisé :
+Le juge testera votre solution avec le code suivant :
+int[] nums = [...] ; // Tableau d'entrée
+int[] expectedNums = [...] ; // La réponse attendue avec la longueur correcte
+int k = removeDuplicates(nums) ; // Appelle votre implémentation
+assert k == expectedNums.length ;
+for (int i = 0 ; i < k ; i++) {
+assert nums[i] == expectedNums[i] ;
+}
+Si toutes les assertions passent, alors votre solution sera acceptée.
+
+#### Exemple 1 :
+Entrée : nums = [1,1,2]
+Sortie : 2, nums = [1,2,_]
+Explication : Votre fonction doit retourner k = 2, les deux premiers éléments de nums étant respectivement 1 et 2.
+Ce que vous laissez au-delà de k retourné n'a pas d'importance (d'où les caractères de soulignement).
+
+#### Exemple 2 :
+Entrée : nums = [0,0,1,1,1,2,2,3,3,4]
+Sortie : 5, nums = [0,1,2,3,4,,,,,_]
+Explication : Votre fonction devrait renvoyer k = 5, les cinq premiers éléments de nums étant respectivement 0, 1, 2, 3 et 4.
+Ce que vous laissez au-delà de k retourné n'a pas d'importance (d'où les caractères de soulignement).
+
+#### Contraintes :
+1 <= nums.length <= 3 * 104
+-100 <= nums[i] <= 100
+nums est trié dans un ordre non décroissant.
 
 ---
 

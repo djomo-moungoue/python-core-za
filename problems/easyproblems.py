@@ -332,14 +332,12 @@ class EasyProblems:
         """
         current_index = 0
         next_index = 1
-        print("nums beginning = " + str(nums))
         while next_index < len(nums):
             if nums[current_index] != nums[next_index]:
                 del nums[current_index+1:next_index]
                 current_index += 1
                 next_index = current_index+1
             next_index += 1
-        print("nums end = " + str(nums))
         return len(nums)
 
     @classmethod
@@ -354,13 +352,11 @@ class EasyProblems:
         :param nums:
         :return: len(nums)
         """
-        print("nums beginning = "+str(nums))
         next_new = 0
         for i in range(len(nums)):
             if i == 0 or nums[i] != nums[i-1]:
                 nums[next_new] = nums[i]
                 next_new += 1
-        print("nums end = "+str(nums))
         return next_new
 
 

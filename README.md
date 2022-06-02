@@ -132,6 +132,56 @@ Ce que vous laissez au-delà de k retourné n'a pas d'importance (d'où les cara
 -100 <= nums[i] <= 100
 nums est trié dans un ordre non décroissant.
 
+### 027 Remove Element - Supprimer un élément
+
+Étant donné un tableau de nombres entiers et un nombre entier val, supprime toutes les occurrences de val dans nums en 
+place. L'ordre relatif des éléments peut être modifié.
+Comme il est impossible de modifier la longueur du tableau dans certains langages, il faut plutôt faire en sorte que 
+le résultat soit placé dans la première partie du tableau nums. Plus formellement, s'il reste k éléments après avoir 
+supprimé les doublons, alors les k premiers éléments de nums doivent contenir le résultat final. Ce que vous laissez 
+au-delà des k premiers éléments n'a pas d'importance.
+
+Retournez k après avoir placé le résultat final dans les k premiers emplacements de nums.
+
+N'allouez pas d'espace supplémentaire pour un autre tableau. Vous devez le faire en modifiant le tableau d'entrée en 
+place avec O(1) de mémoire supplémentaire.
+
+Juge personnalisé :
+
+Le juge testera votre solution avec le code suivant :
+
+int[] nums = [...] ; // Tableau d'entrée
+int val = ... ; // Valeur à supprimer
+int[] expectedNums = [...] ; // La réponse attendue avec la longueur correcte.
+// Elle est triée et aucune valeur n'est égale à val.
+
+int k = removeElement(nums, val) ; // Appelle votre implémentation
+
+assert k == expectedNums.length ;
+sort(nums, 0, k) ; // Trie les k premiers éléments de nums
+for (int i = 0 ; i < actualLength ; i++) {
+assert nums[i] == expectedNums[i] ;
+}
+Si toutes les assertions passent, alors votre solution sera acceptée.
+
+#### Exemple 1 :
+Entrée : nums = [3,2,2,3], val = 3
+Sortie : 2, nums = [2,2,,]
+Explication : Votre fonction doit renvoyer k = 2, les deux premiers éléments de nums étant 2.
+Ce que vous laissez au-delà de k retourné n'a pas d'importance (d'où les caractères de soulignement).
+
+#### Exemple 2 :
+Entrée : nums = [0,1,2,2,3,0,4,2], val = 2
+Sortie : 5, nums = [0,1,4,0,3,,,_]
+Explication : Votre fonction devrait retourner k = 5, avec les cinq premiers éléments de nums contenant 0, 0, 1, 3, et 4.
+Notez que les cinq éléments peuvent être retournés dans n'importe quel ordre.
+Ce que vous laissez au-delà de k retourné n'a pas d'importance (d'où les caractères de soulignement).
+
+#### Contraintes :
+0 <= nums.length <= 100
+0 <= nums[i] <= 50
+0 <= val <= 100
+
 ---
 
 ## Problèmes à difficulté moyenne

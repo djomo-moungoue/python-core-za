@@ -359,6 +359,49 @@ class EasyProblems:
                 next_new += 1
         return next_new
 
+    @classmethod
+    def remove_element(cls, nums, val):
+        """
+        Algorithme:
+        Parcourir la liste d'entrée de la gauche vers la droite.
+        Avancer le pointer si l'élément actuel est different de val.
+        Sinon effacer l'élément et pointer au même endroit car les listes sont mutables en Python.
+        Temps: O(n)
+        Espace: O(1)
+        :param nums:
+        :param val:
+        :return: number of val occurrences removed
+        """
+        i = 0
+        while i < len(nums):
+            if nums[i] != val:
+                i += 1
+            else:
+                nums.remove(val)
+        return len(nums)
+
+    @classmethod
+    def remove_element_leetcode_solution(cls, nums, val):
+        """
+        Algorithme:
+        Parcourir la liste d'entrée de la gauche vers la droite.
+        Avancer le pointer si l'élément actuel est different de val.
+        Sinon effacer l'élément et pointer au même endroit car les listes sont mutables en Python.
+        Temps: O(n)
+        Espace: O(1)
+        :param nums:
+        :param val:
+        :return: number of val occurrences removed
+        """
+        pointer = 0
+        for i, num in enumerate(nums):
+            if num != val:
+                nums[pointer] = num
+                pointer += 1
+        return pointer
+
 
 if __name__ == '__main__':
-    pass
+    nums = [0, 1, 2, 2, 3, 0, 4, 2]
+    val = 2
+    EasyProblems.remove_element_leetcode_solution(nums, val)

@@ -1,5 +1,7 @@
 """
 EasyProblem class tests.
+unittest identifies test classes by the prefix 'Test'
+unittest identifies test methods by the prefix 'test_'
 """
 import unittest
 from problems.easyproblems import EasyProblems
@@ -271,22 +273,22 @@ class TestEasyProblems(unittest.TestCase):
     def test_merge_two_sorted_lists_1(self):
         expected = [1, 1, 2, 3, 4, 4]
         actual = EasyProblems.merge_two_sorted_lists(queue1=[1, 2, 4], queue2=[1, 3, 4])
-        self.assertEqual(expected, actual)  # add assertion here
+        self.assertEqual(expected, actual, "Test case 1: Should return the 2 listed sorted.")
 
     def test_merge_two_sorted_lists_2(self):
         expected = []
         actual = EasyProblems.merge_two_sorted_lists(queue1=[], queue2=[])
-        self.assertEqual(expected, actual)  # add assertion here
+        self.assertEqual(expected, actual, "Test case 2: Empty input lists should returns an empty list.")
 
     def test_merge_two_sorted_list_3(self):
         expected = [0]
         actual = EasyProblems.merge_two_sorted_lists(queue1=[], queue2=[0])
-        self.assertEqual(expected, actual)  # add assertion here
+        self.assertEqual(expected, actual, "Test case 3: With an empty input list, the second one should be returned.")
 
     def test_merge_two_sorted_list_4(self):
         expected = [1, 10, 12, 14, 20, 23, 25, 27, 30]
         actual = EasyProblems.merge_two_sorted_lists(queue1=[1, 20, 23, 25, 27], queue2=[10, 12, 14, 30])
-        self.assertEqual(expected, actual)  # add assertion here
+        self.assertEqual(expected, actual, "Test case 4: should return the 2 lists sorted.")
 
     """
     Fails during execution because the list object has no attribute 'val'
@@ -312,6 +314,77 @@ class TestEasyProblems(unittest.TestCase):
                                                                       linkedlist2=[10, 12, 14, 30])
         self.assertEqual(expected, actual)  # add assertion here
     """
+
+    """
+    Easy 026 Remove Duplicates from Sorted Array 
+    Juge personnalisé :
+    Le juge testera votre solution avec le code suivant :
+    int[] nums = [...] ; // Tableau d'entrée
+    int[] expectedNums = [...] ; // La réponse attendue avec la longueur correcte
+    int k = removeDuplicates(nums) ; // Appelle votre implémentation
+    assert k == expectedNums.length ;
+    for (int i = 0 ; i < k ; i++) {
+    assert nums[i] == expectedNums[i] ;
+    }
+    Si toutes les assertions passent, alors votre solution sera acceptée.
+    
+    #### Exemple 1 :
+    Entrée : nums = [1,1,2]
+    Sortie : 2, nums = [1,2,_]
+    Explication : Votre fonction doit retourner k = 2, les deux premiers éléments de nums étant respectivement 1 et 2.
+    Ce que vous laissez au-delà de k retourné n'a pas d'importance (d'où les caractères de soulignement).
+    
+    #### Exemple 2 :
+    Entrée : nums = [0,0,1,1,1,2,2,3,3,4]
+    Sortie : 5, nums = [0,1,2,3,4,,,,,_]
+    Explication : Votre fonction devrait renvoyer k = 5, les cinq premiers éléments de nums étant respectivement 0, 1, 2, 3 et 4.
+    Ce que vous laissez au-delà de k retourné n'a pas d'importance (d'où les caractères de soulignement).
+    
+    #### Contraintes :
+    1 <= nums.length <= 3 * 104
+    -100 <= nums[i] <= 100
+    nums est trié dans un ordre non décroissant.
+    """
+
+    def test_remove_duplicates_1(self):
+        nums = [1, 1, 2]
+        expected_nums = [1, 2]
+        actual = EasyProblems.remove_duplicates(nums)
+        assert actual == len(expected_nums)
+        i = 0
+        while i < len(expected_nums):
+            assert nums[i] == expected_nums[i]
+            i += 1
+
+    def test_remove_duplicates_2(self):
+        nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+        expected_nums = [0, 1, 2, 3, 4]
+        actual = EasyProblems.remove_duplicates(nums)
+        assert actual == len(expected_nums)
+        i = 0
+        while i < len(expected_nums):
+            assert nums[i] == expected_nums[i]
+            i += 1
+
+    def test_remove_duplicates_solution_leetcode_1(self):
+        nums = [1, 1, 2]
+        expected_nums = [1, 2]
+        actual = EasyProblems.remove_duplicates_solution_leetcode(nums)
+        assert actual == len(expected_nums)
+        i = 0
+        while i < len(expected_nums):
+            assert nums[i] == expected_nums[i]
+            i += 1
+
+    def test_remove_duplicates_solution_leetcode_2(self):
+        nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+        expected_nums = [0, 1, 2, 3, 4]
+        actual = EasyProblems.remove_duplicates_solution_leetcode(nums)
+        assert actual == len(expected_nums)
+        i = 0
+        while i < len(expected_nums):
+            assert nums[i] == expected_nums[i]
+            i += 1
 
 
 if __name__ == '__main__':

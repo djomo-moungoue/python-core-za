@@ -317,6 +317,48 @@ class EasyProblems:
         return dummy.next
     """
 
+    @classmethod
+    def remove_duplicates(cls, nums):
+        """
+        Algorithme :
+        Parcourir la liste d'entrée de la gauche vers la droite.
+        Repérer les plages d'éléments identiques et les effacer.
+        Stopper dès que l'extrêmité droite de la liste est atteint.
+        Temps: O(n)
+        Espace: O(1)
+        Note: this solution works only for mutable sequences
+        :param nums:
+        :return: len(nums)
+        """
+        current_index = 0
+        next_index = 1
+        while next_index < len(nums):
+            if nums[current_index] != nums[next_index]:
+                del nums[current_index+1:next_index]
+                current_index += 1
+                next_index = current_index+1
+            next_index += 1
+        return len(nums)
+
+    @classmethod
+    def remove_duplicates_solution_leetcode(cls, nums):
+        """
+        Algorithme :
+        Maintient un pointeur vers le prochain index à remplir avec un nouveau nombre. Vérifier chaque nombre par
+        rapport au nombre précédent (s'il y en a un) et s'il est différent, se déplacer vers l'index next_new.
+        Temps: O(n)
+        Espace: O(1)
+        Note: this solution works for mutable and immutable sequences
+        :param nums:
+        :return: len(nums)
+        """
+        next_new = 0
+        for i in range(len(nums)):
+            if i == 0 or nums[i] != nums[i-1]:
+                nums[next_new] = nums[i]
+                next_new += 1
+        return next_new
+
+
 if __name__ == '__main__':
     pass
-

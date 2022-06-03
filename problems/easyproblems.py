@@ -2,13 +2,15 @@
 Easy Problems class.
 001 - Two Sum
 """
+import difflib
+
 from PIL._imaging import outline
 
 
 class EasyProblems:
 
     @classmethod
-    def sum_two_numbers(self, numbers, target):
+    def sum_two_numbers(cls, numbers, target):
         """
         :param numbers: a list of integers
         :param target: a number to be summed up to
@@ -25,7 +27,7 @@ class EasyProblems:
         return []
 
     @classmethod
-    def reverse_integer(self, my_integer):
+    def reverse_integer(cls, my_integer):
         """
         :param my_integer:
         :return: my_integer reversed
@@ -34,17 +36,17 @@ class EasyProblems:
         """
         is_negative = my_integer < 0  # save the sign of the input
         my_integer = abs(my_integer)
-        reversed = 0  # placeholder of the output
+        reversed_input = 0  # placeholder of the output
         while my_integer != 0:
-            reversed = reversed * 10 + my_integer % 10
+            reversed_input = reversed_input * 10 + my_integer % 10
             my_integer //= 10
         if is_negative:
-            return -reversed
+            return -reversed_input
         else:
-            return reversed
+            return reversed_input
 
     @classmethod
-    def is_palindrome(self, x):
+    def is_palindrome(cls, x):
         """
         Vérifiez l'équivalence du premier et du dernier caractère, en allant vers l'intérieur.
         Temps - O(n)
@@ -62,7 +64,7 @@ class EasyProblems:
         return True
 
     @classmethod
-    def convert_roman_to_integer(self, roman):
+    def convert_roman_to_integer(cls, roman):
         """
         Temps: O(n) pour parcourir la liste des nombres entiers dérivés des nombres romains.
         Espace: O(n) pour sauvegarder la list contenant les nombres entiers dérivés des nombres romains.
@@ -114,7 +116,7 @@ class EasyProblems:
         return result
 
     @classmethod
-    def convert_roman_to_integer_optimal_solution(self, roman):
+    def convert_roman_to_integer_optimal_solution(cls, roman):
         """
         Explication:
         Itère le long de roman, en vérifiant si les 2 caractères suivants correspondent à un chiffre romain valide.
@@ -158,10 +160,81 @@ class EasyProblems:
         result = 0
         i = 0
         while i < len(roman):
-            if roman[i:i+2] in double_roman_dict:
-                result += double_roman_dict.get(roman[i:i+2])
+            if roman[i:i + 2] in double_roman_dict:
+                result += double_roman_dict.get(roman[i:i + 2])
                 i += 2
             else:
                 result += single_roman_dict.get(roman[i])
                 i += 1
         return result
+
+    @classmethod
+    def find_longest_common_prefix(cls, string_list):
+        """
+        Explication:
+        Trier la liste de chaînes de caractères par ordre de longueur croissante.
+        Itérer sur les caractères de la première chaîne de la liste.
+        Comparer de facon incrémentielle les sous-chaînes de cette chaîne avec ceux des autres chaînes.
+        Arrêter la comparaison dès qu'une sous-chaîne n'apparait pas dans toutes les chaînes ou dès que le bout
+        de la première chaîne est atteinte
+        Renvoyer la sous-chaîne précédente.
+        Temps: O(k*n) parcourt la liste d'entrées contenant n chaînes de caractères maximal k fois. k étant le nombre
+        de caractères du plus court mot de la liste d'entrée.
+        Espace: O(1)
+        Exemple 1: ['django', 'python', 'exit', 'framework'] renvoie ''
+        Exemple 2: ['papaye', 'python', 'papa', 'pater'] renvoie 'p'
+        Exemple 3: ['examen', 'example', 'examinateur', 'examiner'] renvoie 'exam'
+        :param string_list:
+        :return: longest_common_substring
+        """
+        longest_common_substring = ''
+        string_list.sort(key=len)  # nlog(n) - Timsort
+        string_list_len = len(string_list)
+        first_string = string_list[0]
+        first_string_len = len(first_string)
+        i = 0  # index of the last character of the first_string
+        while i <= first_string_len:
+            previous_substring = first_string[0:i]
+            current_substring = first_string[0:i + 1]
+            j = 1  # index of the current string being compared
+            while j < string_list_len:
+                if not string_list[j].startswith(current_substring):
+                    longest_common_substring = previous_substring
+                    return longest_common_substring
+                j += 1
+            i += 1
+        return longest_common_substring
+
+    @classmethod
+    def find_longest_common_prefix_optimal_solution(cls, string_list):
+        """
+        Trier les chaînes de caractères et trouver le préfixe le plus long de la première et de la dernière, qui sont
+        les plus différentes.
+        On peut aussi insérer toutes les chaînes de caractères dans un arbre et trouver le premier nœud ayant plus
+        d'un enfant.
+        C'est l'heure : O(k*n log(n)) où k est la longueur de la plus longue chaîne et n est le nombre de chaînes.
+        Espace: O(1)
+        Exemple 1: ['django', 'python', 'exit', 'framework'] renvoie ''
+        Exemple 2: ['papaye', 'python', 'papa', 'pater'] renvoie 'p'
+        Exemple 3: ['examen', 'example', 'examinateur', 'examiner'] renvoie 'exam'
+        :param string_list:
+        :return: longest_common_substring
+        """
+        longest_common_substring = ''
+        string_list.sort()  # O(nlog(n)) - Timsort
+        first_string = string_list[0]
+        last_string = string_list[-1]
+        first_string_len = len(first_string)
+        i = 0  # index of the last character of the first_string and the last_string
+        while i <= first_string_len:
+            previous_substring = first_string[0:i]
+            current_substring = first_string[0:i + 1]
+            if not last_string.startswith(current_substring):
+                longest_common_substring = previous_substring
+                return longest_common_substring
+            i += 1
+        return longest_common_substring
+
+
+if __name__ == '__main__':
+    pass

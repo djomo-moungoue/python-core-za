@@ -467,7 +467,111 @@ class TestEasyProblems(unittest.TestCase):
             assert nums[i] == expected_nums[i]
             i += 1
 
+    """
+    028 Implement strStr() - Implémenter strStr()
+    Étant donné deux chaînes de caractères, aiguille et botte de foin, retourne l'indice de la première occurrence d'aiguille dans botte de foin, ou -1 si aiguille ne fait pas partie de botte de foin.
 
+    Clarification :
+    Que devrions-nous retourner si aiguille est une chaîne vide ? C'est une excellente question à poser lors d'un entretien.
+    
+    Pour les besoins de ce problème, nous renverrons 0 lorsque aiguille est une chaîne vide. Ceci est cohérent avec strstr() en C et indexOf() en Java.
+    
+    Exemple 1 :
+    Entrée : botte de foin = "hello", aiguille = "ll".
+    Sortie : 2
+    
+    Exemple 2 :
+    Entrée : botte de foin = "aaaaa", aiguille = "bba".
+    Résultat : -1
+    
+    Contraintes :
+    1 <= botte de foin.longueur, aiguille.longueur <= 104
+    La meule de foin et l'aiguille ne sont constituées que de caractères anglais minuscules.
+    """
+
+    def test_str_str_1(self):
+        haystack = "empty needle"
+        needle = ""
+        expected = 0
+        actual = EasyProblems.str_str(haystack, needle)
+        assert actual == expected
+
+    def test_str_str_2(self):
+        haystack = "hello"
+        needle = "ll"
+        expected = 2
+        actual = EasyProblems.str_str(haystack, needle)
+        assert actual == expected
+
+    def test_str_str_3(self):
+        haystack = "aaaaa"
+        needle = "bba"
+        expected = -1
+        actual = EasyProblems.str_str(haystack, needle)
+        assert actual == expected
+
+    def test_str_str_4(self):
+        haystack = "ABABDABACDABABCABAB"
+        needle = "ABABCABAB"
+        expected = 10
+        actual = EasyProblems.str_str(haystack, needle)
+        assert actual == expected
+
+    def test_str_str_leetcode_1(self):
+        haystack = "empty needle"
+        needle = ""
+        expected = 0
+        actual = EasyProblems.str_str_leetcode(haystack, needle)
+        assert actual == expected
+
+    def test_str_str_leetcode_2(self):
+        haystack = "hello"
+        needle = "ll"
+        expected = 2
+        actual = EasyProblems.str_str_leetcode(haystack, needle)
+        assert actual == expected
+
+    def test_str_str_leetcode_3(self):
+        haystack = "aaaaa"
+        needle = "bba"
+        expected = -1
+        actual = EasyProblems.str_str_leetcode(haystack, needle)
+        assert actual == expected
+
+    def test_str_str_leetcode_4(self):
+        haystack = "ABABDABACDABABCABAB"
+        needle = "ABABCABAB"
+        expected = 10
+        actual = EasyProblems.str_str_leetcode(haystack, needle)
+        assert actual == expected
+
+    def test_KPMSearch_1(self):
+        haystack = "empty needle"
+        needle = ""
+        expected = 0
+        actual = EasyProblems.KPMSearch(haystack, needle)
+        assert actual == expected
+
+    def test_KPMSearch_2(self):
+        haystack = "hello"
+        needle = "ll"
+        expected = 2
+        actual = EasyProblems.KPMSearch(haystack, needle)
+        self.assertEqual(expected, actual)
+
+    def test_KPMSearch_3(self):
+        haystack = "aaaaa"
+        needle = "bba"
+        expected = -1
+        actual = EasyProblems.KPMSearch(haystack, needle)
+        assert actual == expected
+
+    def test_KPMSearch_4(self):
+        haystack = "ABABDABACDABABCABAB"
+        needle = "ABABCABAB"
+        expected = 10
+        actual = EasyProblems.KPMSearch(haystack, needle)
+        assert actual == expected
 
 
 if __name__ == '__main__':

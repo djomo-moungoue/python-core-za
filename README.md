@@ -182,6 +182,26 @@ Ce que vous laissez au-delà de k retourné n'a pas d'importance (d'où les cara
 0 <= nums[i] <= 50
 0 <= val <= 100
 
+### 028 Implement strStr() - Implémenter strStr()
+Étant donné deux chaînes de caractères, aiguille et botte de foin, retourne l'indice de la première occurrence d'aiguille dans botte de foin, ou -1 si aiguille ne fait pas partie de botte de foin.
+
+Clarification :
+Que devrions-nous retourner si aiguille est une chaîne vide ? C'est une excellente question à poser lors d'un entretien.
+
+Pour les besoins de ce problème, nous renverrons 0 lorsque aiguille est une chaîne vide. Ceci est cohérent avec strstr() en C et indexOf() en Java.
+
+#### Exemple 1 :
+Entrée : botte de foin = "hello", aiguille = "ll".
+Sortie : 2
+
+#### Exemple 2 :
+Entrée : botte de foin = "aaaaa", aiguille = "bba".
+Résultat : -1
+
+#### Contraintes :
+1 <= botte de foin.longueur, aiguille.longueur <= 104
+La meule de foin et l'aiguille ne sont constituées que de caractères anglais minuscules.
+
 ---
 
 ## Problèmes à difficulté moyenne

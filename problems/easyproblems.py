@@ -41,3 +41,21 @@ class EasyProblems:
             return -reversed
         else:
             return reversed
+
+    @classmethod
+    def is_palindrome(self, x):
+        """
+        Vérifiez l'équivalence du premier et du dernier caractère, en allant vers l'intérieur.
+        Temps - O(n)
+        Espace - O(1)
+        :param x:
+        :return:
+        """
+        s = str(x)
+        l, r = 0, len(s) - 1
+        while l < r:
+            if s[l] != s[r]:
+                return False
+            l += 1
+            r -= 1
+        return True

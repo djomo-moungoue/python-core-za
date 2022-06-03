@@ -20,8 +20,15 @@ Vous pouvez supposer que chaque entrée aura exactement une solution.
 
 ### 007 Entier inversé
 Inverse les chiffres d'un nombre entier. <br/>
-Exemple 1 : x = 123, retour 321 <br/>
+Exemple 1 : x = 123, renvoie 321 <br/>
 Exemple 2 : x = -123, renvoie -321 <br/>
+
+### 009 Déterminer le palindrome
+Déterminez si un nombre entier est un palindrome. Faites-le sans espace supplémentaire.
+Exemple 1: 1 renvoie True <br/>
+Exemple 2: 1111 renvoie True <br/>
+Exemple 3: 13731 renvoie True <br/>
+Exemple 4: 123 renvoie False <br/>
 
 ## Problèmes à difficulté moyenne
 

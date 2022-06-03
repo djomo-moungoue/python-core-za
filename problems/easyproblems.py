@@ -334,9 +334,9 @@ class EasyProblems:
         next_index = 1
         while next_index < len(nums):
             if nums[current_index] != nums[next_index]:
-                del nums[current_index+1:next_index]
+                del nums[current_index + 1:next_index]
                 current_index += 1
-                next_index = current_index+1
+                next_index = current_index + 1
             next_index += 1
         return len(nums)
 
@@ -354,7 +354,7 @@ class EasyProblems:
         """
         next_new = 0
         for i in range(len(nums)):
-            if i == 0 or nums[i] != nums[i-1]:
+            if i == 0 or nums[i] != nums[i - 1]:
                 nums[next_new] = nums[i]
                 next_new += 1
         return next_new
@@ -387,7 +387,7 @@ class EasyProblems:
         Parcourir la liste d'entrée de la gauche vers la droite.
         Avancer le pointer si l'élément actuel est different de val.
         Sinon effacer l'élément et pointer au même endroit car les listes sont mutables en Python.
-        Temps: O(n)
+        Temps: O(n+k)
         Espace: O(1)
         :param nums:
         :param val:
@@ -400,8 +400,125 @@ class EasyProblems:
                 pointer += 1
         return pointer
 
+    @classmethod
+    def str_str(cls, haystack, needle):
+        """
+        Algorithme:
+        (0) Si needle es vide renvoyer 0
+        (1) Pointer sur la première lettre de needle;
+        (2) Parcourir haystack de la gauche vers la droite et comparer ses lettres avec celle de needle pointée;
+        (3) Si une lettre est identique de part et d'autre, pointer sur la lettre suivante et répéter (2);
+        (4) Si une lettre est différente de part et d'autre, pointer à nouveau sur la première lettre de needle;
+        (5) Si le bout de needle est atteint (pointeur = len(needle) - 1), renvoyer la différence entre l'index actuel
+        et le pointeur.
+        (6) Sinon renvoyer -1
+        Temps: O(n) - n étant le nombre de caractères de haystack
+        Espace: O(1)
+        :param haystack: str
+        :param needle: str
+        :return: int
+        """
+        if needle != "":
+            pointer = 0
+            for index, character in enumerate(haystack):
+                if needle[pointer] != character:
+                    pointer = 0
+                elif pointer != len(needle) - 1:
+                    pointer += 1
+                else:
+                    return index - pointer
+            return -1
+        else:
+            return 0
+
+    @classmethod
+    def str_str_leetcode(cls, haystack, needle):
+        """
+        Algorithme:
+        Pour chaque point de départ possible dans la botte de foin, vérifier que les caractères correspondent à
+        l'aiguille et les briser si ce n'est pas le cas.
+        Alternativement, l'algorithme de Knuth-Morris-Pratt (KMP) améliorerait la complexité temporelle attendue.
+        (6) Sinon renvoyer -1
+        Temps: O(n^2) - n étant le nombre de caractères de haystack
+        Espace: O(1)
+        :param haystack: str
+        :param needle: str
+        :return: int
+        """
+        for i in range(len(haystack) - len(needle) + 1):
+            for j in range(len(needle)):
+                if haystack[i + j] != needle[j]:
+                    break
+            else:
+                return i
+        return -1
+
+    @classmethod
+    def KPMSearch(cls, haystack, needle):
+        """
+        Algorithme:
+        Contrairement à l'algorithme naïf, dans lequel nous faisons glisser le motif d'un cran et comparons tous les
+        caractères à chaque décalage, nous utilisons une valeur de lps[] pour décider des prochains caractères à faire
+        correspondre. L'idée est de ne pas faire correspondre un caractère dont nous savons qu'il le sera de toute façon.
+        Comment utiliser lps[] pour décider des prochaines positions (ou pour connaître un nombre de caractères à sauter) ?
+        + Nous commençons la comparaison de pat[j] avec j = 0 avec les caractères de la fenêtre actuelle du texte.
+        + Nous continuons à comparer les caractères txt[i] et pat[j] et à incrémenter i et j pendant que pat[j] et
+        txt[i] continuent à correspondre.
+        + Lorsque nous voyons une non-concordance
+            + Nous savons que les caractères pat[0..j-1] correspondent à txt[i-j...i-1] (Notez que j commence par 0
+            et n'est incrémenté que lorsqu'il y a une correspondance).
+            + Nous savons également (d'après la définition ci-dessus) que lps[j-1] est le nombre de caractères de
+            pat[0...j-1] qui sont à la fois préfixe et suffixe corrects.
+            + De ces deux points, nous pouvons conclure que nous n'avons pas besoin de faire correspondre ces caractères
+            lps[j-1] avec txt[i-j...i-1] car nous savons que ces caractères correspondront de toute façon.
+        Temps: O(n)
+        Espace: O(1)
+        :param haystack:
+        :param needle:
+        :return:
+        """
+        if needle == "":
+            return 0
+        len_needle = len(needle)
+        len_haystack = len(haystack)
+        longest_prefix_suffix = [0] * len_needle
+        index_needle = 0
+
+        EasyProblems.compute_longest_prefix_suffix_array(needle, len_needle, longest_prefix_suffix)
+        index_haystack = 0
+        while index_haystack < len_haystack:
+            if needle[index_needle] == haystack[index_haystack]:
+                index_haystack += 1
+                index_needle += 1
+            if index_needle == len_needle:
+# These 2 lines replace the return statement if we want to find all occurences
+#                print("Pattern found at index"+ str(i-j))
+#                index_needle = longest_prefix_suffix[index_needle - 1]
+                return index_haystack - index_needle
+            elif index_haystack < len_haystack and needle[index_needle] != haystack[index_haystack]:
+                if index_needle != 0:
+                    index_needle = longest_prefix_suffix[index_needle - 1]
+                else:
+                    index_haystack += 1
+        return -1
+
+    @classmethod
+    def compute_longest_prefix_suffix_array(cls, needle, len_needle, longest_prefix_suffix):
+        len_previous = 0
+        longest_prefix_suffix[0]
+        index = 1
+        while index < len_needle:
+            if needle[index] == needle[len_previous]:
+                len_previous += 1
+                longest_prefix_suffix[index] = len_previous
+                index += 1
+            else:
+                if len_previous != 0:
+                    len_previous = longest_prefix_suffix[len_previous - 1]
+                else:
+                    longest_prefix_suffix[index] = 0
+                    index += 1
+
 
 if __name__ == '__main__':
-    nums = [0, 1, 2, 2, 3, 0, 4, 2]
-    val = 2
-    EasyProblems.remove_element_leetcode_solution(nums, val)
+    pass

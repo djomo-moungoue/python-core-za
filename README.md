@@ -52,6 +52,30 @@ Exemple 1: ['django', 'python', 'exit', 'framework'] renvoie ''
 Exemple 2: ['papaye', 'python', 'papa', 'pater'] renvoie 'p'
 Exemple 3: ['examen', 'example', 'examinateur', 'examiner'] renvoie 'exam'
 
+
+### 020 Valid Parentheses
+Étant donné une chaîne s contenant uniquement les caractères '(', ')', '{', '}', '[' et ']', déterminez si la
+chaîne d'entrée est valide.
+Une chaîne d'entrée est valide si :
+Les parenthèses ouvertes doivent être fermées par le même type de parenthèses.
+Les parenthèses ouvertes doivent être fermées dans le bon ordre.
+
+Exemple 1 : <br/>
+Entrée : s = "()"
+Sortie : true
+
+Exemple 2 : <br/>
+Entrée : s = "()[]{}"
+Sortie : true
+
+Exemple 3 : <br/>
+Entrée : s = "(]"
+Sortie : false
+
+Contraintes : <br/>
+1 <= s.length <= 104
+s se compose uniquement de parenthèses '()[]{}'.
+
 ---
 
 ## Problèmes à difficulté moyenne

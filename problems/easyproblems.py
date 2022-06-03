@@ -235,6 +235,32 @@ class EasyProblems:
             i += 1
         return longest_common_substring
 
+    @classmethod
+    def valid_parentheses(cls, brackets):
+        """
+        Explication:
+        Maintain a stack of opening brackets. For each closing brackets pop the head of the stack and check it matches.
+        Time: O(n)
+        Space: O(n)
+        :param brackets:
+        :return: valid or not
+        """
+        stack = []
+        match = {'(': ')', '[': ']', '{': '}'}
+        for b in brackets:
+            if b in match:
+                stack.append(b)
+                print(" if stack = " + str(stack) + " and b = " + b)
+            else:
+                notstack = not stack
+                stackpop = match[stack.pop()]
+                if notstack or stackpop != b:
+                    print("stack = " + str(stack))
+                    return False
+                print("else not stack = " + str(notstack) + " stack = " + str(stack) +" match[stack.pop()] = "+stackpop+" and b = " + b)
+        return not stack
+
 
 if __name__ == '__main__':
     pass
+

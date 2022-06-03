@@ -221,5 +221,51 @@ class TestEasyProblems(unittest.TestCase):
         actual = EasyProblems.find_longest_common_prefix_optimal_solution(['examen', 'example', 'examinateur', 'examiner'])
         self.assertEqual(expected, actual)  # add assertion here
 
+    """
+    020 Valid Parentheses
+    Exemple 1 :
+    Entrée : s = "()"
+    Sortie : true
+    
+    Exemple 2 :   
+    Entrée : s = "()[]{}"
+    Sortie : true
+    
+    Exemple 3 :   
+    Entrée : s = "(]"
+    Sortie : false
+    
+    Contraintes :  
+    1 <= s.length <= 104
+    s se compose uniquement de parenthèses '()[]{}'.
+    """
+
+    def test_valid_parentheses_1(self):
+        expected = True
+        actual = EasyProblems.valid_parentheses("()")
+        self.assertEqual(expected, actual)  # add assertion here
+
+
+    def test_valid_parentheses_2(self):
+        expected = True
+        actual = EasyProblems.valid_parentheses("()[]{}")
+        self.assertEqual(expected, actual)  # add assertion here
+
+    def test_valid_parentheses_3(self):
+        expected = False
+        actual = EasyProblems.valid_parentheses("(]")
+        self.assertEqual(expected, actual)  # add assertion here
+
+    def test_valid_parentheses_4(self):
+        expected = True
+        actual = EasyProblems.valid_parentheses("{[()]}")
+        self.assertEqual(expected, actual)  # add assertion here
+
+    def test_valid_parentheses_5(self):
+        expected = True
+        actual = EasyProblems.valid_parentheses("{}[()]")
+        self.assertEqual(expected, actual)  # add assertion here
+
+
 if __name__ == '__main__':
     unittest.main()

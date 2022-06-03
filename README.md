@@ -76,6 +76,28 @@ Contraintes : <br/>
 1 <= s.length <= 104
 s se compose uniquement de parenthèses '()[]{}'.
 
+### Fusionner deux listes triées
+On vous donne les têtes de deux listes chaînées triées, list1 et list2.
+Fusionnez les deux listes en une seule liste triée. La liste doit être faite en épissant les noeuds des deux premières listes.
+Retournez la tête de la liste fusionnée.
+
+Exemple 1 :
+Entrée : liste1 = [1,2,4], liste2 = [1,3,4].
+Sortie : [1,1,2,3,4,4]
+
+Exemple 2 :
+Entrée : list1 = [], list2 = []
+Sortie : []
+
+Exemple 3 :
+Entrée : list1 = [], list2 = [0]
+Sortie : [0]
+
+Contraintes :
+Le nombre de nœuds dans les deux listes est compris dans l'intervalle [0, 50].
+-100 <= Node.val <= 100
+La liste1 et la liste2 sont triées dans un ordre non décroissant.
+
 ---
 
 ## Problèmes à difficulté moyenne

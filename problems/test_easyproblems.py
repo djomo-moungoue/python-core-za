@@ -131,22 +131,6 @@ class TestEasyProblems(unittest.TestCase):
         actual = EasyProblems.convert_roman_to_integer('MMMCMXCIX')
         self.assertEqual(expected, actual)  # add assertion here
 
-    """
-    013 Roman to Integer - Optimal Solution
-    Exemple 1: I renvoie 1 <br/>
-    Exemple 2: V renvoie 5 <br/>
-    Exemple 3: X renvoie 10 <br/>
-    Exemple 4: L renvoie 50 <br/>
-    Exemple 5: C renvoie 100 <br/>
-    Exemple 6: D renvoie 500 <br/>
-    Exemple 7: M renvoie 1000 <br/>
-    Exemple 8: III renvoie 3 <br/>
-    Exemple 9: IV renvoie 4 <br/>
-    Exemple 10: MCMLXXXVIII renvoie 1988 <br/>
-    Exemple 11: MMXXII renvoie 2022 <br/>
-    Exemple 12: MMMCMXCIX renvoie 3999 <br/>
-    """
-
     def test_roman_I_to_integer_1_optimal_solution(self):
         expected = 1
         actual = EasyProblems.convert_roman_to_integer_optimal_solution('I')
@@ -199,13 +183,6 @@ class TestEasyProblems(unittest.TestCase):
         actual = EasyProblems.find_longest_common_prefix(['examen', 'example', 'examinateur', 'examiner'])
         self.assertEqual(expected, actual)  # add assertion here
 
-    """
-    014 Longest Common Prefix
-    Exemple 1: ['django', 'python', 'exit', 'framework'] renvoie ''
-    Exemple 2: ['papaye', 'python', 'papa', 'pater'] renvoie 'p'
-    Exemple 3: ['examen', 'example', 'examinateur', 'examiner'] renvoie 'exam'
-    """
-
     def test_find_empty_string_optimal_solution(self):
         expected = ''
         actual = EasyProblems.find_longest_common_prefix_optimal_solution(['django', 'python', 'exit', 'framework'])
@@ -218,7 +195,8 @@ class TestEasyProblems(unittest.TestCase):
 
     def test_find_exam_optimal_solution(self):
         expected = 'exam'
-        actual = EasyProblems.find_longest_common_prefix_optimal_solution(['examen', 'example', 'examinateur', 'examiner'])
+        actual = EasyProblems.find_longest_common_prefix_optimal_solution(
+            ['examen', 'example', 'examinateur', 'examiner'])
         self.assertEqual(expected, actual)  # add assertion here
 
     """
@@ -245,7 +223,6 @@ class TestEasyProblems(unittest.TestCase):
         actual = EasyProblems.valid_parentheses("()")
         self.assertEqual(expected, actual)  # add assertion here
 
-
     def test_valid_parentheses_2(self):
         expected = True
         actual = EasyProblems.valid_parentheses("()[]{}")
@@ -265,6 +242,76 @@ class TestEasyProblems(unittest.TestCase):
         expected = True
         actual = EasyProblems.valid_parentheses("{}[()]")
         self.assertEqual(expected, actual)  # add assertion here
+
+    """
+    Fusionner deux listes triées
+    On vous donne les têtes de deux listes chaînées triées, list1 et list2.
+    Fusionnez les deux listes en une seule liste triée. La liste doit être faite en épissant les noeuds des deux 
+    premières listes.
+    Retournez la tête de la liste fusionnée.
+    
+    Exemple 1 :
+    Entrée : liste1 = [1,2,4], liste2 = [1,3,4].
+    Sortie : [1,1,2,3,4,4]
+    
+    Exemple 2 :
+    Entrée : list1 = [], list2 = []
+    Sortie : []
+    
+    Exemple 3 :
+    Entrée : list1 = [], list2 = [0]
+    Sortie : [0]
+    
+    Contraintes :
+    Le nombre de nœuds dans les deux listes est compris dans l'intervalle [0, 50].
+    -100 <= Node.val <= 100
+    La liste1 et la liste2 sont triées dans un ordre non décroissant.
+    """
+
+    def test_merge_two_sorted_lists_1(self):
+        expected = [1, 1, 2, 3, 4, 4]
+        actual = EasyProblems.merge_two_sorted_lists(queue1=[1, 2, 4], queue2=[1, 3, 4])
+        self.assertEqual(expected, actual)  # add assertion here
+
+    def test_merge_two_sorted_lists_2(self):
+        expected = []
+        actual = EasyProblems.merge_two_sorted_lists(queue1=[], queue2=[])
+        self.assertEqual(expected, actual)  # add assertion here
+
+    def test_merge_two_sorted_list_3(self):
+        expected = [0]
+        actual = EasyProblems.merge_two_sorted_lists(queue1=[], queue2=[0])
+        self.assertEqual(expected, actual)  # add assertion here
+
+    def test_merge_two_sorted_list_4(self):
+        expected = [1, 10, 12, 14, 20, 23, 25, 27, 30]
+        actual = EasyProblems.merge_two_sorted_lists(queue1=[1, 20, 23, 25, 27], queue2=[10, 12, 14, 30])
+        self.assertEqual(expected, actual)  # add assertion here
+
+    """
+    Fails during execution because the list object has no attribute 'val'
+    
+    def test_merge_two_sorted_lists_optimal_solution_1(self):
+        expected = [1, 1, 2, 3, 4, 4]
+        actual = EasyProblems.merge_two_sorted_lists_optimal_solution(linkedlist1=[1, 2, 4], linkedlist2=[1, 3, 4])
+        self.assertEqual(expected, actual)  # add assertion here
+
+    def test_merge_two_sorted_lists_optimal_solution_2(self):
+        expected = []
+        actual = EasyProblems.merge_two_sorted_lists_optimal_solution(linkedlist1=[], linkedlist2=[])
+        self.assertEqual(expected, actual)  # add assertion here
+
+    def test_merge_two_sorted_lists_optimal_solution_3(self):
+        expected = [0]
+        actual = EasyProblems.merge_two_sorted_lists_optimal_solution(linkedlist1=[], linkedlist2=[0])
+        self.assertEqual(expected, actual)  # add assertion here
+
+    def test_merge_two_sorted_lists_optimal_solution_4(self):
+        expected = [1, 10, 12, 14, 20, 23, 25, 27, 30]
+        actual = EasyProblems.merge_two_sorted_lists_optimal_solution(linkedlist1=[1, 20, 23, 25, 27],
+                                                                      linkedlist2=[10, 12, 14, 30])
+        self.assertEqual(expected, actual)  # add assertion here
+    """
 
 
 if __name__ == '__main__':

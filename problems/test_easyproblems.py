@@ -386,6 +386,89 @@ class TestEasyProblems(unittest.TestCase):
             assert nums[i] == expected_nums[i]
             i += 1
 
+    """
+    027 Remove Element - Supprimer un élément 
+    
+    Le juge testera votre solution avec le code suivant :
+    int[] nums = [...] ; // Tableau d'entrée
+    int val = ... ; // Valeur à supprimer
+    int[] expectedNums = [...] ; // La réponse attendue avec la longueur correcte.
+    // Elle est triée et aucune valeur n'est égale à val.
+    
+    int k = removeElement(nums, val) ; // Appelle votre implémentation
+    
+    assert k == expectedNums.length ;
+    sort(nums, 0, k) ; // Trie les k premiers éléments de nums
+    for (int i = 0 ; i < actualLength ; i++) {
+    assert nums[i] == expectedNums[i] ;
+    }
+    Si toutes les assertions passent, alors votre solution sera acceptée.
+    
+    Exemple 1 :
+    Entrée : nums = [3,2,2,3], val = 3
+    Sortie : 2, nums = [2,2,,]
+    Explication : Votre fonction doit renvoyer k = 2, les deux premiers éléments de nums étant 2.
+    Ce que vous laissez au-delà de k retourné n'a pas d'importance (d'où les caractères de soulignement).
+    
+    Exemple 2 :
+    Entrée : nums = [0,1,2,2,3,0,4,2], val = 2
+    Sortie : 5, nums = [0,1,4,0,3,,,_]
+    Explication : Votre fonction devrait retourner k = 5, avec les cinq premiers éléments de nums contenant 0, 0, 1, 3, et 4.
+    Notez que les cinq éléments peuvent être retournés dans n'importe quel ordre.
+    Ce que vous laissez au-delà de k retourné n'a pas d'importance (d'où les caractères de soulignement).
+    
+    Contraintes :
+    0 <= nums.length <= 100
+    0 <= nums[i] <= 50
+    0 <= val <= 100
+    """
+
+    def test_remove_element_1(self):
+        nums = [3, 2, 2, 3]
+        val = 3
+        expected_nums = [2, 2]
+        actual = EasyProblems.remove_element(nums, val)
+        assert actual == len(expected_nums)
+        i = 0
+        while i < len(expected_nums):
+            assert nums[i] == expected_nums[i]
+            i += 1
+
+    def test_remove_element_2(self):
+        nums = [0, 1, 2, 2, 3, 0, 4, 2]
+        val = 2
+        expected_nums = [0, 1, 3, 0, 4]
+        actual = EasyProblems.remove_element(nums, val)
+        assert actual == len(expected_nums)
+        i = 0
+        while i < len(expected_nums):
+            assert nums[i] == expected_nums[i]
+            i += 1
+
+    def test_remove_element_leetcode_solution_1(self):
+        nums = [3, 2, 2, 3]
+        val = 3
+        expected_nums = [2, 2]
+        actual = EasyProblems.remove_element_leetcode_solution(nums, val)
+        assert actual == len(expected_nums)
+        i = 0
+        while i < len(expected_nums):
+            assert nums[i] == expected_nums[i]
+            i += 1
+
+    def test_remove_element_leetcode_solution_2(self):
+        nums = [0, 1, 2, 2, 3, 0, 4, 2]
+        val = 2
+        expected_nums = [0, 1, 3, 0, 4]
+        actual = EasyProblems.remove_element_leetcode_solution(nums, val)
+        assert actual == len(expected_nums)
+        i = 0
+        while i < len(expected_nums):
+            assert nums[i] == expected_nums[i]
+            i += 1
+
+
+
 
 if __name__ == '__main__':
     unittest.main()

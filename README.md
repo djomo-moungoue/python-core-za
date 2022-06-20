@@ -204,6 +204,28 @@ La meule de foin et l'aiguille ne sont constituées que de caractères anglais m
 
 ---
 
+### Position d'insertion de recherche
+Étant donné un tableau trié d'entiers distincts et une valeur cible, retournez l'index si la cible est trouvée. Si ce n'est pas le cas, renvoyez l'indice où il se trouverait s'il était inséré dans l'ordre.
+Vous devez écrire un algorithme dont la complexité d'exécution est de O(log n).
+
+Exemple 1 :
+Entrée : nums = [1,3,5,6], cible = 5
+Sortie : 2
+
+Exemple 2 :
+Entrée : nums = [1,3,5,6], cible = 2
+Sortie : 1
+
+Exemple 3 :
+Entrée : nums = [1,3,5,6], cible = 7
+Sortie : 4
+
+Contraintes :
+1 <= nums.length <= 104
+-104 <= nums[i] <= 104
+nums contient des valeurs distinctes triées par ordre croissant.
+-104 <= cible <= 104
+
 ## Problèmes à difficulté moyenne
 
 ---

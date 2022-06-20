@@ -573,6 +573,72 @@ class TestEasyProblems(unittest.TestCase):
         actual = EasyProblems.KPMSearch(haystack, needle)
         assert actual == expected
 
+    """
+    Position d'insertion de recherche
+    Étant donné un tableau trié d'entiers distincts et une valeur cible, retournez l'index si la cible est trouvée. Si ce n'est pas le cas, renvoyez l'indice où il se trouverait s'il était inséré dans l'ordre.
+    Vous devez écrire un algorithme dont la complexité d'exécution est de O(log n).
+    
+    Exemple 1 :
+    Entrée : nums = [1,3,5,6], cible = 5
+    Sortie : 2
+    
+    Exemple 2 :
+    Entrée : nums = [1,3,5,6], cible = 2
+    Sortie : 1
+    
+    Exemple 3 :
+    Entrée : nums = [1,3,5,6], cible = 7
+    Sortie : 4
+    
+    Contraintes :
+    1 <= nums.length <= 104
+    -104 <= nums[i] <= 104
+    nums contient des valeurs distinctes triées par ordre croissant.
+    -104 <= cible <= 104
+    """
+
+    def test_search_5_in_sorted_array_of_integers_1(self):
+        haystack = [1, 3, 5, 6]
+        needle = 5
+        expected = 2
+        actual = EasyProblems.search_target(haystack, needle)
+        self.assertEqual(expected, actual, "Test case 1: Should return the index 2.")
+
+    def test_search_2_in_sorted_array_of_integers_2(self):
+        haystack = [1, 3, 5, 6]
+        needle = 2
+        expected = 1
+        actual = EasyProblems.search_target(haystack, needle)
+        self.assertEqual(expected, actual, "Test case 2: Should return the index 1.")
+
+    def test_search_7_in_sorted_array_of_integers_3(self):
+        haystack = [1, 3, 5, 6]
+        needle = 7
+        expected = 4
+        actual = EasyProblems.search_target(haystack, needle)
+        self.assertEqual(expected, actual, "Test case 3: Should return the index 4.")
+
+    def test_search_5_in_sorted_array_of_integers_optimal_solution_1(self):
+        haystack = [1, 3, 5, 6]
+        needle = 5
+        expected = 2
+        actual = EasyProblems.search_target_optimal_solution(haystack, needle)
+        self.assertEqual(expected, actual, "Test case 1: Should return the index 2.")
+
+    def test_search_2_in_sorted_array_of_integers_optimal_solution_2(self):
+        haystack = [1, 3, 5, 6]
+        needle = 2
+        expected = 1
+        actual = EasyProblems.search_target_optimal_solution(haystack, needle)
+        self.assertEqual(expected, actual, "Test case 2: Should return the index 1.")
+
+    def test_search_7_in_sorted_array_of_integers_optimal_solution_3(self):
+        haystack = [1, 3, 5, 6]
+        needle = 7
+        expected = 4
+        actual = EasyProblems.search_target_optimal_solution(haystack, needle)
+        self.assertEqual(expected, actual, "Test case 3: Should return the index 4.")
+
 
 if __name__ == '__main__':
     unittest.main()

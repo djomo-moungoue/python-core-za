@@ -519,6 +519,66 @@ class EasyProblems:
                     longest_prefix_suffix[index] = 0
                     index += 1
 
+    @classmethod
+    def search_target(cls, haystack, needle, right=False, delta=0):
+        """
+        Cibler récursivement l'élément situé au milieu tableau car celui-ci est trié. (1)
+        Si l'élément cibler n'est pas notre cible, répéter (1) dans la moitié gauche du tableau
+        si l'élément ciblé est supérieur à notre cible. Dans le cas contraire, répéter (1) dans la
+        moitié droite du tableau.
+        Si l'élément ciblé est notre cible, renvoyer son index. Sinon renvoyer l'index où il devrait
+        être inséré afin que le tableau reste trier.
+        Temps: O(log(n))
+        Espace: O(1)
+        :param delta:
+        :param right:
+        :param haystack:
+        :param needle:
+        :return: index of target
+        """
+        len_haystack = len(haystack)
+        index = len_haystack//2
+        if needle == haystack[index]:  # target found
+            if not right:
+                return index
+            if right:
+                return delta
+        if index == 0:  # target not found
+            if not right:
+                return index+1
+            if right:
+                return delta+1
+        if needle < haystack[index]:  # target probably on the left side of the array
+            delta = index
+            return EasyProblems.search_target(haystack[0:index], needle, right, delta)
+        if needle > haystack[index]:  # target probably on the right side of the array
+            right = True
+            delta += index
+            return EasyProblems.search_target(haystack[index:len_haystack], needle, right, delta)
+
+    @classmethod
+    def search_target_optimal_solution(cls, haystack, needle):
+        """
+        Recherche binaire itérative jusqu'à ce que gauche > droite ou que gauche ou droite sortent du tableau.
+        Retourne left (le plus grand index), qui serait le nouvel index de l'entrée insérée (pourrait être len(nums) mais pas -1.
+        Temps - O(log n)
+        Espace - O(1)
+        :param haystack:
+        :param needle:
+        :return:
+        """
+        left = 0
+        right = len(haystack)
+        while left <= right and left < len(haystack) and right >= 0:
+            mid = (left + right) // 2
+            if needle == haystack[mid]:
+                return mid
+            if needle < haystack[mid]:
+                right = mid - 1
+            else:
+                left = mid + 1
+        return left
+
 
 if __name__ == '__main__':
     pass

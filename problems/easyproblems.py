@@ -520,7 +520,7 @@ class EasyProblems:
                     index += 1
 
     @classmethod
-    def search_target(cls, haystack, needle, right=False, delta=0):
+    def search_insert(cls, haystack, needle, right=False, delta=0):
         """
         Cibler récursivement l'élément situé au milieu tableau car celui-ci est trié. (1)
         Si l'élément cibler n'est pas notre cible, répéter (1) dans la moitié gauche du tableau
@@ -550,14 +550,14 @@ class EasyProblems:
                 return delta+1
         if needle < haystack[index]:  # target probably on the left side of the array
             delta = index
-            return EasyProblems.search_target(haystack[0:index], needle, right, delta)
+            return EasyProblems.search_insert(haystack[0:index], needle, right, delta)
         if needle > haystack[index]:  # target probably on the right side of the array
             right = True
             delta += index
-            return EasyProblems.search_target(haystack[index:len_haystack], needle, right, delta)
+            return EasyProblems.search_insert(haystack[index:len_haystack], needle, right, delta)
 
     @classmethod
-    def search_target_optimal_solution(cls, haystack, needle):
+    def search_insert_optimal_solution(cls, haystack, needle):
         """
         Recherche binaire itérative jusqu'à ce que gauche > droite ou que gauche ou droite sortent du tableau.
         Retourne left (le plus grand index), qui serait le nouvel index de l'entrée insérée (pourrait être len(nums) mais pas -1.

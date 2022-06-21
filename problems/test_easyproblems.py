@@ -608,42 +608,42 @@ class TestEasyProblems(unittest.TestCase):
         haystack = [1, 3, 5, 6]
         needle = 5
         expected = 2
-        actual = EasyProblems.search_target(haystack, needle)
+        actual = EasyProblems.search_insert(haystack, needle)
         self.assertEqual(expected, actual, "Test case 1: Should return the index 2.")
 
     def test_search_2_in_sorted_array_of_integers_2(self):
         haystack = [1, 3, 5, 6]
         needle = 2
         expected = 1
-        actual = EasyProblems.search_target(haystack, needle)
+        actual = EasyProblems.search_insert(haystack, needle)
         self.assertEqual(expected, actual, "Test case 2: Should return the index 1.")
 
     def test_search_7_in_sorted_array_of_integers_3(self):
         haystack = [1, 3, 5, 6]
         needle = 7
         expected = 4
-        actual = EasyProblems.search_target(haystack, needle)
+        actual = EasyProblems.search_insert(haystack, needle)
         self.assertEqual(expected, actual, "Test case 3: Should return the index 4.")
 
     def test_search_5_in_sorted_array_of_integers_optimal_solution_1(self):
         haystack = [1, 3, 5, 6]
         needle = 5
         expected = 2
-        actual = EasyProblems.search_target_optimal_solution(haystack, needle)
+        actual = EasyProblems.search_insert_optimal_solution(haystack, needle)
         self.assertEqual(expected, actual, "Test case 1: Should return the index 2.")
 
     def test_search_2_in_sorted_array_of_integers_optimal_solution_2(self):
         haystack = [1, 3, 5, 6]
         needle = 2
         expected = 1
-        actual = EasyProblems.search_target_optimal_solution(haystack, needle)
+        actual = EasyProblems.search_insert_optimal_solution(haystack, needle)
         self.assertEqual(expected, actual, "Test case 2: Should return the index 1.")
 
     def test_search_7_in_sorted_array_of_integers_optimal_solution_3(self):
         haystack = [1, 3, 5, 6]
         needle = 7
         expected = 4
-        actual = EasyProblems.search_target_optimal_solution(haystack, needle)
+        actual = EasyProblems.search_insert_optimal_solution(haystack, needle)
         self.assertEqual(expected, actual, "Test case 3: Should return the index 4.")
 
     """

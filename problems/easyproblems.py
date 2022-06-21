@@ -579,6 +579,53 @@ class EasyProblems:
                 left = mid + 1
         return left
 
+    @classmethod
+    def max_subarray(cls, haystack):
+        """
+        Aller de la gauche vers la droite du tableau.
+        Pointer sur un nombre et faire itérativement la somme à partir du nombre pointé.
+        Comparer parallèlement chaque nouvelle somme au maximum actuel. Si celle-ci est supérieure, elle devient le
+        nouveau maximum.
+        Renvoyer le maximum lorsque l'extrémité droite de la séquence est atteinte.
+        Temps - O(N²)
+        Espace - O(1)
+        :param haystack:
+        :return: max_sum
+        """
+#        pointer, hay, sum_, max_sum = 0, 0, 0, 0
+        max_sum = float('-inf')
+        pointer, hay, sum_ = 0, 0, 0
+        while pointer < len(haystack):
+            for hay in haystack[pointer:]:
+                sum_ += hay
+#                if sum_ > max_sum:
+#                   max_sum = sum_
+                max_sum = max(max_sum, sum_)
+            pointer += 1
+            sum_ = 0
+        return max_sum
+
+    @classmethod
+    def max_subarray_optimal_solution(cls, haystack):
+        """
+        Pour chaque numéro, calculez la somme maximale du sous-bloc se terminant par ce numéro, soit le numéro
+        seul (si la somme précédente était négative), soit le numéro + la somme précédente (si la somme précédente
+        était positive).
+        Temps - O(N)
+        Espace - O(1)
+        :param haystack:
+        :return: max_sum
+        """
+        overall_max = float('-inf')
+        max_ending_here = 0
+        for hay in haystack:
+            if max_ending_here > 0:
+                max_ending_here += hay
+            else:
+                max_ending_here = hay
+            overall_max = max(overall_max, max_ending_here)
+        return overall_max
+
 
 if __name__ == '__main__':
     pass

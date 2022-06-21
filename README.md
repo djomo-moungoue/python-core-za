@@ -204,8 +204,10 @@ La meule de foin et l'aiguille ne sont constituées que de caractères anglais m
 
 ---
 
-### Position d'insertion de recherche
-Étant donné un tableau trié d'entiers distincts et une valeur cible, retournez l'index si la cible est trouvée. Si ce n'est pas le cas, renvoyez l'indice où il se trouverait s'il était inséré dans l'ordre.
+### 035 Position d'insertion de recherche
+Étant donné un tableau trié d'entiers distincts et une valeur cible, retournez l'index si la 
+cible est trouvée. Si ce n'est pas le cas, renvoyez l'indice où il se trouverait s'il était 
+inséré dans l'ordre.
 Vous devez écrire un algorithme dont la complexité d'exécution est de O(log n).
 
 Exemple 1 :
@@ -225,6 +227,34 @@ Contraintes :
 -104 <= nums[i] <= 104
 nums contient des valeurs distinctes triées par ordre croissant.
 -104 <= cible <= 104
+
+### 053 Sous-tableau maximum
+Étant donné un tableau de nombres entiers, trouvez le sous-groupe contigu (contenant au moins un 
+nombre) qui a la plus grande somme et renvoyez sa somme.
+
+Un sous-groupe est une partie contiguë d'un tableau.
+
+Exemple 1 :
+Entrée : nums = [-2,1,-3,4,-1,2,1,-5,4]
+Sortie : 6
+Explication : [4,-1,2,1] a la plus grande somme = 6.
+
+Exemple 2 :
+Entrée : nums = [1]
+Sortie : 1
+
+Exemple 3 :
+Entrée : nums = [5,4,-1,7,8]
+Sortie : 23
+ 
+Contraintes :
+1 <= nums.length <= 105
+-104 <= nums[i] <= 104
+ 
+Suivi : Si vous avez compris la solution O(n), essayez de coder une autre solution en utilisant 
+l'approche diviser pour régner, qui est plus subtile.
+
+---
 
 ## Problèmes à difficulté moyenne
 

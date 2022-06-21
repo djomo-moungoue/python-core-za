@@ -2,6 +2,13 @@
 EasyProblem class tests.
 unittest identifies test classes by the prefix 'Test'
 unittest identifies test methods by the prefix 'test_'
+needle in a haystack
+someone or something that is very hard to find Searching for your earring at the park will be like looking for a
+needle in a haystack.
+= aiguille dans une botte de foin
+= quelqu'un ou quelque chose qui est très difficile à trouver Chercher votre boucle d'oreille dans le parc sera comme
+chercher une aiguille dans une botte de foin.
+Foin: Fourrage séché destiné à l'alimentation des herbivores.
 """
 import unittest
 from problems.easyproblems import EasyProblems
@@ -638,6 +645,74 @@ class TestEasyProblems(unittest.TestCase):
         expected = 4
         actual = EasyProblems.search_target_optimal_solution(haystack, needle)
         self.assertEqual(expected, actual, "Test case 3: Should return the index 4.")
+
+    """
+    53. Sous-tableau maximum
+    Étant donné un tableau de nombres entiers, trouvez le sous-groupe contigu (contenant au moins un nombre) qui a la plus grande somme et renvoyez sa somme.
+    
+    Un sous-groupe est une partie contiguë d'un tableau.
+    
+    Exemple 1 :
+    Entrée : nums = [-2,1,-3,4,-1,2,1,-5,4]
+    Sortie : 6
+    Explication : [4,-1,2,1] a la plus grande somme = 6.
+    
+    Exemple 2 :
+    Entrée : nums = [1]
+    Sortie : 1
+    
+    Exemple 3 :
+    Entrée : nums = [5,4,-1,7,8]
+    Sortie : 23
+     
+    Contraintes :
+    1 <= nums.length <= 105
+    -104 <= nums[i] <= 104
+     
+    Suivi : Si vous avez compris la solution O(n), essayez de coder une autre solution en utilisant l'approche diviser pour régner, qui est plus subtile.
+    """
+
+    def test_find_maximum_sum_of_contiguous_numbers_and_return_6(self):
+        haystack = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+        needle = [4, -1, 2, 1]
+        expected = 6
+        actual = EasyProblems.max_subarray(haystack)
+        self.assertEqual(expected, actual, "Test case 3: Should return 6 as sub-array with the max sum.")
+
+    def test_find_maximum_sum_of_contiguous_numbers_and_return_1(self):
+        haystack = [1]
+        needle = [1]
+        expected = 1
+        actual = EasyProblems.max_subarray(haystack)
+        self.assertEqual(expected, actual, "Test case 3: Should return 1 as sub-array with the max sum.")
+
+    def test_find_maximum_sum_of_contiguous_numbers_and_return_23(self):
+        haystack = [5, 4, -1, 7, 8]
+        needle = [5, 4, -1, 7, 8]
+        expected = 23
+        actual = EasyProblems.max_subarray(haystack)
+        self.assertEqual(expected, actual, "Test case 3: Should return 23 as sub-array with the max sum.")
+
+    def test_find_maximum_sum_of_contiguous_numbers_and_return_optimal_solution_6(self):
+        haystack = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+        needle = [4, -1, 2, 1]
+        expected = 6
+        actual = EasyProblems.max_subarray_optimal_solution(haystack)
+        self.assertEqual(expected, actual, "Test case 3: Should return 6 as sub-array with the max sum.")
+
+    def test_find_maximum_sum_of_contiguous_numbers_and_return_optimal_solution_1(self):
+        haystack = [1]
+        needle = [1]
+        expected = 1
+        actual = EasyProblems.max_subarray_optimal_solution(haystack)
+        self.assertEqual(expected, actual, "Test case 3: Should return 1 as sub-array with the max sum.")
+
+    def test_find_maximum_sum_of_contiguous_numbers_and_return_optimal_solution_23(self):
+        haystack = [5, 4, -1, 7, 8]
+        needle = [5, 4, -1, 7, 8]
+        expected = 23
+        actual = EasyProblems.max_subarray_optimal_solution(haystack)
+        self.assertEqual(expected, actual, "Test case 3: Should return 23 as sub-array with the max sum.")
 
 
 if __name__ == '__main__':

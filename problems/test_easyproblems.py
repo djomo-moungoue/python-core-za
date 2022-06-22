@@ -715,6 +715,58 @@ class TestEasyProblems(unittest.TestCase):
         self.assertEqual(expected, actual, "Test case 3: Should return 23 as sub-array with the max sum.")
 
     """
+    Factorial - Factoriel
+    1! = 1
+    2! = 2x1 = 2
+    3! = 3x2x1 = 6
+    5! = 5x4x3x2x1 = 120
+    """
+
+    def test_factorial_1_returns_1(self):
+        positive_integer = 1
+        expected = 1
+        actual = EasyProblems.factorial(positive_integer)
+        self.assertEqual(expected, actual, "Test case 1: should return 1, given a positive integer 1.")
+
+    def test_factorial_2_returns_2(self):
+        positive_integer = 1
+        expected = 1
+        actual = EasyProblems.factorial(positive_integer)
+        self.assertEqual(expected, actual, "Test case 2: should return 2, given a positive integer 2.")
+
+    def test_factorial_5_returns_120(self):
+        positive_integer = 1
+        expected = 1
+        actual = EasyProblems.factorial(positive_integer)
+        self.assertEqual(expected, actual, "Test case 3: should return 120, given a positive integer 5.")
+
+    """
+    Fibonacci
+    F0 = 0
+    F1 = F2 = 1
+    F3 = F2 + F1 = 1 + 1 = 2
+    F5 = F4+F3 = (F3 + F2) + (F2 + F1) = ((F2 + F1) + F2) + (F2 + F1) = 5
+    """
+
+    def test_fibonacci_1_returns_1(self):
+        positive_integer = 1
+        expected = 1
+        actual = EasyProblems.fibonacci(positive_integer)
+        self.assertEqual(expected, actual, "Test case 1: should return 1, given a positive integer 1.")
+
+    def test_fibonacci_2_returns_1(self):
+        positive_integer = 1
+        expected = 1
+        actual = EasyProblems.fibonacci(positive_integer)
+        self.assertEqual(expected, actual, "Test case 2: should return 2, given a positive integer 2.")
+
+    def test_fibonacci_5_returns_5(self):
+        positive_integer = 1
+        expected = 1
+        actual = EasyProblems.fibonacci(positive_integer)
+        self.assertEqual(expected, actual, "Test case 3: should return 5, given a positive integer 5.")
+
+    """
     038 Count and Say - Compter et Dire
     La séquence count-and-say est une séquence de chaînes de chiffres définie par la formule récursive :
     
@@ -770,7 +822,7 @@ class TestEasyProblems(unittest.TestCase):
         positive_integer = 5
         expected = "111221"
         actual = EasyProblems.count_and_say_leetcode(positive_integer)
-        self.assertEqual(expected, actual, "Test case 2: should return '111221', given a positive integer 5.")
+        self.assertEqual(expected, actual, "Test case 3: should return '111221', given a positive integer 5.")
 
 
 if __name__ == '__main__':

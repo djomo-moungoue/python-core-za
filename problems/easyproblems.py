@@ -636,7 +636,7 @@ class EasyProblems:
         Si l'entier positif est 1, renvoyer 1.
         Cas récursif :
         Si l'entier positif est n > 1, renvoyer n * factorial(n-1)
-        Unit Test Method: Debugging
+        Test Method: Debugging + Unit Test Cases
         Temps - O(n)
         Espace - O(1)
         :param positive_integer:
@@ -655,7 +655,7 @@ class EasyProblems:
         Si l'entier positif est 1 ou 2, renvoyer 1.
         Cas récursif :
         Si l'entier positif est n > 1, renvoyer fibonacci(n-1) + fibonacci(n-2)
-        Unit Test Method: Debugging
+        Test Method: Debugging + Unit Test Cases
         Temps - O(n)
         Espace - O(1)
         :param positive_integer:
@@ -675,6 +675,7 @@ class EasyProblems:
         On itère dans la séquence précédente.
         Quand on voit un nombre différent, on ajoute [1, num] à la nouvelle séquence.
         Quand on voit le même nombre, on incrémente son compte.
+        Test Method : Debugging + Unit Test Cases
         Temps - O(2^N) La séquence au pire double de chaque étape
         Espace - O(2^N)
         :param n:
@@ -693,4 +694,4 @@ class EasyProblems:
 
 
 if __name__ == '__main__':
-    print(EasyProblems.count_and_say_leetcode(5))
+    print(EasyProblems.count_and_say_leetcode(7))

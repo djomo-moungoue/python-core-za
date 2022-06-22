@@ -272,6 +272,18 @@ Sortie : 23
 Suivi : Si vous avez compris la solution O(n), essayez de coder une autre solution en utilisant l'approche diviser pour 
 régner, qui est plus subtile.
 
+###     Factorial - Factoriel
+1! = 1 <br/>
+2! = 2x1 = 2 <br/>
+3! = 3x2x1 = 6 <br/>
+5! = 5x4x3x2x1 = 120
+
+###     Fibonacci
+F0 = 0 <br/>
+F1 = F2 = 1 <br/>
+F3 = F2 + F1 = 1 + 1 = 2 <br/>
+F5 = F4+F3 = (F3 + F2) + (F2 + F1) = ((F2 + F1) + F2) + (F2 + F1) = 5
+
 ### 038 Count and Say - Compter et Dire
 La séquence count-and-say est une séquence de chaînes de chiffres définie par la formule récursive :
     

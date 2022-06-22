@@ -714,6 +714,64 @@ class TestEasyProblems(unittest.TestCase):
         actual = EasyProblems.max_subarray_optimal_solution(haystack)
         self.assertEqual(expected, actual, "Test case 3: Should return 23 as sub-array with the max sum.")
 
+    """
+    038 Count and Say - Compter et Dire
+    La séquence count-and-say est une séquence de chaînes de chiffres définie par la formule récursive :
+    
+    countAndSay(1) = "1"
+    countAndSay(n) est la façon dont vous "dites" la chaîne de chiffres de countAndSay(n-1), qui est ensuite convertie en une chaîne de chiffres différente.
+    Pour déterminer la façon dont vous "dites" une chaîne de chiffres, divisez-la en un nombre minimal de sous-chaînes de sorte que chaque sous-chaîne contienne exactement un chiffre unique. Ensuite, pour chaque sous-chaîne, dites le nombre de chiffres, puis dites le chiffre. Enfin, concaténer chaque chiffre.
+    
+    Par exemple, l'énoncé et la conversion pour la chaîne de chiffres "3322251" :
+    
+    Étant donné un nombre entier positif n, retourner le nième terme de la séquence de comptage et de conversion.
+    
+    Exemple 1 :
+    Entrée : n = 1
+    Sortie : "1"
+    Explication : C'est le cas de base.
+    
+    Exemple 2 :
+    Entrée : n = 4
+    Sortie : "1211"
+    Explication :
+    countAndSay(1) = "1" (compte et dit)
+    countAndSay(2) = dites "1" = un 1 = "11"
+    countAndSay(3) = dites "11" = deux 1 = "21"
+    Comptez et dites(4) = dites "21" = un 2 + un 1 = "12" + "11" = "1211".
+    
+    Exemple 3 :
+    Entrée : n = 5
+    Sortie : "111221"
+    Explication :
+    countAndSay(1) = "1" (compte et dit)
+    countAndSay(2) = dites "1" = un 1 = "11"
+    countAndSay(3) = dites "11" = deux 1 = "21"
+    Comptez et dites(4) = dites "21" = un 2 + un 1 = "12" + "11" = "1211".
+    Comptez et dites(5) = dites "1211" = 1 un + un 2 + deux 1 = "11" + "12" + "21" = "111221".
+    
+    Contraintes :
+    1 <= n <= 30
+    """
+
+    def test_given_1_count_and_say_leetcode_return_1(self):
+        positive_integer = 1
+        expected = "1"
+        actual = EasyProblems.count_and_say_leetcode(positive_integer)
+        self.assertEqual(expected, actual, "Test case 1: should return '1', given a positive integer 1.")
+
+    def test_given_4_count_and_say_leetcode_return_1211(self):
+        positive_integer = 4
+        expected = "1211"
+        actual = EasyProblems.count_and_say_leetcode(positive_integer)
+        self.assertEqual(expected, actual, "Test case 2: should return '1211', given a positive integer 4.")
+
+    def test_given_5_count_and_say_leetcode_return_111221(self):
+        positive_integer = 5
+        expected = "111221"
+        actual = EasyProblems.count_and_say_leetcode(positive_integer)
+        self.assertEqual(expected, actual, "Test case 2: should return '111221', given a positive integer 5.")
+
 
 if __name__ == '__main__':
     unittest.main()

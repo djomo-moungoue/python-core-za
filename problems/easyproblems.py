@@ -682,7 +682,7 @@ class EasyProblems:
         :return:
         """
         sequence = [1]
-        for _ in range(n-1):
+        for _ in range(n - 1):
             next_ = []
             for num in sequence:
                 if not next_ or next_[-1] != num:
@@ -698,8 +698,9 @@ class EasyProblems:
         Algorithme - Iteration
         Commencer à l'extrême droite de la chaîne de caractère.
         Déplacer le curseur vers la gauche aussi longtemps qu'il y a des espaces.
-        Compter le nombre de caractères jusqu'à rencontrer un espace.
-        Renvoyer le compteur.
+		Pointer sur le premier caractère rencontrer.
+		Continuer à déplacer le curseur vers la gauche jusqu'à rencontrer un espace.
+        Renvoyer la difference entre le pointer et l'index l'espace rencontrer.
         Méthode de test - Unit TDD
         Temps - O(n)
         Espace - O(1)
@@ -707,15 +708,13 @@ class EasyProblems:
         :return:
         """
         index = -1
-        count = 0
-        while input_[index].isspace():
+        while input_[index] == ' ':
             index -= 1
-        while not input_[index].isspace():
-            count += 1
+        pointer = index
+        while input_[index] != ' ':
             index -= 1
-        return count
+        return pointer - index
 
 
 if __name__ == '__main__':
-    pass
-#    print(EasyProblems.calculate_length_of_last_word("Ah mouf   "))
+    print(EasyProblems.calculate_length_of_last_word("Ah mouf   "))

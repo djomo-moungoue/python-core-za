@@ -692,6 +692,30 @@ class EasyProblems:
             sequence = next_
         return "".join(map(str, sequence))
 
+    @classmethod
+    def calculate_length_of_last_word(cls, input_):
+        """
+        Algorithme - Iteration
+        Commencer à l'extrême droite de la chaîne de caractère.
+        Déplacer le curseur vers la gauche aussi longtemps qu'il y a des espaces.
+        Compter le nombre de caractères jusqu'à rencontrer un espace.
+        Renvoyer le compteur.
+        Méthode de test - Unit TDD
+        Temps - O(n)
+        Espace - O(1)
+        :param input_:
+        :return:
+        """
+        index = -1
+        count = 0
+        while input_[index].isspace():
+            index -= 1
+        while not input_[index].isspace():
+            count += 1
+            index -= 1
+        return count
+
 
 if __name__ == '__main__':
-    print(EasyProblems.count_and_say_leetcode(7))
+    pass
+#    print(EasyProblems.calculate_length_of_last_word("Ah mouf   "))

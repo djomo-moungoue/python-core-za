@@ -325,6 +325,33 @@ Comptez et dites(5) = dites "1211" = 1 un + un 2 + deux 1 = "11" + "12" + "21" =
 #### Contraintes : 
 1 <= n <= 30
 
+###  Easy 058 Length of Last Word - Longueur du dernier mot
+
+Étant donné une chaîne de caractères s constituée de mots et d'espaces, la fonction renvoie la longueur du dernier mot de la chaîne.
+Un mot est une sous-chaîne maximale composée uniquement de caractères sans espace.
+
+#### Exemple 1 :
+Entrée : s = "Hello World" (Bonjour le monde) <br/>
+Sortie : 5 <br/>
+Explication : Le dernier mot est "Monde" avec une longueur de 5.
+
+#### Exemple 2 :
+Entrée : s = " fly me to the moon " (vole jusqu'à la lune) <br/>
+Sortie : 4 <br/>
+Explication : Le dernier mot est "lune" avec une longueur de 4.
+
+#### Exemple 3 :
+Entrée : s = "luffy est toujours joyboy" <br/>
+Sortie : 6 <br/>
+Explication : Le dernier mot est "joyboy" avec une longueur de 6.
+
+#### Contraintes :
+1 <= s.length <= 104 <br/>
+s est composé uniquement de lettres anglaises et d'espaces ' '. <br/>
+Il y aura au moins un mot dans s.
+
+
+
 
 ---
 

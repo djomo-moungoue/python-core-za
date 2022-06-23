@@ -824,6 +824,51 @@ class TestEasyProblems(unittest.TestCase):
         actual = EasyProblems.count_and_say_leetcode(positive_integer)
         self.assertEqual(expected, actual, "Test case 3: should return '111221', given a positive integer 5.")
 
+    """
+    Easy 058 Length of Last Word - Longueur du dernier mot
+
+    Étant donné une chaîne de caractères s constituée de mots et d'espaces, la fonction renvoie la longueur du dernier mot de la chaîne.
+    Un mot est une sous-chaîne maximale composée uniquement de caractères sans espace.
+    
+    Exemple 1 :
+    Entrée : s = "Hello World" (Bonjour le monde)
+    Sortie : 5
+    Explication : Le dernier mot est "Monde" avec une longueur de 5.
+    
+    Exemple 2 :
+    Entrée : s = " fly me to the moon " (vole jusqu'à la lune)
+    Sortie : 4
+    Explication : Le dernier mot est "lune" avec une longueur de 4.
+    
+    Exemple 3 :
+    Entrée : s = "luffy est toujours joyboy"
+    Sortie : 6
+    Explication : Le dernier mot est "joyboy" avec une longueur de 6.
+    
+    Contraintes :
+    1 <= s.length <= 104
+    s est composé uniquement de lettres anglaises et d'espaces ' '.
+    Il y aura au moins un mot dans s.
+    """
+
+    def test_calculate_length_of_last_word_World_and_return_5(self):
+        input_ = "Hello World"
+        expected = 5
+        actual = EasyProblems.calculate_length_of_last_word(input_)
+        self.assertEqual(expected, actual, "Should return 5, because the last word is World.")
+
+    def test_calculate_length_of_last_word_moon_and_return_4(self):
+        input_ = " fly me to the moon "
+        expected = 4
+        actual = EasyProblems.calculate_length_of_last_word(input_)
+        self.assertEqual(expected, actual, "Should return 4, because the last word is moon.")
+
+    def test_calculate_length_of_last_word_joyboy_and_return_6(self):
+        input_ = "luffy is still joyboy"
+        expected = 6
+        actual = EasyProblems.calculate_length_of_last_word(input_)
+        self.assertEqual(expected, actual, "Should return 6, because the last word is joyboy.")
+
 
 if __name__ == '__main__':
     unittest.main()

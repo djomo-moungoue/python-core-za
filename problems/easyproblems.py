@@ -491,9 +491,9 @@ class EasyProblems:
                 index_haystack += 1
                 index_needle += 1
             if index_needle == len_needle:
-# These 2 lines replace the return statement if we want to find all occurences
-#                print("Pattern found at index"+ str(i-j))
-#                index_needle = longest_prefix_suffix[index_needle - 1]
+                # These 2 lines replace the return statement if we want to find all occurences
+                #                print("Pattern found at index"+ str(i-j))
+                #                index_needle = longest_prefix_suffix[index_needle - 1]
                 return index_haystack - index_needle
             elif index_haystack < len_haystack and needle[index_needle] != haystack[index_haystack]:
                 if index_needle != 0:
@@ -519,6 +519,203 @@ class EasyProblems:
                     longest_prefix_suffix[index] = 0
                     index += 1
 
+    @classmethod
+    def search_insert(cls, haystack, needle, right=False, delta=0):
+        """
+        Cibler récursivement l'élément situé au milieu tableau car celui-ci est trié. (1)
+        Si l'élément cibler n'est pas notre cible, répéter (1) dans la moitié gauche du tableau
+        si l'élément ciblé est supérieur à notre cible. Dans le cas contraire, répéter (1) dans la
+        moitié droite du tableau.
+        Si l'élément ciblé est notre cible, renvoyer son index. Sinon renvoyer l'index où il devrait
+        être inséré afin que le tableau reste trier.
+        Temps: O(log(n))
+        Espace: O(1)
+        :param delta:
+        :param right:
+        :param haystack:
+        :param needle:
+        :return: index of target
+        """
+        len_haystack = len(haystack)
+        index = len_haystack // 2
+        if needle == haystack[index]:  # target found
+            if not right:
+                return index
+            if right:
+                return delta
+        if index == 0:  # target not found
+            if not right:
+                return index + 1
+            if right:
+                return delta + 1
+        if needle < haystack[index]:  # target probably on the left side of the array
+            delta = index
+            return cls.search_insert(haystack[0:index], needle, right, delta)
+        if needle > haystack[index]:  # target probably on the right side of the array
+            right = True
+            delta += index
+            return cls.search_insert(haystack[index:len_haystack], needle, right, delta)
+
+    @classmethod
+    def search_insert_optimal_solution(cls, haystack, needle):
+        """
+        Recherche binaire itérative jusqu'à ce que gauche > droite ou que gauche ou droite sortent du tableau.
+        Retourne left (le plus grand index), qui serait le nouvel index de l'entrée insérée (pourrait être len(nums) mais pas -1.
+        Temps - O(log n)
+        Espace - O(1)
+        :param haystack:
+        :param needle:
+        :return:
+        """
+        left = 0
+        right = len(haystack)
+        while left <= right and left < len(haystack) and right >= 0:
+            mid = (left + right) // 2
+            if needle == haystack[mid]:
+                return mid
+            if needle < haystack[mid]:
+                right = mid - 1
+            else:
+                left = mid + 1
+        return left
+
+    @classmethod
+    def max_subarray(cls, haystack):
+        """
+        Algorithme :
+        Aller de la gauche vers la droite du tableau.
+        Pointer sur un nombre et faire itérativement la somme à partir du nombre pointé.
+        Comparer parallèlement chaque nouvelle somme au maximum actuel. Si celle-ci est supérieure, elle devient le
+        nouveau maximum.
+        Renvoyer le maximum lorsque l'extrémité droite de la séquence est atteinte.
+        Temps - O(N²)
+        Espace - O(1)
+        :param haystack:
+        :return: max_sum
+        """
+        #        pointer, hay, sum_, max_sum = 0, 0, 0, 0
+        max_sum = float('-inf')
+        pointer, hay, sum_ = 0, 0, 0
+        while pointer < len(haystack):
+            for hay in haystack[pointer:]:
+                sum_ += hay
+                #                if sum_ > max_sum:
+                #                   max_sum = sum_
+                max_sum = max(max_sum, sum_)
+            pointer += 1
+            sum_ = 0
+        return max_sum
+
+    @classmethod
+    def max_subarray_optimal_solution(cls, haystack):
+        """
+        Algorithme :
+        Pour chaque numéro, calculez la somme maximale du sous-bloc se terminant par ce numéro, soit le numéro
+        seul (si la somme précédente était négative), soit le numéro + la somme précédente (si la somme précédente
+        était positive).
+        Temps - O(N)
+        Espace - O(1)
+        :param haystack:
+        :return: max_sum
+        """
+        overall_max = float('-inf')
+        max_ending_here = 0
+        for hay in haystack:
+            if max_ending_here > 0:
+                max_ending_here += hay
+            else:
+                max_ending_here = hay
+            overall_max = max(overall_max, max_ending_here)
+        return overall_max
+
+    @classmethod
+    def factorial(cls, positive_integer):
+        """
+        Algorithme : Récursion
+        Cas de base :
+        Si l'entier positif est 1, renvoyer 1.
+        Cas récursif :
+        Si l'entier positif est n > 1, renvoyer n * factorial(n-1)
+        Test Method: Debugging + Unit Test Cases
+        Temps - O(n)
+        Espace - O(1)
+        :param positive_integer:
+        :return: factorial of positive_integer
+        """
+        if positive_integer == 1:
+            return 1
+        return positive_integer * cls.factorial(positive_integer - 1)
+
+    @classmethod
+    def fibonacci(cls, positive_integer):
+        """
+        Algorithme : Récursion
+        Cas de base :
+        Si l'entier positif est 0, renvoyer 0.
+        Si l'entier positif est 1 ou 2, renvoyer 1.
+        Cas récursif :
+        Si l'entier positif est n > 1, renvoyer fibonacci(n-1) + fibonacci(n-2)
+        Test Method: Debugging + Unit Test Cases
+        Temps - O(n)
+        Espace - O(1)
+        :param positive_integer:
+        :return: fibonacci of positive_number
+        """
+        if positive_integer == 0:
+            return 0
+        if positive_integer == 2 or positive_integer == 1:
+            return 1
+        return cls.fibonacci(positive_integer - 1) + cls.fibonacci(positive_integer - 2)
+
+    @classmethod
+    def count_and_say_leetcode(cls, n):
+        """
+        Algorithme : Itération
+        Soit n l'entier positif d'entrée.
+        On itère dans la séquence précédente.
+        Quand on voit un nombre différent, on ajoute [1, num] à la nouvelle séquence.
+        Quand on voit le même nombre, on incrémente son compte.
+        Test Method : Debugging + Unit Test Cases
+        Temps - O(2^N) La séquence au pire double de chaque étape
+        Espace - O(2^N)
+        :param n:
+        :return:
+        """
+        sequence = [1]
+        for _ in range(n-1):
+            next_ = []
+            for num in sequence:
+                if not next_ or next_[-1] != num:
+                    next_ += [1, num]
+                else:
+                    next_[-2] += 1
+            sequence = next_
+        return "".join(map(str, sequence))
+
+    @classmethod
+    def calculate_length_of_last_word(cls, input_):
+        """
+        Algorithme - Iteration
+        Commencer à l'extrême droite de la chaîne de caractère.
+        Déplacer le curseur vers la gauche aussi longtemps qu'il y a des espaces.
+        Compter le nombre de caractères jusqu'à rencontrer un espace.
+        Renvoyer le compteur.
+        Méthode de test - Unit TDD
+        Temps - O(n)
+        Espace - O(1)
+        :param input_:
+        :return:
+        """
+        index = -1
+        count = 0
+        while input_[index].isspace():
+            index -= 1
+        while not input_[index].isspace():
+            count += 1
+            index -= 1
+        return count
+
 
 if __name__ == '__main__':
     pass
+#    print(EasyProblems.calculate_length_of_last_word("Ah mouf   "))

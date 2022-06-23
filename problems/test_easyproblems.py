@@ -2,6 +2,13 @@
 EasyProblem class tests.
 unittest identifies test classes by the prefix 'Test'
 unittest identifies test methods by the prefix 'test_'
+needle in a haystack
+someone or something that is very hard to find Searching for your earring at the park will be like looking for a
+needle in a haystack.
+= aiguille dans une botte de foin
+= quelqu'un ou quelque chose qui est très difficile à trouver Chercher votre boucle d'oreille dans le parc sera comme
+chercher une aiguille dans une botte de foin.
+Foin: Fourrage séché destiné à l'alimentation des herbivores.
 """
 import unittest
 from problems.easyproblems import EasyProblems
@@ -572,6 +579,295 @@ class TestEasyProblems(unittest.TestCase):
         expected = 10
         actual = EasyProblems.KPMSearch(haystack, needle)
         assert actual == expected
+
+    """
+    Position d'insertion de recherche
+    Étant donné un tableau trié d'entiers distincts et une valeur cible, retournez l'index si la cible est trouvée. Si ce n'est pas le cas, renvoyez l'indice où il se trouverait s'il était inséré dans l'ordre.
+    Vous devez écrire un algorithme dont la complexité d'exécution est de O(log n).
+    
+    Exemple 1 :
+    Entrée : nums = [1,3,5,6], cible = 5
+    Sortie : 2
+    
+    Exemple 2 :
+    Entrée : nums = [1,3,5,6], cible = 2
+    Sortie : 1
+    
+    Exemple 3 :
+    Entrée : nums = [1,3,5,6], cible = 7
+    Sortie : 4
+    
+    Contraintes :
+    1 <= nums.length <= 104
+    -104 <= nums[i] <= 104
+    nums contient des valeurs distinctes triées par ordre croissant.
+    -104 <= cible <= 104
+    """
+
+    def test_search_5_in_sorted_array_of_integers_1(self):
+        haystack = [1, 3, 5, 6]
+        needle = 5
+        expected = 2
+        actual = EasyProblems.search_insert(haystack, needle)
+        self.assertEqual(expected, actual, "Test case 1: Should return the index 2.")
+
+    def test_search_2_in_sorted_array_of_integers_2(self):
+        haystack = [1, 3, 5, 6]
+        needle = 2
+        expected = 1
+        actual = EasyProblems.search_insert(haystack, needle)
+        self.assertEqual(expected, actual, "Test case 2: Should return the index 1.")
+
+    def test_search_7_in_sorted_array_of_integers_3(self):
+        haystack = [1, 3, 5, 6]
+        needle = 7
+        expected = 4
+        actual = EasyProblems.search_insert(haystack, needle)
+        self.assertEqual(expected, actual, "Test case 3: Should return the index 4.")
+
+    def test_search_5_in_sorted_array_of_integers_optimal_solution_1(self):
+        haystack = [1, 3, 5, 6]
+        needle = 5
+        expected = 2
+        actual = EasyProblems.search_insert_optimal_solution(haystack, needle)
+        self.assertEqual(expected, actual, "Test case 1: Should return the index 2.")
+
+    def test_search_2_in_sorted_array_of_integers_optimal_solution_2(self):
+        haystack = [1, 3, 5, 6]
+        needle = 2
+        expected = 1
+        actual = EasyProblems.search_insert_optimal_solution(haystack, needle)
+        self.assertEqual(expected, actual, "Test case 2: Should return the index 1.")
+
+    def test_search_7_in_sorted_array_of_integers_optimal_solution_3(self):
+        haystack = [1, 3, 5, 6]
+        needle = 7
+        expected = 4
+        actual = EasyProblems.search_insert_optimal_solution(haystack, needle)
+        self.assertEqual(expected, actual, "Test case 3: Should return the index 4.")
+
+    """
+    53. Sous-tableau maximum
+    Étant donné un tableau de nombres entiers, trouvez le sous-groupe contigu (contenant au moins un nombre) qui a la plus grande somme et renvoyez sa somme.
+    
+    Un sous-groupe est une partie contiguë d'un tableau.
+    
+    Exemple 1 :
+    Entrée : nums = [-2,1,-3,4,-1,2,1,-5,4]
+    Sortie : 6
+    Explication : [4,-1,2,1] a la plus grande somme = 6.
+    
+    Exemple 2 :
+    Entrée : nums = [1]
+    Sortie : 1
+    
+    Exemple 3 :
+    Entrée : nums = [5,4,-1,7,8]
+    Sortie : 23
+     
+    Contraintes :
+    1 <= nums.length <= 105
+    -104 <= nums[i] <= 104
+     
+    Suivi : Si vous avez compris la solution O(n), essayez de coder une autre solution en utilisant l'approche diviser pour régner, qui est plus subtile.
+    """
+
+    def test_find_maximum_sum_of_contiguous_numbers_and_return_6(self):
+        haystack = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+        needle = [4, -1, 2, 1]
+        expected = 6
+        actual = EasyProblems.max_subarray(haystack)
+        self.assertEqual(expected, actual, "Test case 3: Should return 6 as sub-array with the max sum.")
+
+    def test_find_maximum_sum_of_contiguous_numbers_and_return_1(self):
+        haystack = [1]
+        needle = [1]
+        expected = 1
+        actual = EasyProblems.max_subarray(haystack)
+        self.assertEqual(expected, actual, "Test case 3: Should return 1 as sub-array with the max sum.")
+
+    def test_find_maximum_sum_of_contiguous_numbers_and_return_23(self):
+        haystack = [5, 4, -1, 7, 8]
+        needle = [5, 4, -1, 7, 8]
+        expected = 23
+        actual = EasyProblems.max_subarray(haystack)
+        self.assertEqual(expected, actual, "Test case 3: Should return 23 as sub-array with the max sum.")
+
+    def test_find_maximum_sum_of_contiguous_numbers_and_return_optimal_solution_6(self):
+        haystack = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+        needle = [4, -1, 2, 1]
+        expected = 6
+        actual = EasyProblems.max_subarray_optimal_solution(haystack)
+        self.assertEqual(expected, actual, "Test case 3: Should return 6 as sub-array with the max sum.")
+
+    def test_find_maximum_sum_of_contiguous_numbers_and_return_optimal_solution_1(self):
+        haystack = [1]
+        needle = [1]
+        expected = 1
+        actual = EasyProblems.max_subarray_optimal_solution(haystack)
+        self.assertEqual(expected, actual, "Test case 3: Should return 1 as sub-array with the max sum.")
+
+    def test_find_maximum_sum_of_contiguous_numbers_and_return_optimal_solution_23(self):
+        haystack = [5, 4, -1, 7, 8]
+        needle = [5, 4, -1, 7, 8]
+        expected = 23
+        actual = EasyProblems.max_subarray_optimal_solution(haystack)
+        self.assertEqual(expected, actual, "Test case 3: Should return 23 as sub-array with the max sum.")
+
+    """
+    Factorial - Factoriel
+    1! = 1
+    2! = 2x1 = 2
+    3! = 3x2x1 = 6
+    5! = 5x4x3x2x1 = 120
+    """
+
+    def test_factorial_1_returns_1(self):
+        positive_integer = 1
+        expected = 1
+        actual = EasyProblems.factorial(positive_integer)
+        self.assertEqual(expected, actual, "Test case 1: should return 1, given a positive integer 1.")
+
+    def test_factorial_2_returns_2(self):
+        positive_integer = 1
+        expected = 1
+        actual = EasyProblems.factorial(positive_integer)
+        self.assertEqual(expected, actual, "Test case 2: should return 2, given a positive integer 2.")
+
+    def test_factorial_5_returns_120(self):
+        positive_integer = 1
+        expected = 1
+        actual = EasyProblems.factorial(positive_integer)
+        self.assertEqual(expected, actual, "Test case 3: should return 120, given a positive integer 5.")
+
+    """
+    Fibonacci
+    F0 = 0
+    F1 = F2 = 1
+    F3 = F2 + F1 = 1 + 1 = 2
+    F5 = F4+F3 = (F3 + F2) + (F2 + F1) = ((F2 + F1) + F2) + (F2 + F1) = 5
+    """
+
+    def test_fibonacci_1_returns_1(self):
+        positive_integer = 1
+        expected = 1
+        actual = EasyProblems.fibonacci(positive_integer)
+        self.assertEqual(expected, actual, "Test case 1: should return 1, given a positive integer 1.")
+
+    def test_fibonacci_2_returns_1(self):
+        positive_integer = 1
+        expected = 1
+        actual = EasyProblems.fibonacci(positive_integer)
+        self.assertEqual(expected, actual, "Test case 2: should return 2, given a positive integer 2.")
+
+    def test_fibonacci_5_returns_5(self):
+        positive_integer = 1
+        expected = 1
+        actual = EasyProblems.fibonacci(positive_integer)
+        self.assertEqual(expected, actual, "Test case 3: should return 5, given a positive integer 5.")
+
+    """
+    038 Count and Say - Compter et Dire
+    La séquence count-and-say est une séquence de chaînes de chiffres définie par la formule récursive :
+    
+    countAndSay(1) = "1"
+    countAndSay(n) est la façon dont vous "dites" la chaîne de chiffres de countAndSay(n-1), qui est ensuite convertie en une chaîne de chiffres différente.
+    Pour déterminer la façon dont vous "dites" une chaîne de chiffres, divisez-la en un nombre minimal de sous-chaînes de sorte que chaque sous-chaîne contienne exactement un chiffre unique. Ensuite, pour chaque sous-chaîne, dites le nombre de chiffres, puis dites le chiffre. Enfin, concaténer chaque chiffre.
+    
+    Par exemple, l'énoncé et la conversion pour la chaîne de chiffres "3322251" :
+    
+    Étant donné un nombre entier positif n, retourner le nième terme de la séquence de comptage et de conversion.
+    
+    Exemple 1 :
+    Entrée : n = 1
+    Sortie : "1"
+    Explication : C'est le cas de base.
+    
+    Exemple 2 :
+    Entrée : n = 4
+    Sortie : "1211"
+    Explication :
+    countAndSay(1) = "1" (compte et dit)
+    countAndSay(2) = dites "1" = un 1 = "11"
+    countAndSay(3) = dites "11" = deux 1 = "21"
+    Comptez et dites(4) = dites "21" = un 2 + un 1 = "12" + "11" = "1211".
+    
+    Exemple 3 :
+    Entrée : n = 5
+    Sortie : "111221"
+    Explication :
+    countAndSay(1) = "1" (compte et dit)
+    countAndSay(2) = dites "1" = un 1 = "11"
+    countAndSay(3) = dites "11" = deux 1 = "21"
+    Comptez et dites(4) = dites "21" = un 2 + un 1 = "12" + "11" = "1211".
+    Comptez et dites(5) = dites "1211" = 1 un + un 2 + deux 1 = "11" + "12" + "21" = "111221".
+    
+    Contraintes :
+    1 <= n <= 30
+    """
+
+    def test_given_1_count_and_say_leetcode_return_1(self):
+        positive_integer = 1
+        expected = "1"
+        actual = EasyProblems.count_and_say_leetcode(positive_integer)
+        self.assertEqual(expected, actual, "Test case 1: should return '1', given a positive integer 1.")
+
+    def test_given_4_count_and_say_leetcode_return_1211(self):
+        positive_integer = 4
+        expected = "1211"
+        actual = EasyProblems.count_and_say_leetcode(positive_integer)
+        self.assertEqual(expected, actual, "Test case 2: should return '1211', given a positive integer 4.")
+
+    def test_given_5_count_and_say_leetcode_return_111221(self):
+        positive_integer = 5
+        expected = "111221"
+        actual = EasyProblems.count_and_say_leetcode(positive_integer)
+        self.assertEqual(expected, actual, "Test case 3: should return '111221', given a positive integer 5.")
+
+    """
+    Easy 058 Length of Last Word - Longueur du dernier mot
+
+    Étant donné une chaîne de caractères s constituée de mots et d'espaces, la fonction renvoie la longueur du dernier mot de la chaîne.
+    Un mot est une sous-chaîne maximale composée uniquement de caractères sans espace.
+    
+    Exemple 1 :
+    Entrée : s = "Hello World" (Bonjour le monde)
+    Sortie : 5
+    Explication : Le dernier mot est "Monde" avec une longueur de 5.
+    
+    Exemple 2 :
+    Entrée : s = " fly me to the moon " (vole jusqu'à la lune)
+    Sortie : 4
+    Explication : Le dernier mot est "lune" avec une longueur de 4.
+    
+    Exemple 3 :
+    Entrée : s = "luffy est toujours joyboy"
+    Sortie : 6
+    Explication : Le dernier mot est "joyboy" avec une longueur de 6.
+    
+    Contraintes :
+    1 <= s.length <= 104
+    s est composé uniquement de lettres anglaises et d'espaces ' '.
+    Il y aura au moins un mot dans s.
+    """
+
+    def test_calculate_length_of_last_word_World_and_return_5(self):
+        input_ = "Hello World"
+        expected = 5
+        actual = EasyProblems.calculate_length_of_last_word(input_)
+        self.assertEqual(expected, actual, "Should return 5, because the last word is World.")
+
+    def test_calculate_length_of_last_word_moon_and_return_4(self):
+        input_ = " fly me to the moon "
+        expected = 4
+        actual = EasyProblems.calculate_length_of_last_word(input_)
+        self.assertEqual(expected, actual, "Should return 4, because the last word is moon.")
+
+    def test_calculate_length_of_last_word_joyboy_and_return_6(self):
+        input_ = "luffy is still joyboy"
+        expected = 6
+        actual = EasyProblems.calculate_length_of_last_word(input_)
+        self.assertEqual(expected, actual, "Should return 6, because the last word is joyboy.")
 
 
 if __name__ == '__main__':

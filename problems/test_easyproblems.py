@@ -869,6 +869,87 @@ class TestEasyProblems(unittest.TestCase):
         actual = EasyProblems.calculate_length_of_last_word(input_)
         self.assertEqual(expected, actual, "Should return 6, because the last word is joyboy.")
 
+    """
+    Easy 066 Plus One - Plus Un
+    On vous donne un grand nombre entier représenté sous la forme d'un tableau de chiffres, où chaque chiffre [i] est le ième chiffre du nombre entier. Les chiffres sont classés de gauche à droite, du plus significatif au moins significatif. Le grand nombre entier ne contient pas de 0 de tête.
+    Incrémentez le grand nombre entier de un et renvoyez le tableau de chiffres résultant.
+    
+    Exemple 1 :
+    Entrée : chiffres = [1,2,3]
+    Sortie : [1,2,4]
+    Explication : Le tableau représente le nombre entier 123.
+    En l'incrémentant de un, on obtient 123 + 1 = 124.
+    Ainsi, le résultat devrait être [1,2,4].
+    
+    Exemple 2 :
+    Entrée : chiffres = [4,3,2,1]
+    Résultat : [4,3,2,2]
+    Explication : Le tableau représente le nombre entier 4321.
+    En l'incrémentant de un, on obtient 4321 + 1 = 4322.
+    Le résultat devrait donc être [4,3,2,2].
+    
+    Exemple 3 :
+    Entrée : chiffres = [9]
+    Résultat : [1,0]
+    Explication : Le tableau représente le nombre entier 9.
+    En l'incrémentant de un, on obtient 9 + 1 = 10.
+    Ainsi, le résultat devrait être [1,0].
+    
+    #### Exemple 4 :
+    Entrée : chiffres = [2, 5, 9, 9] <br/>
+    Résultat : [2, 6, 0, 0] <br/>
+    
+    #### Exemple 5 :
+    Entrée : chiffres = [7, 9, 9] <br/>
+    Résultat : [8, 0, 0] <br/>
+    
+    #### Exemple 6 :
+    Entrée : chiffres = [9, 9, 9] <br/>
+    Résultat : [1, 0, 0, 0] <br/>
+    """
+
+    def test_input_array_123_plus_one_returns_output_array_124(self):
+        input_ = [1, 2, 3]
+        expected = [1, 2, 4]
+        actual = EasyProblems.plus_one(input_)
+        message = "Should return [1, 2, 4], given the input [1, 2, 3]"
+        self.assertEqual(expected, actual, message)
+
+    def test_input_array_4321_plus_one_returns_output_array_4322(self):
+        input_ = [4, 3, 2, 1]
+        expected = [4, 3, 2, 2]
+        actual = EasyProblems.plus_one(input_)
+        message = "Should return [4, 3, 2, 1], given the input [4, 3, 2, 1]"
+        self.assertEqual(expected, actual, message)
+
+    def test_input_array_9_plus_one_returns_output_array_10(self):
+        input_ = [9]
+        expected = [1, 0]
+        actual = EasyProblems.plus_one(input_)
+        message = "Should return [1, 0], given the input [9]"
+        self.assertEqual(expected, actual, message)
+
+    def test_input_array_2599_plus_one_returns_output_array_2600(self):
+        input_ = [2, 5, 9, 9]
+        expected = [2, 6, 0, 0]
+        actual = EasyProblems.plus_one(input_)
+        message = "Should return [2, 6, 0, 0], given the input [2, 5, 9, 9]"
+        self.assertEqual(expected, actual, message)
+
+    def test_input_array_799_plus_one_returns_output_array_800(self):
+        input_ = [7, 9, 9]
+        expected = [8, 0, 0]
+        actual = EasyProblems.plus_one(input_)
+        message = "Should return [8, 0, 0], given the input [7, 9, 9]"
+        self.assertEqual(expected, actual, message)
+
+    def test_input_array_999_plus_one_returns_output_array_1000(self):
+        input_ = [9, 9, 9]
+        expected = [1, 0, 0, 0]
+        actual = EasyProblems.plus_one(input_)
+        message = "Should return [1, 0, 0, 0], given the input [9, 9, 9]"
+        self.assertEqual(expected, actual, message)
+
 
 if __name__ == '__main__':
     unittest.main()

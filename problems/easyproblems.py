@@ -695,7 +695,7 @@ class EasyProblems:
     @classmethod
     def calculate_length_of_last_word(cls, input_):
         """
-        Algorithme - Iteration
+        Algorithme - Itération
         Commencer à l'extrême droite de la chaîne de caractère.
         Déplacer le curseur vers la gauche aussi longtemps qu'il y a des espaces.
 		Pointer sur le premier caractère rencontrer.
@@ -715,6 +715,42 @@ class EasyProblems:
             index -= 1
         return pointer - index
 
+    @classmethod
+    def plus_one(cls, input_):
+        """
+        Algorithme - Itération
+        Pointer sur le dernier chiffre du tableau.
+        Si celui-ci est 9, itérer vers la gauche du tableau.
+        En chemin, Remplacer tout chiffre 9 par 0.
+        Si l'extrémité gauche du tableau est atteint, renvoyer le tableau d'entrée préfixer par 1.
+        Si un chiffre est différent de 9, incrémenter celui-ci de 1.
+        Renvoyer la liste d'entrée actualisée.
+        Méthode de test - Test unitaire
+        Couverture de test - 100% soit 6 cas de test
+        Temps - O(N)
+        Espace - O(1)
+        :param input_:
+        :return:
+        """
+        len_input = len(input_)
+        index = -1
+        while input_[index] == 9:
+            input_[index] = 0
+            if len_input + index > 0:
+                index -= 1
+            else:
+                return [1] + input_
+        input_[index] = input_[index] + 1
+        return input_
+
 
 if __name__ == '__main__':
-    print(EasyProblems.calculate_length_of_last_word("Ah mouf   "))
+#    pass
+#    print("# A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z".replace(", ", "\n\n\n---\n\n# "))
+    string = """
+cp [OPTION] Source Destination
+cp [OPTION] Source Directory
+cp [OPTION] Source-1 Source-2 Source-3 Source-n Directory
+    """
+    print(string.replace("\n", " <br/>\n"))
+#    print(EasyProblems.plus_one([9, 9]))

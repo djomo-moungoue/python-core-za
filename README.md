@@ -350,7 +350,42 @@ Explication : Le dernier mot est "joyboy" avec une longueur de 6.
 s est composé uniquement de lettres anglaises et d'espaces ' '. <br/>
 Il y aura au moins un mot dans s.
 
+### Easy 066 Plus One - Plus Un
+On vous donne un grand nombre entier représenté sous la forme d'un tableau de chiffres, où chaque chiffre [i] est le ième chiffre du nombre entier. Les chiffres sont classés de gauche à droite, du plus significatif au moins significatif. Le grand nombre entier ne contient pas de 0 de tête.
+Incrémentez le grand nombre entier de un et renvoyez le tableau de chiffres résultant.
 
+#### Exemple 1 :
+Entrée : chiffres = [1,2,3] <br/>
+Sortie : [1,2,4] <br/>
+Explication : Le tableau représente le nombre entier 123. <br/>
+En l'incrémentant de un, on obtient 123 + 1 = 124. <br/>
+Ainsi, le résultat devrait être [1,2,4]. <br/>
+
+#### Exemple 2 :
+Entrée : chiffres = [4,3,2,1] <br/>
+Résultat : [4,3,2,2] <br/>
+Explication : Le tableau représente le nombre entier 4321. <br/>
+En l'incrémentant de un, on obtient 4321 + 1 = 4322. <br/>
+Le résultat devrait donc être [4,3,2,2]. <br/>
+
+#### Exemple 3 :
+Entrée : chiffres = [9] <br/>
+Résultat : [1,0] <br/>
+Explication : Le tableau représente le nombre entier 9. <br/>
+En l'incrémentant de un, on obtient 9 + 1 = 10. <br/>
+Ainsi, le résultat devrait être [1, 0]. <br/>
+
+#### Exemple 4 :
+Entrée : chiffres = [2, 5, 9, 9] <br/>
+Résultat : [2, 6, 0, 0] <br/>
+
+#### Exemple 5 :
+Entrée : chiffres = [7, 9, 9] <br/>
+Résultat : [8, 0, 0] <br/>
+
+#### Exemple 6 :
+Entrée : chiffres = [9, 9, 9] <br/>
+Résultat : [1, 0, 0, 0] <br/>
 
 
 ---

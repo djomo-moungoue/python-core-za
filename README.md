@@ -387,6 +387,10 @@ Résultat : [8, 0, 0] <br/>
 Entrée : chiffres = [9, 9, 9] <br/>
 Résultat : [1, 0, 0, 0] <br/>
 
+### Contraintes :
+1 <= chiffres.longueur <= 100 <br/>
+0 <= chiffres[i] <= 9 <br/>
+digits ne contient pas de 0 en tête. <br/>
 
 ---
 

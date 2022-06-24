@@ -693,27 +693,29 @@ class EasyProblems:
         return "".join(map(str, sequence))
 
     @classmethod
-    def calculate_length_of_last_word(cls, input_):
+    def length_of_last_word(cls, s):
         """
         Algorithme - Itération
         Commencer à l'extrême droite de la chaîne de caractère.
         Déplacer le curseur vers la gauche aussi longtemps qu'il y a des espaces.
-		Pointer sur le premier caractère rencontrer.
-		Continuer à déplacer le curseur vers la gauche jusqu'à rencontrer un espace.
-        Renvoyer la difference entre le pointer et l'index l'espace rencontrer.
+        Si un caractère est rencontré, incrémenter le compter de 1 et vérifier le caractère précédent.
+        Si un espace est rencontré ou le bout gauche de la chaîne est atteinte, renvoyer le compteur.
         Méthode de test - Unit TDD
         Temps - O(n)
         Espace - O(1)
-        :param input_:
+        :param s:
         :return:
         """
+        counter = 0
         index = -1
-        while input_[index] == ' ':
+        while s[index] == ' ':
             index -= 1
-        pointer = index
-        while input_[index] != ' ':
+        while s[index] != ' ':
+            counter += 1
+            if len(s) + index == 0:
+                break
             index -= 1
-        return pointer - index
+        return counter
 
     @classmethod
     def plus_one(cls, input_):
@@ -745,10 +747,10 @@ class EasyProblems:
 
 
 if __name__ == '__main__':
-    pass
+#    pass
 #    alphabet = "# A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z"
 #    print(alphabet.replace(", ", "\n\n\n---\n\n# "))
 #    multiline = """
 #    """
 #    print(multiline.replace("\n", " <br/>\n"))
-#    print(EasyProblems.plus_one([9, 9]))
+

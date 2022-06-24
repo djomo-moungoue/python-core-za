@@ -851,23 +851,47 @@ class TestEasyProblems(unittest.TestCase):
     Il y aura au moins un mot dans s.
     """
 
-    def test_calculate_length_of_last_word_World_and_return_5(self):
+    def test_length_of_last_word_World_and_return_5(self):
         input_ = "Hello World"
         expected = 5
-        actual = EasyProblems.calculate_length_of_last_word(input_)
+        actual = EasyProblems.length_of_last_word(input_)
         self.assertEqual(expected, actual, "Should return 5, because the last word is World.")
 
-    def test_calculate_length_of_last_word_moon_and_return_4(self):
+    def test_length_of_last_word_moon_and_return_4(self):
         input_ = " fly me to the moon "
         expected = 4
-        actual = EasyProblems.calculate_length_of_last_word(input_)
+        actual = EasyProblems.length_of_last_word(input_)
         self.assertEqual(expected, actual, "Should return 4, because the last word is moon.")
 
-    def test_calculate_length_of_last_word_joyboy_and_return_6(self):
+    def test_length_of_last_word_joyboy_and_return_6(self):
         input_ = "luffy is still joyboy"
         expected = 6
-        actual = EasyProblems.calculate_length_of_last_word(input_)
+        actual = EasyProblems.length_of_last_word(input_)
         self.assertEqual(expected, actual, "Should return 6, because the last word is joyboy.")
+
+    def test_length_of_last_word_a_and_return_1(self):
+        input_ = 'a'
+        expected = 1
+        actual = EasyProblems.length_of_last_word(input_)
+        self.assertEqual(expected, actual, "Should return 1, because the last word is 'a'.")
+
+    def test_length_of_last_word_a_space_and_return_1(self):
+        input_ = 'a '
+        expected = 1
+        actual = EasyProblems.length_of_last_word(input_)
+        self.assertEqual(expected, actual, "Should return 1, because the last word is 'a '.")
+
+    def test_length_of_last_word_space_a_and_return_1(self):
+        input_ = ' a'
+        expected = 1
+        actual = EasyProblems.length_of_last_word(input_)
+        self.assertEqual(expected, actual, "Should return 1, because the last word is ' a'.")
+
+    def test_length_of_last_word_space_a_space_and_return_1(self):
+        input_ = ' a '
+        expected = 1
+        actual = EasyProblems.length_of_last_word(input_)
+        self.assertEqual(expected, actual, "Should return 1, because the last word is ' a '.")
 
     """
     Easy 066 Plus One - Plus Un

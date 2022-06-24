@@ -745,12 +745,10 @@ class EasyProblems:
 
 
 if __name__ == '__main__':
-#    pass
-#    print("# A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z".replace(", ", "\n\n\n---\n\n# "))
-    string = """
-cp [OPTION] Source Destination
-cp [OPTION] Source Directory
-cp [OPTION] Source-1 Source-2 Source-3 Source-n Directory
-    """
-    print(string.replace("\n", " <br/>\n"))
+    pass
+#    alphabet = "# A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z"
+#    print(alphabet.replace(", ", "\n\n\n---\n\n# "))
+#    multiline = """
+#    """
+#    print(multiline.replace("\n", " <br/>\n"))
 #    print(EasyProblems.plus_one([9, 9]))

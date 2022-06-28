@@ -1,10 +1,6 @@
 """
 Easy Problems class.
-001 - Two Sum
 """
-import difflib
-
-from PIL._imaging import outline
 
 
 class EasyProblems:

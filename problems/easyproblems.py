@@ -583,12 +583,10 @@ class EasyProblems:
     def max_subarray(cls, nums):
         """
         Algorithme :
-        Aller de la gauche vers la droite du tableau.
-        Pointer sur un nombre et faire itérativement la somme à partir du nombre pointé.
-        Comparer parallèlement chaque nouvelle somme au maximum actuel. Si celle-ci est supérieure, elle devient le
-        nouveau maximum.
-        Renvoyer le maximum lorsque l'extrémité droite de la séquence est atteinte.
-        Temps - O(N²)
+        Pour chaque numéro, calculez la somme maximale du sous-bloc se terminant par ce numéro, soit le numéro
+        seul (si la somme précédente était négative), soit le numéro + la somme précédente (si la somme précédente
+        était positive).
+        Temps - O(N)
         Espace - O(1)
         :param nums:
         :return: max_sum

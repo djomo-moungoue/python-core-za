@@ -580,7 +580,7 @@ class EasyProblems:
         return left
 
     @classmethod
-    def max_subarray(cls, haystack):
+    def max_subarray(cls, nums):
         """
         Algorithme :
         Aller de la gauche vers la droite du tableau.
@@ -590,24 +590,21 @@ class EasyProblems:
         Renvoyer le maximum lorsque l'extrémité droite de la séquence est atteinte.
         Temps - O(N²)
         Espace - O(1)
-        :param haystack:
+        :param nums:
         :return: max_sum
         """
-        #        pointer, hay, sum_, max_sum = 0, 0, 0, 0
         max_sum = float('-inf')
-        pointer, hay, sum_ = 0, 0, 0
-        while pointer < len(haystack):
-            for hay in haystack[pointer:]:
-                sum_ += hay
-                #                if sum_ > max_sum:
-                #                   max_sum = sum_
-                max_sum = max(max_sum, sum_)
-            pointer += 1
-            sum_ = 0
+        sum_ = 0
+        for num in nums:
+            if sum_ > 0:
+                sum_ += num
+            else:
+                sum_ = num
+            max_sum = max(sum_, max_sum)
         return max_sum
 
     @classmethod
-    def max_subarray_optimal_solution(cls, haystack):
+    def max_subarray_optimal_solution(cls, nums):
         """
         Algorithme :
         Pour chaque numéro, calculez la somme maximale du sous-bloc se terminant par ce numéro, soit le numéro
@@ -615,16 +612,16 @@ class EasyProblems:
         était positive).
         Temps - O(N)
         Espace - O(1)
-        :param haystack:
+        :param nums:
         :return: max_sum
         """
         overall_max = float('-inf')
         max_ending_here = 0
-        for hay in haystack:
+        for num in nums:
             if max_ending_here > 0:
-                max_ending_here += hay
+                max_ending_here += num
             else:
-                max_ending_here = hay
+                max_ending_here = num
             overall_max = max(overall_max, max_ending_here)
         return overall_max
 
@@ -747,10 +744,5 @@ class EasyProblems:
 
 
 if __name__ == '__main__':
-#    pass
-#    alphabet = "# A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z"
-#    print(alphabet.replace(", ", "\n\n\n---\n\n# "))
-#    multiline = """
-#    """
-#    print(multiline.replace("\n", " <br/>\n"))
-
+    pass
+#    print(EasyProblems.max_subarray([-2, 1, -3, 4, -1, 2, 1, -5, 4]))

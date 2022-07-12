@@ -13,10 +13,10 @@ Foin: Fourrage séché destiné à l'alimentation des herbivores.
 import unittest
 
 
-from problems.easyproblems import EasyProblems
+from PythonCore.problems.easyproblems import EasyProblems
 
 
-# from problems.easyproblems import sum_two_numbers
+# from PythonCore.problems.easyproblems import sum_two_numbers
 
 
 class TestEasyProblems(unittest.TestCase):
@@ -583,7 +583,7 @@ class TestEasyProblems(unittest.TestCase):
         assert actual == expected
 
     """
-    Position d'insertion de recherche
+    035 - Position d'insertion de recherche
     Étant donné un tableau trié d'entiers distincts et une valeur cible, retournez l'index si la cible est trouvée. Si ce n'est pas le cas, renvoyez l'indice où il se trouverait s'il était inséré dans l'ordre.
     Vous devez écrire un algorithme dont la complexité d'exécution est de O(log n).
     
@@ -649,7 +649,7 @@ class TestEasyProblems(unittest.TestCase):
         self.assertEqual(expected, actual, "Test case 3: Should return the index 4.")
 
     """
-    53. Sous-tableau maximum
+    053 Sous-tableau maximum
     Étant donné un tableau de nombres entiers, trouvez le sous-groupe contigu (contenant au moins un nombre) qui a la plus grande somme et renvoyez sa somme.
     
     Un sous-groupe est une partie contiguë d'un tableau.

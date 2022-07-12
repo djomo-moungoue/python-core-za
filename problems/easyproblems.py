@@ -516,41 +516,33 @@ class EasyProblems:
                     index += 1
 
     @classmethod
-    def search_insert(cls, haystack, needle, right=False, delta=0):
+    def search_insert(cls, nums, target):
         """
-        Cibler récursivement l'élément situé au milieu tableau car celui-ci est trié. (1)
-        Si l'élément cibler n'est pas notre cible, répéter (1) dans la moitié gauche du tableau
+        Pointer aux 2 extrémités du tableau.
+        Aussi longtemps que les 2 pointeurs ne pointent au même endroit.
+        Calculer l'index du milieu des 2 pointeurs. (1)
+        Si l'élément du milieu n'est pas notre cible, répéter (1) dans la moitié gauche du tableau
         si l'élément ciblé est supérieur à notre cible. Dans le cas contraire, répéter (1) dans la
         moitié droite du tableau.
         Si l'élément ciblé est notre cible, renvoyer son index. Sinon renvoyer l'index où il devrait
         être inséré afin que le tableau reste trier.
-        Temps: O(log(n))
+        Temps: O(log N)
         Espace: O(1)
-        :param delta:
-        :param right:
-        :param haystack:
-        :param needle:
+        :param nums:
+        :param target:
         :return: index of target
         """
-        len_haystack = len(haystack)
-        index = len_haystack // 2
-        if needle == haystack[index]:  # target found
-            if not right:
-                return index
-            if right:
-                return delta
-        if index == 0:  # target not found
-            if not right:
-                return index + 1
-            if right:
-                return delta + 1
-        if needle < haystack[index]:  # target probably on the left side of the array
-            delta = index
-            return cls.search_insert(haystack[0:index], needle, right, delta)
-        if needle > haystack[index]:  # target probably on the right side of the array
-            right = True
-            delta += index
-            return cls.search_insert(haystack[index:len_haystack], needle, right, delta)
+        right = len(nums)
+        left = 0
+        while left < right:
+            mid = (left + right) // 2
+            if target == nums[mid]:  # target found
+                return mid
+            if target < nums[mid]:  # target probably on the left side of the array
+                right = mid
+            else:  # target probably on the right side of the array
+                left = mid + 1
+        return left
 
     @classmethod
     def search_insert_optimal_solution(cls, haystack, needle):
@@ -738,5 +730,5 @@ class EasyProblems:
 
 
 if __name__ == '__main__':
-    pass
-#    print(EasyProblems.max_subarray([-2, 1, -3, 4, -1, 2, 1, -5, 4]))
+    print(EasyProblems.search_insert([1, 3, 5, 6], 7))
+#    pass

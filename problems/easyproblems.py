@@ -397,7 +397,7 @@ class EasyProblems:
         return pointer
 
     @classmethod
-    def str_str(cls, haystack, needle):
+    def str_str(cls, haystack: str, needle: str) -> int:
         """
         Algorithme:
         (0) Si needle es vide renvoyer 0
@@ -410,19 +410,14 @@ class EasyProblems:
         (6) Sinon renvoyer -1
         Temps: O(n) - n étant le nombre de caractères de haystack
         Espace: O(1)
-        :param haystack: str
-        :param needle: str
-        :return: int
         """
         if needle != "":
             pointer = 0
-            for index, character in enumerate(haystack):
-                if needle[pointer] != character:
-                    pointer = 0
-                elif pointer != len(needle) - 1:
-                    pointer += 1
-                else:
-                    return index - pointer
+            first_i = second_i = 0
+            for second_i in haystack:
+                if needle[:second_i-first_i] == haystack[first_i:second_i-first_i+1]:
+                    if second_i-first_i == len(needle) - 1:
+                        return first_i
             return -1
         else:
             return 0
@@ -730,5 +725,5 @@ class EasyProblems:
 
 
 if __name__ == '__main__':
-    print(EasyProblems.search_insert([1, 3, 5, 6], 7))
+    print(EasyProblems.str_str("mississippi", "issip"))
 #    pass

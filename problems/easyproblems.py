@@ -400,48 +400,17 @@ class EasyProblems:
     def str_str(cls, haystack: str, needle: str) -> int:
         """
         Algorithme:
-        (0) Si needle es vide renvoyer 0
-        (1) Pointer sur la première lettre de needle;
-        (2) Parcourir haystack de la gauche vers la droite et comparer ses lettres avec celle de needle pointée;
-        (3) Si une lettre est identique de part et d'autre, pointer sur la lettre suivante et répéter (2);
-        (4) Si une lettre est différente de part et d'autre, pointer à nouveau sur la première lettre de needle;
-        (5) Si le bout de needle est atteint (pointeur = len(needle) - 1), renvoyer la différence entre l'index actuel
-        et le pointeur.
+        (1) Itérer maximum la longueur de haystack moins l'index du dernier caractère de needle.
+        (2) A chaque iteration vérifier si needle est identique à la sous-chaîne de caractère actuelle.
+        (3) Si c'est le cas renvoyer l'index actuel
         (6) Sinon renvoyer -1
         Temps: O(n) - n étant le nombre de caractères de haystack
-        Espace: O(1)
+        Espace: O(1) - Espace occupé par la sous-chaîne de caractère
         """
-        if needle != "":
-            pointer = 0
-            first_i = second_i = 0
-            for second_i in haystack:
-                if needle[:second_i-first_i] == haystack[first_i:second_i-first_i+1]:
-                    if second_i-first_i == len(needle) - 1:
-                        return first_i
-            return -1
-        else:
-            return 0
-
-    @classmethod
-    def str_str_leetcode(cls, haystack, needle):
-        """
-        Algorithme:
-        Pour chaque point de départ possible dans la botte de foin, vérifier que les caractères correspondent à
-        l'aiguille et les briser si ce n'est pas le cas.
-        Alternativement, l'algorithme de Knuth-Morris-Pratt (KMP) améliorerait la complexité temporelle attendue.
-        (6) Sinon renvoyer -1
-        Temps: O(n^2) - n étant le nombre de caractères de haystack
-        Espace: O(1)
-        :param haystack: str
-        :param needle: str
-        :return: int
-        """
-        for i in range(len(haystack) - len(needle) + 1):
-            for j in range(len(needle)):
-                if haystack[i + j] != needle[j]:
-                    break
-            else:
-                return i
+        for index in range(len(haystack)-(len(needle)-1)):
+            substring = haystack[index:index+len(needle)]
+            if needle == substring:
+                return index
         return -1
 
     @classmethod

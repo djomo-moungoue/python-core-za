@@ -506,52 +506,31 @@ class TestEasyProblems(unittest.TestCase):
         assert actual == expected
 
     def test_str_str_2(self):
-        haystack = "hello"
-        needle = "ll"
-        expected = 2
+        haystack = "l"
+        needle = "l"
+        expected = 0
         actual = EasyProblems.str_str(haystack, needle)
         assert actual == expected
 
     def test_str_str_3(self):
-        haystack = "aaaaa"
-        needle = "bba"
-        expected = -1
+        haystack = "abc"
+        needle = "c"
+        expected = 2
         actual = EasyProblems.str_str(haystack, needle)
         assert actual == expected
 
     def test_str_str_4(self):
-        haystack = "ABABDABACDABABCABAB"
-        needle = "ABABCABAB"
-        expected = 10
+        haystack = "mississippi"
+        needle = "issip"
+        expected = 4
         actual = EasyProblems.str_str(haystack, needle)
         assert actual == expected
 
-    def test_str_str_leetcode_1(self):
+    def test_str_str_5(self):
         haystack = "empty needle"
-        needle = ""
-        expected = 0
-        actual = EasyProblems.str_str_leetcode(haystack, needle)
-        assert actual == expected
-
-    def test_str_str_leetcode_2(self):
-        haystack = "hello"
-        needle = "ll"
-        expected = 2
-        actual = EasyProblems.str_str_leetcode(haystack, needle)
-        assert actual == expected
-
-    def test_str_str_leetcode_3(self):
-        haystack = "aaaaa"
-        needle = "bba"
+        needle = "z"
         expected = -1
-        actual = EasyProblems.str_str_leetcode(haystack, needle)
-        assert actual == expected
-
-    def test_str_str_leetcode_4(self):
-        haystack = "ABABDABACDABABCABAB"
-        needle = "ABABCABAB"
-        expected = 10
-        actual = EasyProblems.str_str_leetcode(haystack, needle)
+        actual = EasyProblems.str_str(haystack, needle)
         assert actual == expected
 
     def test_KPMSearch_1(self):

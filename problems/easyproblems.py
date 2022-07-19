@@ -356,25 +356,54 @@ class EasyProblems:
         return next_new
 
     @classmethod
-    def remove_element(cls, nums, val):
+    def remove_element(cls, nums: list[int], val: int) -> int:
         """
-        Algorithme:
-        Parcourir la liste d'entrée de la gauche vers la droite.
-        Avancer le pointer si l'élément actuel est different de val.
-        Sinon effacer l'élément et pointer au même endroit car les listes sont mutables en Python.
+        Algorithme - Itération :
+        Pointer aux 2 extrémités de la liste
+        Parcourir la liste d'entrée de la droite vers la gauche aussi longtemps le pointeur gauche est inférieur au
+        pointeur droit.
+        Si l'élément pointé par le pointeur droit n'est pas la cible, vérifier si c'est chez l'élément pointé par le
+        pointeur gauche.
+        Si c'est le cas pour l'élément de gauche vérifier l'élément le suivant en comptant les pas jusqu'à ce que le
+        pointeur de gauche devienne supérieur à celui de droite ou la valeur pointée soit égale à de la cible.
+        Si l'élément de gauche pointé est égale à la cible, le remplacer par l'élément de droite pointé.
+        Si le pointeur de gauche est supérieur à celui de droite, renvoyer la valeur du compteur.
         Temps: O(n)
         Espace: O(1)
-        :param nums:
-        :param val:
-        :return: number of val occurrences removed
         """
-        i = 0
-        while i < len(nums):
-            if nums[i] != val:
-                i += 1
-            else:
-                nums.remove(val)
-        return len(nums)
+        counter = 0
+        index_left = 0
+        index_right = len(nums)-1
+        while index_left <= index_right:
+            if nums[index_right] != val:
+                while nums[index_left] != val:
+                    index_left += 1
+                    counter += 1
+                    if index_left > index_right:
+                        return counter
+                else:
+                    nums[index_left] = nums[index_right]
+                    index_left += 1
+                    counter += 1
+            index_right -= 1
+        return counter
+    """
+    Algorithme:
+    Parcourir la liste d'entrée de la gauche vers la droite.
+    Avancer le pointer si l'élément actuel est different de val.
+    Sinon effacer l'élément et pointer au même endroit car les listes sont mutables en Python.
+    Temps: O(n)
+    Espace: O(1)
+    Runtime: 36 ms, faster than 90.42% of Python3 online submissions for Remove Element.
+    Memory Usage: 14 MB, less than 14.31% of Python3 online submissions for Remove Element.
+    """
+    #       i = 0
+    #      while i < len(nums):
+    #         if nums[i] != val:
+    #            i += 1
+    #       else:
+    #          nums.remove(val)
+    # return len(nums)
 
     @classmethod
     def remove_element_leetcode_solution(cls, nums, val):
@@ -407,8 +436,8 @@ class EasyProblems:
         Temps: O(n) - n étant le nombre de caractères de haystack
         Espace: O(1) - Espace occupé par la sous-chaîne de caractère
         """
-        for index in range(len(haystack)-(len(needle)-1)):
-            substring = haystack[index:index+len(needle)]
+        for index in range(len(haystack) - (len(needle) - 1)):
+            substring = haystack[index:index + len(needle)]
             if needle == substring:
                 return index
         return -1
@@ -694,5 +723,9 @@ class EasyProblems:
 
 
 if __name__ == '__main__':
-    print(EasyProblems.str_str("mississippi", "issip"))
-#    pass
+#    print(EasyProblems.remove_element([1], 1))
+#    print(EasyProblems.remove_element([1], 3))
+#    print(EasyProblems.remove_element([3,2,2,3], 3))
+#    print(EasyProblems.remove_element([3,2,2,3], 2))
+    print(EasyProblems.remove_element([3,2,2,3], 7))
+    pass

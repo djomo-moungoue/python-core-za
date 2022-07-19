@@ -430,27 +430,65 @@ class TestEasyProblems(unittest.TestCase):
     0 <= nums.length <= 100
     0 <= nums[i] <= 50
     0 <= val <= 100
+    
+    print(EasyProblems.remove_element([1], 1))
+    print(EasyProblems.remove_element([1], 3))
+    print(EasyProblems.remove_element([3,2,2,3], 3))
+    print(EasyProblems.remove_element([3,2,2,3], 2))
+    print(EasyProblems.remove_element([3,2,2,3], 7))
     """
-
-    def test_remove_element_1(self):
-        nums = [3, 2, 2, 3]
-        val = 3
-        expected_nums = [2, 2]
+    def test_remove_element_1_return_0(self):
+        nums = [1]
+        val = 1
+        expected_nums = [1]
         actual = EasyProblems.remove_element(nums, val)
-        assert actual == len(expected_nums)
+        assert actual == 0
         i = 0
-        while i < len(expected_nums):
+        while i < 0:
             assert nums[i] == expected_nums[i]
             i += 1
 
-    def test_remove_element_2(self):
-        nums = [0, 1, 2, 2, 3, 0, 4, 2]
+    def test_remove_element_2_return_1(self):
+        nums = [1]
         val = 2
-        expected_nums = [0, 1, 3, 0, 4]
+        expected_nums = [1]
         actual = EasyProblems.remove_element(nums, val)
-        assert actual == len(expected_nums)
+        assert actual == 1
         i = 0
-        while i < len(expected_nums):
+        while i < 1:
+            assert nums[i] == expected_nums[i]
+            i += 1
+
+    def test_remove_element_3_return_2(self):
+        nums = [3, 2, 2, 3]
+        val = 3
+        expected_nums = [2, 2, 2, 3]
+        actual = EasyProblems.remove_element(nums, val)
+        assert actual == 2
+        i = 0
+        while i < 2:
+            assert nums[i] == expected_nums[i]
+            i += 1
+
+    def test_remove_element_2_return_2(self):
+        nums = [3, 2, 2, 3]
+        val = 2
+        expected_nums = [3, 3, 2, 3]
+        actual = EasyProblems.remove_element(nums, val)
+        assert actual == 2
+        i = 0
+        while i < 2:
+            assert nums[i] == expected_nums[i]
+            i += 1
+
+    def test_remove_element_7_return_4(self):
+        nums = [3, 2, 2, 3]
+        val = 7
+        expected_nums = [3, 2, 2, 3]
+        actual = EasyProblems.remove_element(nums, val)
+        assert actual == 4
+        i = 0
+        while i < 4:
             assert nums[i] == expected_nums[i]
             i += 1
 

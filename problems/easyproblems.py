@@ -314,27 +314,37 @@ class EasyProblems:
     """
 
     @classmethod
-    def remove_duplicates(cls, nums):
+    def remove_duplicates(cls, nums: list[int]) -> int:
         """
         Algorithme :
-        Parcourir la liste d'entrée de la gauche vers la droite.
-        Repérer les plages d'éléments identiques et les effacer.
-        Stopper dès que l'extrêmité droite de la liste est atteint.
+        Renvoyer 0 si la liste est vide.
+        Placer deux pointeurs p1 et p2 à l'extrémité gauche de la liste.
+        Parcourir la liste d'entrée avec p2 jusqu'à atteindre l'extrémité droite.
+        Si un élément pointé par p2 (p2.ej) est différent de celui pointé par p1 (p1.ei),
+        Remplacer ei par ej et déplacer p1 d'un pas p1.ei+1 et compter ce pas.
+        Renvoyer le compteur.
         Temps: O(n)
         Espace: O(1)
-        Note: this solution works only for mutable sequences
-        :param nums:
-        :return: len(nums)
         """
-        current_index = 0
-        next_index = 1
-        while next_index < len(nums):
-            if nums[current_index] != nums[next_index]:
-                del nums[current_index + 1:next_index]
-                current_index += 1
-                next_index = current_index + 1
-            next_index += 1
-        return len(nums)
+        if not nums:
+            return 0
+        counter = 0
+        pointer_1 = 0
+        pointer_2 = 1
+        count_duplicate = 0
+        while pointer_2 < len(nums):
+            if nums[pointer_1] != nums[pointer_2]:
+                counter += 1
+                if count_duplicate > 0:
+                    nums[pointer_1] = nums[pointer_2]
+                    count_duplicate -= 1
+                pointer_1 += 1
+            else:
+                count_duplicate += 1
+                pointer_1 += 1
+            pointer_2 += 1
+        counter += 1
+        return counter
 
     @classmethod
     def remove_duplicates_solution_leetcode(cls, nums):
@@ -373,7 +383,7 @@ class EasyProblems:
         """
         counter = 0
         index_left = 0
-        index_right = len(nums)-1
+        index_right = len(nums) - 1
         while index_left <= index_right:
             if nums[index_right] != val:
                 while nums[index_left] != val:
@@ -387,6 +397,7 @@ class EasyProblems:
                     counter += 1
             index_right -= 1
         return counter
+
     """
     Algorithme:
     Parcourir la liste d'entrée de la gauche vers la droite.
@@ -397,6 +408,7 @@ class EasyProblems:
     Runtime: 36 ms, faster than 90.42% of Python3 online submissions for Remove Element.
     Memory Usage: 14 MB, less than 14.31% of Python3 online submissions for Remove Element.
     """
+
     #       i = 0
     #      while i < len(nums):
     #         if nums[i] != val:
@@ -723,9 +735,14 @@ class EasyProblems:
 
 
 if __name__ == '__main__':
-#    print(EasyProblems.remove_element([1], 1))
-#    print(EasyProblems.remove_element([1], 3))
-#    print(EasyProblems.remove_element([3,2,2,3], 3))
-#    print(EasyProblems.remove_element([3,2,2,3], 2))
-    print(EasyProblems.remove_element([3,2,2,3], 7))
+#    print(EasyProblems.remove_duplicates([]))  # -> 0
+#    print(EasyProblems.remove_duplicates([1]))  # -> 1
+#    print(EasyProblems.remove_duplicates([1, 1]))  # -> 1
+#    print(EasyProblems.remove_duplicates([1, 2]))  # -> 2
+#    print(EasyProblems.remove_duplicates([1, 2, 2]))  # -> 2
+    print(EasyProblems.remove_duplicates([1, 1, 2]))  # -> [1, 2, 2] 2
+#    print(EasyProblems.remove_duplicates([1, 2, 2, 3]))  # -> [1, 2, 3, 3] 3
+#    print(EasyProblems.remove_duplicates([1, 2, 2, 2, 2, 2, 3]))  # -> [1, 2, 3, 2, 2, 2, 3] 3
+#    print(EasyProblems.remove_duplicates([1, 1, 2, 2, 2, 2, 2, 3, 3]))  # -> [1, 2, 3, 2, 2, 2, 2, 3, 3] 3
+#    print(EasyProblems.remove_duplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]))  # -> [0, 1, 2, 3, 4, 2, 2, 3, 3, 4] 5
     pass

@@ -331,15 +331,16 @@ class EasyProblems:
         counter = 0
         pointer_1 = 0
         pointer_2 = 1
-        point_duplicate = 0
+        count_duplicate = 0
         while pointer_2 < len(nums):
-            while pointer_1 < pointer_2 and nums[pointer_1] != nums[pointer_2]:
+            if nums[pointer_1] != nums[pointer_2]:
                 counter += 1
+                if count_duplicate > 0:
+                    nums[pointer_1] = nums[pointer_2]
+                    count_duplicate -= 1
                 pointer_1 += 1
-            point_duplicate = pointer_1
-            pointer_1 += 1
-            while pointer_1 < pointer_2 and nums[pointer_1] == nums[point_duplicate]:
-                nums[pointer_1] = nums[pointer_2]
+            else:
+                count_duplicate += 1
                 pointer_1 += 1
             pointer_2 += 1
         counter += 1
@@ -382,7 +383,7 @@ class EasyProblems:
         """
         counter = 0
         index_left = 0
-        index_right = len(nums)-1
+        index_right = len(nums) - 1
         while index_left <= index_right:
             if nums[index_right] != val:
                 while nums[index_left] != val:
@@ -396,6 +397,7 @@ class EasyProblems:
                     counter += 1
             index_right -= 1
         return counter
+
     """
     Algorithme:
     Parcourir la liste d'entrée de la gauche vers la droite.
@@ -406,6 +408,7 @@ class EasyProblems:
     Runtime: 36 ms, faster than 90.42% of Python3 online submissions for Remove Element.
     Memory Usage: 14 MB, less than 14.31% of Python3 online submissions for Remove Element.
     """
+
     #       i = 0
     #      while i < len(nums):
     #         if nums[i] != val:
@@ -732,11 +735,14 @@ class EasyProblems:
 
 
 if __name__ == '__main__':
-    print(EasyProblems.remove_duplicates([]))  # -> 0
-    print(EasyProblems.remove_duplicates([1]))  # -> 1
-    print(EasyProblems.remove_duplicates([1, 1]))  # -> 1
-    print(EasyProblems.remove_duplicates([1, 2]))  # -> 2
-    print(EasyProblems.remove_duplicates([1, 2, 2]))  # -> 2
-    print(EasyProblems.remove_duplicates([1, 1, 2]))  # -> 2
-    print(EasyProblems.remove_duplicates([1, 2, 2, 3]))  # -> 3
+#    print(EasyProblems.remove_duplicates([]))  # -> 0
+#    print(EasyProblems.remove_duplicates([1]))  # -> 1
+#    print(EasyProblems.remove_duplicates([1, 1]))  # -> 1
+#    print(EasyProblems.remove_duplicates([1, 2]))  # -> 2
+#    print(EasyProblems.remove_duplicates([1, 2, 2]))  # -> 2
+    print(EasyProblems.remove_duplicates([1, 1, 2]))  # -> [1, 2, 2] 2
+#    print(EasyProblems.remove_duplicates([1, 2, 2, 3]))  # -> [1, 2, 3, 3] 3
+#    print(EasyProblems.remove_duplicates([1, 2, 2, 2, 2, 2, 3]))  # -> [1, 2, 3, 2, 2, 2, 3] 3
+#    print(EasyProblems.remove_duplicates([1, 1, 2, 2, 2, 2, 2, 3, 3]))  # -> [1, 2, 3, 2, 2, 2, 2, 3, 3] 3
+#    print(EasyProblems.remove_duplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]))  # -> [0, 1, 2, 3, 4, 2, 2, 3, 3, 4] 5
     pass

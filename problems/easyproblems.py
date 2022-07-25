@@ -332,16 +332,19 @@ class EasyProblems:
         pointer_1 = 0
         pointer_2 = 1
         count_duplicate = 0
+        last_diff = float('-Infinity')
         while pointer_2 < len(nums):
-            if nums[pointer_1] != nums[pointer_2]:
+            if nums[pointer_1] != nums[pointer_2] and nums[pointer_2] != last_diff:
+                last_diff = nums[pointer_2]
                 counter += 1
                 if count_duplicate > 0:
-                    nums[pointer_1] = nums[pointer_2]
                     count_duplicate -= 1
-                pointer_1 += 1
+                    if count_duplicate == 0:
+                        pointer_1 += 1
+                    nums[pointer_1] = nums[pointer_2]
+                    pointer_1 += 1
             else:
                 count_duplicate += 1
-#                pointer_1 += 1
             pointer_2 += 1
         counter += 1
         return counter

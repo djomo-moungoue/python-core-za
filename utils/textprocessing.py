@@ -1,7 +1,7 @@
 
 
 if __name__ == '__main__':
-    pass
+    print('Hello World from textprocessing.py! :)')
 # string = "ghòò - mfɑ̀' - mvāt - ndhʉ̀ - ndù' - nə̄h - ngʉ̌nù - nkwēn - nkwè'nì - nǒktū - nshì - nshǐnə̄h - nsì/nsǐmbā' - nsìnsìì - ntīē - nzāt - nzī - yɔ̌nshì - zì'nì"
 #    title = string.title()
 #    title2 = title.replace(' - ', '\n')

@@ -339,13 +339,14 @@ class EasyProblems:
                 counter += 1
                 if count_duplicate > 0:
                     count_duplicate -= 1
-                    pointer_1 += 1
                     nums[pointer_1] = nums[pointer_2]
                     pointer_1 += 1
                 else:
                     pointer_1 += 1
             else:
                 count_duplicate += 1
+                if pointer_2 - pointer_1 == 1:
+                    pointer_1 += 1
             pointer_2 += 1
         counter += 1
         return counter

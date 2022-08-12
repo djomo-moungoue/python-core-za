@@ -30,5 +30,5 @@ def create_connection_RAM():
             conn_RAM.close()
 
 if __name__ == '__main__':
-    create_connection_ROM(r"C:\Users\yesse\DjomoProjects\prod\PythonCore\utils\pythonsqlite.db.py")
+    create_connection_ROM(r"/PythonCore/databases_sqlite/pythonsqlite.db.py")
     create_connection_RAM()

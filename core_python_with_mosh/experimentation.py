@@ -96,3 +96,12 @@ print(f"Next client to receive : {waiting_queue[0]}") if waiting_queue else prin
 len_waiting_queue = len(waiting_queue)
 for x in range(len_waiting_queue): count += 1; print(f"Receive the {count} client : {waiting_queue.popleft()}")
 print(f"Next client to receive : {waiting_queue[0]}") if waiting_queue else print(f"Empty queue!")
+
+point = (1,)
+
+print(f"point = {point}")
+
+x = 1; y = 2
+print(f"Before: x, y = {x, y}")
+x, y = y, x
+print(f"After permuation: x, y = {x, y}")

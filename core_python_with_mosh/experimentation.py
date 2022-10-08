@@ -104,4 +104,66 @@ print(f"point = {point}")
 x = 1; y = 2
 print(f"Before: x, y = {x, y}")
 x, y = y, x
-print(f"After permuation: x, y = {x, y}")
+print(f"After permutation: x, y = {x, y}")
+
+
+print(f"\nBuiltin len(iterable)")
+print(f"len('1234') : {len('1234')}")
+print(f"len([1, 2, 2, 3]) : {len([1, 2, 2, 3])}")
+print(f"len(deque([1, 2, 2, 3])) : {len(deque([1, 2, 2, 3]))}")
+from array import array
+print(f"len(array('i', [1, 2, 2, 3])) : {len(array('i', [1, 2, 2, 3]))}")
+print(f"len((1, 2, 2, 3)) : {len(([1, 2, 2, 3]))}")
+print(f"len(set([1, 2, 2, 3])) : {len(set([1, 2, 2, 3]))}")
+print(f"len(dict(a=1, b=2, c=2, d=3)) : {len(dict(a=1, b=2, c=2, d=3))}")
+
+print(f"\niterable[index|key]")
+print(f"'1224'[0] : {'1224'[0]}")
+print(f"[1, 2, 2, 3][0]: {[1, 2, 2, 3][0]}")
+print(f"deque([1, 2, 2, 3])[0] : {deque([1, 2, 2, 3])[0]}")
+from array import array
+print(f"array('i', [1, 2, 2, 3])[0]) : {array('i', [1, 2, 2, 3])[0]}")
+print(f"(1, 2, 2, 3)[0] : {(1, 2, 2, 3)[0]}")
+# print(f"len(set([1, 2, 2, 3])) : {set([1, 2, 2, 3])[0]}") #  TypeError: 'set' object is not subscriptable
+print(f"dict(a=1, b=2, c=2, d=3)['a']) : {dict(a=1, b=2, c=2, d=3)['a']}")
+"""
+print(f"\n del iterable[index|key]")
+string = '1224'
+# del my_str
+print(f"my_str : {my_str if len(my_str) else 'No more str'}") #  SyntaxError: f-string: invalid syntax
+try:
+    my_list = [1, 2, 2, 3]
+    del my_list
+    if len(my_list):
+        print(f"my_list: {my_list}")  #  SyntaxError: f-string: invalid syntax
+except NameError:
+    return  "is not defined"
+
+print(f"del deque([1, 2, 2, 3])[0] : {del deque([1, 2, 2, 3])[0]}")
+from array import array
+print(f"del array('i', [1, 2, 2, 3])[0]) : {del array('i', [1, 2, 2, 3])}")
+
+print(f"del (1, 2, 2, 3)[0] : {del (1, 2, 2, 3)[0]}")
+# print(f"len(set([1, 2, 2, 3])) : {set([1, 2, 2, 3])[0]}") #  TypeError: 'set' object is not subscriptable
+print(f"del dict(a=1, b=2, c=2, d=3)['a']) : {del dict(a=1, b=2, c=2, d=3)['a']}")"""
+
+print(f"Emboîtement des iterable")
+#s = str("ab", "cd")
+#print(f"s : {s}")
+l = [[1, 2],[3,4]]
+print(f"l : {l}")
+t = ((1, 2),(3,4))
+print(f"t : {t}")
+# s = {{1, 2}}
+# print(f"s : {s}") #  TypeError: unhashable type: 'set'
+# d = {{"1": 2}}
+# print(f"d : {d}") #  TypeError: unhashable type: 'dict'
+# array(array('i', [1,2]), array('i', [3,4]))
+q = deque(deque([1, 3, deque(["dfg", 3])]))
+print(f"q : {q}")
+tuple()
+set()
+dict()
+min()
+ord()
+chr()

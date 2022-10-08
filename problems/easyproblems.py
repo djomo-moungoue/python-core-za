@@ -341,10 +341,12 @@ class EasyProblems:
                     count_duplicate -= 1
                     nums[pointer_1] = nums[pointer_2]
                     pointer_1 += 1
-            else:
-                if nums[pointer_1] != last_diff:
+                else:
                     pointer_1 += 1
+            else:
                 count_duplicate += 1
+                if pointer_2 - pointer_1 == 1:
+                    pointer_1 += 1
             pointer_2 += 1
         counter += 1
         return counter
@@ -748,6 +750,6 @@ if __name__ == '__main__':
 #    print(EasyProblems.remove_duplicates([1, 2, 2, 2, 2, 2, 3]))  # -> [1, 2, 3, 2, 2, 2, 3] 3
 #    print(EasyProblems.remove_duplicates([1, 1, 2, 2, 2, 2, 2, 3, 3]))  # -> [1, 2, 3, 2, 2, 2, 2, 3, 3] 3
     print(EasyProblems.remove_duplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]))  # -> [0, 1, 2, 3, 4, 2, 2, 3, 3, 4] 5
-    print(EasyProblems.remove_duplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4, 4]))  # -> [0, 1, 2, 3, 4, 2, 2, 3, 3, 4] 5
-    print(EasyProblems.remove_duplicates([0, 1, 1, 1, 1, 2, 2, 3, 3, 4, 4]))  # -> [0, 1, 2, 3, 4, 2, 2, 3, 3, 4] 5
+#    print(EasyProblems.remove_duplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4, 4]))  # -> [0, 1, 2, 3, 4, 2, 2, 3, 3, 4] 5
+#    print(EasyProblems.remove_duplicates([0, 1, 1, 1, 1, 2, 2, 3, 3, 4, 4]))  # -> [0, 1, 2, 3, 4, 2, 2, 3, 3, 4] 5
     pass

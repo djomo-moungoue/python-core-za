@@ -159,6 +159,7 @@ print(f"t : {t}")
 # d = {{"1": 2}}
 # print(f"d : {d}") #  TypeError: unhashable type: 'dict'
 # array(array('i', [1,2]), array('i', [3,4]))
+"""
 q = deque(deque([1, 3, deque(["dfg", 3])]))
 print(f"q : {q}")
 tuple()
@@ -167,3 +168,29 @@ dict()
 min()
 ord()
 chr()
+"""
+
+from collections import deque, namedtuple
+print(f"\nhash(object) - type(object)")
+print(f"hash(range(1,3)) : {hash(range(1,3))} - type(range(1,3)) : {type(range(1,3))}")
+print(f"hash(123) : {hash(123)} - type(123) : {type(b'123')}")
+print(f"hash('123') : {hash('123')} - type('123') : {type('123')}")
+print(f"hash(b'123') : {hash(b'123')} - type(b'123') : {type(b'123')}")
+print(f"hash((1,2,3)) : {hash((1,2,3))} - type((1,2,3)) : {type((1,2,3))}")
+print(f"hash(frozenset([1,2,3])) : {hash(frozenset([1,2,3]))} - type(frozenset([1,2,3])) : {type(frozenset([1,2,3]))}")
+print(f"hash({1,2,3}) : {hash({1,2,3})} - type({1,2,3}) : {type({1,2,3})}")
+print(f"hash({1:2,3:3}) : {hash({1:2,3:3})} - type({1:2,3:3}) : {type({1,2,3})}")
+print(f"hash(namedtuple('Triangle', [1,2,3])) : {hash(namedtuple('Triangle', [1,2,3]))} - type(namedtuple('Triangle', [1,2,3])) : {type(namedtuple('Triangle', [1,2,3]))}")
+#  print(f"hash([1,2,3]) : {hash([1,2,3])} - type([1,2,3]) : {type([1,2,3])}") #  TypeError: unhashable type: 'list'
+#  print(f"hash(deque([1,2,3])) : {hash(deque([1,2,3]))} - type(deque([1,2,3])) : {type(deque([1,2,3]))}") # TypeError: unhashable type: 'collections.deque'
+
+"""
+
+hash(range(1,3)) : -7299810140967063839 - type(range(1,3)) : <class 'range'>
+hash(123) : 123 - type(123) : <class 'bytes'>
+hash('123') : 1404880117889103899 - type('123') : <class 'str'>
+hash(b'123') : 1404880117889103899 - type(b'123') : <class 'bytes'>
+hash((1,2,3)) : 529344067295497451 - type((1,2,3)) : <class 'tuple'>
+
+
+"""

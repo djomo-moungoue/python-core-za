@@ -101,17 +101,18 @@ point = (1,)
 
 print(f"point = {point}")
 
-x = 1; y = 2
+x = 1;
+y = 2
 print(f"Before: x, y = {x, y}")
 x, y = y, x
 print(f"After permutation: x, y = {x, y}")
-
 
 print(f"\nBuiltin len(iterable)")
 print(f"len('1234') : {len('1234')}")
 print(f"len([1, 2, 2, 3]) : {len([1, 2, 2, 3])}")
 print(f"len(deque([1, 2, 2, 3])) : {len(deque([1, 2, 2, 3]))}")
 from array import array
+
 print(f"len(array('i', [1, 2, 2, 3])) : {len(array('i', [1, 2, 2, 3]))}")
 print(f"len((1, 2, 2, 3)) : {len(([1, 2, 2, 3]))}")
 print(f"len(set([1, 2, 2, 3])) : {len(set([1, 2, 2, 3]))}")
@@ -122,6 +123,7 @@ print(f"'1224'[0] : {'1224'[0]}")
 print(f"[1, 2, 2, 3][0]: {[1, 2, 2, 3][0]}")
 print(f"deque([1, 2, 2, 3])[0] : {deque([1, 2, 2, 3])[0]}")
 from array import array
+
 print(f"array('i', [1, 2, 2, 3])[0]) : {array('i', [1, 2, 2, 3])[0]}")
 print(f"(1, 2, 2, 3)[0] : {(1, 2, 2, 3)[0]}")
 # print(f"len(set([1, 2, 2, 3])) : {set([1, 2, 2, 3])[0]}") #  TypeError: 'set' object is not subscriptable
@@ -148,11 +150,11 @@ print(f"del (1, 2, 2, 3)[0] : {del (1, 2, 2, 3)[0]}")
 print(f"del dict(a=1, b=2, c=2, d=3)['a']) : {del dict(a=1, b=2, c=2, d=3)['a']}")"""
 
 print(f"Emboîtement des iterable")
-#s = str("ab", "cd")
-#print(f"s : {s}")
-l = [[1, 2],[3,4]]
+# s = str("ab", "cd")
+# print(f"s : {s}")
+l = [[1, 2], [3, 4]]
 print(f"l : {l}")
-t = ((1, 2),(3,4))
+t = ((1, 2), (3, 4))
 print(f"t : {t}")
 # s = {{1, 2}}
 # print(f"s : {s}") #  TypeError: unhashable type: 'set'
@@ -171,18 +173,23 @@ chr()
 """
 
 from collections import deque, namedtuple
+
 print(f"\nhash(object) - type(object)")
-print(f"hash(range(1,3)) : {hash(range(1,3))} - type(range(1,3)) : {type(range(1,3))}")
+print(f"hash(range(1,3)) : {hash(range(1, 3))} - type(range(1,3)) : {type(range(1, 3))}")
 print(f"hash(123) : {hash(123)} - type(123) : {type(b'123')}")
 print(f"hash('123') : {hash('123')} - type('123') : {type('123')}")
 print(f"hash(b'123') : {hash(b'123')} - type(b'123') : {type(b'123')}")
-print(f"hash((1,2,3)) : {hash((1,2,3))} - type((1,2,3)) : {type((1,2,3))}")
-print(f"hash(frozenset([1,2,3])) : {hash(frozenset([1,2,3]))} - type(frozenset([1,2,3])) : {type(frozenset([1,2,3]))}")
-print(f"hash({1,2,3}) : {hash({1,2,3})} - type({1,2,3}) : {type({1,2,3})}")
-print(f"hash({1:2,3:3}) : {hash({1:2,3:3})} - type({1:2,3:3}) : {type({1,2,3})}")
-print(f"hash(namedtuple('Triangle', [1,2,3])) : {hash(namedtuple('Triangle', [1,2,3]))} - type(namedtuple('Triangle', [1,2,3])) : {type(namedtuple('Triangle', [1,2,3]))}")
-#  print(f"hash([1,2,3]) : {hash([1,2,3])} - type([1,2,3]) : {type([1,2,3])}") #  TypeError: unhashable type: 'list'
-#  print(f"hash(deque([1,2,3])) : {hash(deque([1,2,3]))} - type(deque([1,2,3])) : {type(deque([1,2,3]))}") # TypeError: unhashable type: 'collections.deque'
+print(f"hash((1,2,3)) : {hash((1, 2, 3))} - type((1,2,3)) : {type((1, 2, 3))}")
+print(
+    f"hash(frozenset([1,2,3])) : {hash(frozenset([1, 2, 3]))} - type(frozenset([1,2,3])) : {type(frozenset([1, 2, 3]))}")
+print(
+    f"hash(namedtuple('Triangle', 'x y z')) : {hash(namedtuple('Triangle', 'x y z'))} - type(namedtuple('Triangle', "
+    f"'x y z')) : {type(namedtuple('Triangle', 'x y z'))}")
+# print(f"hash({1, 2, 3}) : {hash({1, 2, 3})} - type({1, 2, 3}) : {type({1, 2, 3})}") TypeError: unhashable type: 'set'
+print(f"hash(dict(1=2, 3=3)) : {hash(dict('1'=2, '3'=3))} - type(dict(1+=2, 3=3)) : {type(dict(1=2, 3=3))}")
+# print(f"hash([1,2,3]) : {hash([1,2,3])} - type([1,2,3]) : {type([1,2,3])}") #  TypeError: unhashable type: 'list'
+# print(f"hash(deque([1,2,3])) : {hash(deque([1,2,3]))} - type(deque([1,2,3])) : {type(deque([1,2,3]))}") #
+# TypeError: unhashable type: 'collections.deque'
 
 """
 

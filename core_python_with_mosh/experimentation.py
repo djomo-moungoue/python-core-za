@@ -186,7 +186,7 @@ print(
     f"hash(namedtuple('Triangle', 'x y z')) : {hash(namedtuple('Triangle', 'x y z'))} - type(namedtuple('Triangle', "
     f"'x y z')) : {type(namedtuple('Triangle', 'x y z'))}")
 # print(f"hash({1, 2, 3}) : {hash({1, 2, 3})} - type({1, 2, 3}) : {type({1, 2, 3})}") TypeError: unhashable type: 'set'
-print(f"hash(dict(1=2, 3=3)) : {hash(dict('1'=2, '3'=3))} - type(dict(1+=2, 3=3)) : {type(dict(1=2, 3=3))}")
+# print(f"hash(dict(1=2, 3=3)) : {hash(dict('1'=2, '3'=3))} - type(dict(1+=2, 3=3)) : {type(dict(1=2, 3=3))}")
 # print(f"hash([1,2,3]) : {hash([1,2,3])} - type([1,2,3]) : {type([1,2,3])}") #  TypeError: unhashable type: 'list'
 # print(f"hash(deque([1,2,3])) : {hash(deque([1,2,3]))} - type(deque([1,2,3])) : {type(deque([1,2,3]))}") #
 # TypeError: unhashable type: 'collections.deque'
@@ -201,3 +201,6 @@ hash((1,2,3)) : 529344067295497451 - type((1,2,3)) : <class 'tuple'>
 
 
 """
+d = []
+d = [x*2 for x in range(5)]
+print(f"d : {d}")

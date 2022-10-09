@@ -201,6 +201,11 @@ hash((1,2,3)) : 529344067295497451 - type((1,2,3)) : <class 'tuple'>
 
 
 """
-d = []
-d = [x*2 for x in range(5)]
-print(f"d : {d}")
+print(f"\nList, Tuple, Set and Dict Comprehension")
+print(f"list [x * 2 for x in range(1,7,2)] : {[x * 2 for x in range(1,7,2)]}")
+print(f"tuple tuple([x * 2 for x in range(1,7,2)]) : {tuple([x * 2 for x in range(1,7,2)])}")
+print(f"set set([x * 2 for x in range(1,7,2)]) : {set([x * 2 for x in range(1,7,2)])}")
+print(f"dict dict([x * 2 for x in range(1,7,2)]) : {dict([(x, x * 2) for x in range(1,7,2)])}")
+# print(f"tuple (x * 2 for x in range(1,7,2)) : {(x * 2 for x in range(1,7,2))}")
+#  print(f"set([x * 2 for x in range(1,7,2)]) : {{x * 2 for x in range(1,7,2)}}")
+# print(f"dict([x * 2 for x in range(1,7,2)]) : {{x: x * 2 for x in range(5)}}")

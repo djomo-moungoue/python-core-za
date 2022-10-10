@@ -203,37 +203,52 @@ hash((1,2,3)) : 529344067295497451 - type((1,2,3)) : <class 'tuple'>
 """
 print(f"\nList, Tuple, Set and Dict Comprehension")
 from sys import getsizeof
-l = [x * 2 for x in range(1,17,2)]
+
+l = [x * 2 for x in range(1, 17, 2)]
 print("unpacked list : ", *l)
 print(f"list [x * 2 for x in range(1,7,2)] : {l} size/len of list = {getsizeof(l)} / {len(l)}")
-t = tuple([x * 2 for x in range(1,17,2)])
+t = tuple([x * 2 for x in range(1, 17, 2)])
 print("unpacked tuple : ", *t)
 print(f"tuple tuple([x * 2 for x in range(1,7,2)]) : {t} size/len of tuple = {getsizeof(t)} / {len(t)}")
-s = set([x * 2 for x in range(1,17,2)])
+s = set([x * 2 for x in range(1, 17, 2)])
 print("unpacked set : ", *s)
 print(f"set set([x * 2 for x in range(1,7,2)]) : {s} size/len of set = {getsizeof(s)} / {len(s)}")
-d = dict([(x, x * 2) for x in range(1,17,2)])
+d = dict([(x, x * 2) for x in range(1, 17, 2)])
 print("unpacked dict : ", {**d})
 print(f"dict dict([x * 2 for x in range(1,7,2)]) : {d} size/len of dict = {getsizeof(d)} / {len(d)}")
 # values = (x * 2 for x in range(1,77777,2))
-print(f"generator (x * 2 for x in range(1,7,2)) : {(x * 2 for x in range(1,17,2))} size/len of generator = {getsizeof((x * 2 for x in range(1,17,2)))}")
-#  print(f"set([x * 2 for x in range(1,7,2)]) : {{x * 2 for x in range(1,7,2)}}")
-# print(f"dict([x * 2 for x in range(1,7,2)]) : {{x: x * 2 for x in range(5)}}")
+print(
+    f"generator (x * 2 for x in range(1,7,2)) : {(x * 2 for x in range(1, 17, 2))} size/len of generator = {getsizeof((x * 2 for x in range(1, 17, 2)))}")
+print(f"set([x * 2 for x in range(1,7,2)]) : {{x * 2 for x in range(1,7,2)}}")
+print(f"dict([x * 2 for x in range(1,7,2)]) : {{x: x * 2 for x in range(5)}}")
 
 # Exercice :
 from pprint import pprint
+
 sentence = "This is a common interview question"
 # chars_set = set(sentence)
 chars_frequency_dict = dict((x, sentence.count(x)) for x in set(sentence))
 chars_dict_sorted_by_frequency = sorted(chars_frequency_dict.items(), key=lambda item: item[1])
-pprint(chars_frequency_dict, width=5)
-pprint(f"chars_dict_sorted_by_frequency : {chars_dict_sorted_by_frequency}, {5}")
+rint(chars_frequency_dict)
+print(f"chars_dict_sorted_by_frequency : {chars_dict_sorted_by_frequency}")
 print(f"Corresponding characters : {chars_dict_sorted_by_frequency[-1]}")
 
+
 # m = filter(d.items(), lambda item[1]: if max(item[1]))
-#max_occurence = max(d.values())
-#for k, v in d.items():
+# max_occurence = max(d.values())
+# for k, v in d.items():
 #    if v == max_occurence:
 #        most_repeated_character = k
 #        break
 # print(f"Set of characters : {chars_set}")
+
+# Exceptions
+def get(index) -> int:
+    numbers = [x for x in range(1, 5)]
+    try:
+        return numbers[index]
+    except IndexError:
+        return f"the index range should be 0 up to {len(numbers)}"
+
+
+print(f"get(5): {get(5)}")

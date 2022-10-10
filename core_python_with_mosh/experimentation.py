@@ -203,14 +203,37 @@ hash((1,2,3)) : 529344067295497451 - type((1,2,3)) : <class 'tuple'>
 """
 print(f"\nList, Tuple, Set and Dict Comprehension")
 from sys import getsizeof
-
-print(f"list [x * 2 for x in range(1,7,2)] : {[x * 2 for x in range(1,17,2)]} size/len of list = {getsizeof([x * 2 for x in range(1,17,2)])} / {len([x * 2 for x in range(1,17,2)])}")
-print(f"tuple tuple([x * 2 for x in range(1,7,2)]) : {tuple([x * 2 for x in range(1,17,2)])} size/len of tuple = {getsizeof(tuple([x * 2 for x in range(1,17,2)]))} / {len(tuple([x * 2 for x in range(1,17,2)]))}")
-print(f"set set([x * 2 for x in range(1,7,2)]) : {set([x * 2 for x in range(1,17,2)])} size/len of set = {getsizeof(set([x * 2 for x in range(1,17,2)]))} / {len(set([x * 2 for x in range(1,17,2)]))}")
-print(f"dict dict([x * 2 for x in range(1,7,2)]) : {dict([(x, x * 2) for x in range(1,17,2)])} size/len of dict = {getsizeof(dict([(x, x * 2) for x in range(1,17,2)]))} / {len(dict([(x, x * 2) for x in range(1,17,2)]))}")
-values = (x * 2 for x in range(1,77777,2))
+l = [x * 2 for x in range(1,17,2)]
+print("unpacked list : ", *l)
+print(f"list [x * 2 for x in range(1,7,2)] : {l} size/len of list = {getsizeof(l)} / {len(l)}")
+t = tuple([x * 2 for x in range(1,17,2)])
+print("unpacked tuple : ", *t)
+print(f"tuple tuple([x * 2 for x in range(1,7,2)]) : {t} size/len of tuple = {getsizeof(t)} / {len(t)}")
+s = set([x * 2 for x in range(1,17,2)])
+print("unpacked set : ", *s)
+print(f"set set([x * 2 for x in range(1,7,2)]) : {s} size/len of set = {getsizeof(s)} / {len(s)}")
+d = dict([(x, x * 2) for x in range(1,17,2)])
+print("unpacked dict : ", {**d})
+print(f"dict dict([x * 2 for x in range(1,7,2)]) : {d} size/len of dict = {getsizeof(d)} / {len(d)}")
+# values = (x * 2 for x in range(1,77777,2))
 print(f"generator (x * 2 for x in range(1,7,2)) : {(x * 2 for x in range(1,17,2))} size/len of generator = {getsizeof((x * 2 for x in range(1,17,2)))}")
 #  print(f"set([x * 2 for x in range(1,7,2)]) : {{x * 2 for x in range(1,7,2)}}")
 # print(f"dict([x * 2 for x in range(1,7,2)]) : {{x: x * 2 for x in range(5)}}")
 
+# Exercice :
+from pprint import pprint
+sentence = "This is a common interview question"
+# chars_set = set(sentence)
+chars_frequency_dict = dict((x, sentence.count(x)) for x in set(sentence))
+chars_dict_sorted_by_frequency = sorted(chars_frequency_dict.items(), key=lambda item: item[1])
+pprint(chars_frequency_dict, width=5)
+pprint(f"chars_dict_sorted_by_frequency : {chars_dict_sorted_by_frequency}, {5}")
+print(f"Corresponding characters : {chars_dict_sorted_by_frequency[-1]}")
 
+# m = filter(d.items(), lambda item[1]: if max(item[1]))
+#max_occurence = max(d.values())
+#for k, v in d.items():
+#    if v == max_occurence:
+#        most_repeated_character = k
+#        break
+# print(f"Set of characters : {chars_set}")

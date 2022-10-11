@@ -1,4 +1,5 @@
 from functools import reduce
+from random import random
 
 
 def display_even(limit=2):
@@ -229,7 +230,7 @@ sentence = "This is a common interview question"
 # chars_set = set(sentence)
 chars_frequency_dict = dict((x, sentence.count(x)) for x in set(sentence))
 chars_dict_sorted_by_frequency = sorted(chars_frequency_dict.items(), key=lambda item: item[1])
-rint(chars_frequency_dict)
+print(chars_frequency_dict)
 print(f"chars_dict_sorted_by_frequency : {chars_dict_sorted_by_frequency}")
 print(f"Corresponding characters : {chars_dict_sorted_by_frequency[-1]}")
 
@@ -252,3 +253,113 @@ def get(index) -> int:
 
 
 print(f"get(5): {get(5)}")
+
+"""
+# ---------------------------------
+
+class Tag:
+    def __init__(self, name: str):
+        self.name = name
+        self.hash = int(random())
+
+    def __str__(self):
+        return f"#{self.name}"
+
+    def __hash__(self):
+        return self.hash
+
+
+# --------------------
+
+
+class TagCloud:
+#    keep tract on the various tags in a block
+    
+
+    def __init__(self):
+        self.tags = dict()
+
+    def __str__(self):
+        return f"{self.tags}"
+
+    def add(self, tag: str) -> None:
+        self.tags[tag] += 1
+
+    def remove(self, tag: str) -> None:
+        if tag in self.tags:
+            if self.tags[tag] > 0:
+                self.tags[tag] -= 1
+        else:
+            print(f"#{tag} not founded.")
+
+
+# ---------------
+
+
+print("\nTag and TagCloud")
+t1 = Tag('Python')
+t2 = Tag('Django')
+t3 = Tag('AWS')
+tc = TagCloud()
+tc.add(t1.name)
+tc.add(t2.name)
+tc.add(t3.name)
+print(tc)
+tc.remove(t2.name)
+print(tc)
+"""
+# ---Polumorphisme---
+"""
+from abc import ABC, abstractmethod
+
+
+class Shape(ABC):
+    @abstractmethod
+    def draw(self):
+        pass
+
+
+class Square(Shape):
+    def draw(self):
+        print('A square')
+
+
+class Rectangle:
+    def draw(self):
+        print('A Rectangle')
+
+
+
+def draw(shape: Shape):
+    shape.draw()
+
+for x in [Square(), Rectangle()]:
+    x.draw()
+"""
+
+
+class Square:
+    def draw(self):
+        print('A square')
+
+
+class Rectangle:
+    def draw(self):
+        print('A Rectangle')
+
+
+def draw(foos):
+    for f in foos:
+        f.draw()
+
+
+draw([Square(), Rectangle()])
+
+# Inheritance of built-in classes
+class TrackableList(list):
+    def append(self, object):
+        print("Append callded")
+        super().append(object)
+
+
+TrackableList().append('1')

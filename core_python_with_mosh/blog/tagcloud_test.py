@@ -73,6 +73,7 @@ class MyTestCase(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    for x in dir(tagcloud):
-        print(tagcloud.x)
+#    for x in dir(tagcloud):
+#        y = str(x)
+#        print(tagcloud.__name__)
     unittest.main()

@@ -394,3 +394,10 @@ print(directory.name)
 print([p for p in Path("blog").iterdir()])
 print([p for p in Path("blog").glob("*.py")])
 
+from time import ctime
+file = Path("blog/__init_renamed__.txt")
+print(ctime(file.stat().st_ctime)) # display the creation time of the file.
+print(file.read_text()) # read the content of the file as text
+byte = file.read_bytes() # read the content of the f
+print(byte)
+

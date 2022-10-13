@@ -357,12 +357,20 @@ draw([Square(), Rectangle()])
 
 # Inheritance of built-in classes
 class TrackableList(list):
+
+    def __init__(self):
+        pass
     def append(self, object):
-        print("Append callded")
+        print("Append called")
         super().append(object)
 
+    def __str__(self):
+        return f'TractableList{super().__str__()}'
 
-TrackableList().append('1')
+t_list = TrackableList()
+t_list.append('1')
+print(t_list)
+
 
 from pathlib import Path
 current_folder = Path()

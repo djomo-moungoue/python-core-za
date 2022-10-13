@@ -380,3 +380,17 @@ print(related_path_from_current_folder.with_name("pathlib_renamed.txt"))
 print(related_path_from_current_folder.with_suffix(".html"))
 print(Path.cwd())
 
+
+directory = Path("blog2")
+if not directory.exists():
+    directory.mkdir()
+print(directory.exists())
+if directory.exists():
+    directory.rmdir()
+print(directory.exists())
+if directory.exists():
+    directory.rename("blog3")
+print(directory.name)
+print([p for p in Path("blog").iterdir()])
+print([p for p in Path("blog").glob("*.py")])
+

@@ -363,3 +363,20 @@ class TrackableList(list):
 
 
 TrackableList().append('1')
+
+from pathlib import Path
+current_folder = Path()
+#  related_path_from_current_folder = Path("blog/__init__.py")
+related_path_from_current_folder = Path("blog/pathlib_experimentation.py")
+print(related_path_from_current_folder.exists())
+print(related_path_from_current_folder.is_file())
+print(related_path_from_current_folder.is_dir())
+print(related_path_from_current_folder.name)
+print(related_path_from_current_folder.stem)
+print(related_path_from_current_folder.suffix)
+print(related_path_from_current_folder.parent)
+print(related_path_from_current_folder.parents)
+print(related_path_from_current_folder.with_name("pathlib_renamed.txt"))
+print(related_path_from_current_folder.with_suffix(".html"))
+print(Path.cwd())
+

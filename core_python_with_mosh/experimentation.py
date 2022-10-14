@@ -1,6 +1,6 @@
+"""
 from functools import reduce
 from random import random
-
 
 def display_even(limit=2):
     count = 0
@@ -130,6 +130,7 @@ print(f"(1, 2, 2, 3)[0] : {(1, 2, 2, 3)[0]}")
 # print(f"len(set([1, 2, 2, 3])) : {set([1, 2, 2, 3])[0]}") #  TypeError: 'set' object is not subscriptable
 print(f"dict(a=1, b=2, c=2, d=3)['a']) : {dict(a=1, b=2, c=2, d=3)['a']}")
 """
+"""
 print(f"\n del iterable[index|key]")
 string = '1224'
 # del my_str
@@ -149,6 +150,7 @@ print(f"del array('i', [1, 2, 2, 3])[0]) : {del array('i', [1, 2, 2, 3])}")
 print(f"del (1, 2, 2, 3)[0] : {del (1, 2, 2, 3)[0]}")
 # print(f"len(set([1, 2, 2, 3])) : {set([1, 2, 2, 3])[0]}") #  TypeError: 'set' object is not subscriptable
 print(f"del dict(a=1, b=2, c=2, d=3)['a']) : {del dict(a=1, b=2, c=2, d=3)['a']}")"""
+"""
 
 print(f"Emboîtement des iterable")
 # s = str("ab", "cd")
@@ -163,6 +165,7 @@ print(f"t : {t}")
 # print(f"d : {d}") #  TypeError: unhashable type: 'dict'
 # array(array('i', [1,2]), array('i', [3,4]))
 """
+"""
 q = deque(deque([1, 3, deque(["dfg", 3])]))
 print(f"q : {q}")
 tuple()
@@ -172,7 +175,7 @@ min()
 ord()
 chr()
 """
-
+"""
 from collections import deque, namedtuple
 
 print(f"\nhash(object) - type(object)")
@@ -191,7 +194,7 @@ print(
 # print(f"hash([1,2,3]) : {hash([1,2,3])} - type([1,2,3]) : {type([1,2,3])}") #  TypeError: unhashable type: 'list'
 # print(f"hash(deque([1,2,3])) : {hash(deque([1,2,3]))} - type(deque([1,2,3])) : {type(deque([1,2,3]))}") #
 # TypeError: unhashable type: 'collections.deque'
-
+"""
 """
 
 hash(range(1,3)) : -7299810140967063839 - type(range(1,3)) : <class 'range'>
@@ -200,7 +203,7 @@ hash('123') : 1404880117889103899 - type('123') : <class 'str'>
 hash(b'123') : 1404880117889103899 - type(b'123') : <class 'bytes'>
 hash((1,2,3)) : 529344067295497451 - type((1,2,3)) : <class 'tuple'>
 
-
+"""
 """
 print(f"\nList, Tuple, Set and Dict Comprehension")
 from sys import getsizeof
@@ -222,7 +225,8 @@ print(
     f"generator (x * 2 for x in range(1,7,2)) : {(x * 2 for x in range(1, 17, 2))} size/len of generator = {getsizeof((x * 2 for x in range(1, 17, 2)))}")
 print(f"set([x * 2 for x in range(1,7,2)]) : {{x * 2 for x in range(1,7,2)}}")
 print(f"dict([x * 2 for x in range(1,7,2)]) : {{x: x * 2 for x in range(5)}}")
-
+"""
+"""
 # Exercice :
 from pprint import pprint
 
@@ -233,7 +237,7 @@ chars_dict_sorted_by_frequency = sorted(chars_frequency_dict.items(), key=lambda
 print(chars_frequency_dict)
 print(f"chars_dict_sorted_by_frequency : {chars_dict_sorted_by_frequency}")
 print(f"Corresponding characters : {chars_dict_sorted_by_frequency[-1]}")
-
+"""
 
 # m = filter(d.items(), lambda item[1]: if max(item[1]))
 # max_occurence = max(d.values())
@@ -244,6 +248,7 @@ print(f"Corresponding characters : {chars_dict_sorted_by_frequency[-1]}")
 # print(f"Set of characters : {chars_set}")
 
 # Exceptions
+"""
 def get(index) -> int:
     numbers = [x for x in range(1, 5)]
     try:
@@ -253,7 +258,7 @@ def get(index) -> int:
 
 
 print(f"get(5): {get(5)}")
-
+"""
 """
 # ---------------------------------
 
@@ -337,7 +342,7 @@ for x in [Square(), Rectangle()]:
     x.draw()
 """
 
-
+"""
 class Square:
     def draw(self):
         print('A square')
@@ -354,12 +359,14 @@ def draw(foos):
 
 
 draw([Square(), Rectangle()])
-
+"""
+"""
 # Inheritance of built-in classes
 class TrackableList(list):
 
     def __init__(self):
         pass
+
     def append(self, object):
         print("Append called")
         super().append(object)
@@ -367,12 +374,15 @@ class TrackableList(list):
     def __str__(self):
         return f'TractableList{super().__str__()}'
 
+
 t_list = TrackableList()
 t_list.append('1')
 print(t_list)
 
-
+"""
+"""
 from pathlib import Path
+
 current_folder = Path()
 #  related_path_from_current_folder = Path("blog/__init__.py")
 related_path_from_current_folder = Path("blog/pathlib_experimentation.py")
@@ -387,25 +397,46 @@ print(related_path_from_current_folder.parents)
 print(related_path_from_current_folder.with_name("pathlib_renamed.txt"))
 print(related_path_from_current_folder.with_suffix(".html"))
 print(Path.cwd())
-
-
+"""
+"""
 directory = Path("blog2")
 if not directory.exists():
     directory.mkdir()
 print(directory.exists())
-if directory.exists():
-    directory.rmdir()
+# if directory.exists():
+#    directory.rmdir()
 print(directory.exists())
-if directory.exists():
-    directory.rename("blog3")
+# if directory.exists():
+#    directory.rename("blog3")
 print(directory.name)
-print([p for p in Path("blog").iterdir()])
-print([p for p in Path("blog").glob("*.py")])
-
+print([p for p in Path("blog2").iterdir()])
+print([p for p in Path("blog2").glob("*.py")])
+"""
+"""
 from time import ctime
-file = Path("blog/__init_renamed__.txt")
-print(ctime(file.stat().st_ctime)) # display the creation time of the file.
-print(file.read_text()) # read the content of the file as text
-byte = file.read_bytes() # read the content of the f
-print(byte)
 
+file = Path("blog/__init__.py")
+if file.exists():
+    print(ctime(file.stat().st_ctime))  # display the creation time of the file.
+    print(file.read_text())  # read the content of the file as text
+    byte = file.read_bytes()  # read the content of the f
+    print(byte)
+"""
+
+# ZipFile - Working with ZIP Archive
+import os
+from pathlib import Path
+from zipfile import ZipFile
+
+# print(f"Operating System : {os.name}")
+#print(f"Current Directory : {Path().resolve()}")
+#print(f"Current Directory : {os.getcwd()}")
+
+with ZipFile("zipped_blog.zip", "w") as zipped_blog:
+    for path in Path("blog").rglob("*.*"):
+        zipped_blog.write(path)
+    print(f" CWD : {Path('.').cwd()}")
+
+if Path("zipped_blog.zip").exists():
+    with ZipFile("zipped_blog.zip") as zipped_blog:
+        print(f"Zip content : {zipped_blog.namelist()}")

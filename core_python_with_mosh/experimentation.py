@@ -455,7 +455,7 @@ Bapouantou, Bagangté
 créer le fichier
 écrire les village à l'intérieur
 lire le contenu et insérer dans un dictionnaire
-"""
+
 # [import csv - Lecture et écriture de fichiers CSV](https://docs.python.org/3/library/csv.html)
 
 import csv
@@ -482,11 +482,24 @@ with open("villages_de_louest.csv", "r") as villages_de_louest:
     for row in csv_reader:
         print(row)
 #        print(row['Haut-nkam'], row['Nde'])
+"""
+"""
+[import json - Encodeur JSON : json.dumps() et décodeur JSON : json.loads()](https://docs.python.org/3/library/json.html)
 
+"""
+import json
+from pathlib import Path
 
+encoder = json.dumps({"Python": 3, "Django": 2, "Pandas": 5})
+print(f"Encoder : {encoder}")
+with open("tagcloud.json", "w") as jsonfile:
+    jsonfile.write(encoder)
+#  Path("tagcloud.json").write_text(encoder)
 
-
-
-
-
+decoder = json.loads('{"Python": 3, "Django": 2, "Pandas": 5}')
+print(f"Decoder : {decoder}")
+data = Path("tagcloud.json").read_text()
+tagcloud = json.loads(data)
+print(f"Data : {data}")
+print(f"Tagcloud : {tagcloud}")
 

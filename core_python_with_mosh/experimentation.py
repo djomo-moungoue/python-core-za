@@ -422,7 +422,7 @@ if file.exists():
     byte = file.read_bytes()  # read the content of the f
     print(byte)
 """
-
+"""
 # ZipFile - Working with ZIP Archive
 import os
 from pathlib import Path
@@ -438,5 +438,55 @@ with ZipFile("zipped_blog.zip", "w") as zipped_blog:
     print(f" CWD : {Path('.').cwd()}")
 
 if Path("zipped_blog.zip").exists():
-    with ZipFile("zipped_blog.zip") as zipped_blog:
+    with ZipFile("zipped_blog.zip", "r") as zipped_blog:
         print(f"Zip content : {zipped_blog.namelist()}")
+        print(f"File info : {zipped_blog.getinfo('blog/tagcloud.py')}")
+        zipped_blog.extractall()
+"""
+"""
+village_ouest.csv
+haut-nkam, nde
+Bafang, Bazou
+Bana, Balengou
+Bandja, Bangou
+Bapouantou, Bagangté
+
+
+créer le fichier
+écrire les village à l'intérieur
+lire le contenu et insérer dans un dictionnaire
+"""
+# [import csv - Lecture et écriture de fichiers CSV](https://docs.python.org/3/library/csv.html)
+
+import csv
+
+with open("villages_de_louest.csv", "w", newline="", encoding="utf-8") as villages_de_louest:  # Return a file object
+    csv_writer = csv.writer(villages_de_louest)
+    csv_writer.writerow(["Haut-nkam", "Nde"])  # The first line is considered as headers
+    csv_writer.writerow(["Bafang", "Bazou"])  # Next lines are considered as data
+    csv_writer.writerow(["Bana", "Balengou"])
+    csv_writer.writerows([["Bandja", "Bangou"], ["Bapouantou", "Bagangté"]])  # lines cumulates
+
+with open("villages_de_louest.csv", "r") as villages_de_louest:
+    csv_reader = csv.reader(villages_de_louest)
+#    print(f"\nList Output : {list(csv_reader)}\n")
+    print("\nList Output\n")
+    for row in csv_reader:
+        print(row)
+#        print(','.join(row))
+
+with open("villages_de_louest.csv", "r") as villages_de_louest:
+    csv_reader = csv.DictReader(villages_de_louest, fieldnames=['Haut-nkam', 'Nde'], restkey="others")
+#    print(f"\nDict Output : {list(csv_reader)}\n")
+    print("\nDict Output\n")
+    for row in csv_reader:
+        print(row)
+#        print(row['Haut-nkam'], row['Nde'])
+
+
+
+
+
+
+
+

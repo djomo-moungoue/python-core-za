@@ -411,6 +411,19 @@ print(directory.exists())
 print(directory.name)
 print([p for p in Path("blog2").iterdir()])
 print([p for p in Path("blog2").glob("*.py")])
+
+def delete_folder(path: str) -> None:
+    if Path(path).exists():
+        dir = Path(path)
+        for sub in dir.iterdir():
+            if sub.is_dir():
+                delete_folder(sub)
+            else:
+                sub.unlink()
+        dir.rmdir()  # if you just want to delete the dir content but not the dir itself, remove this line
+        print(f"{str(dir)} recursively deleted")
+    else:
+        print(f"{str(dir)} doesn't exist")
 """
 """
 from time import ctime
@@ -486,7 +499,7 @@ with open("villages_de_louest.csv", "r") as villages_de_louest:
 """
 [import json - Encodeur JSON : json.dumps() et décodeur JSON : json.loads()](https://docs.python.org/3/library/json.html)
 
-"""
+
 import json
 from pathlib import Path
 
@@ -502,4 +515,95 @@ data = Path("tagcloud.json").read_text()
 tagcloud = json.loads(data)
 print(f"Data : {data}")
 print(f"Tagcloud : {tagcloud}")
+"""
 
+"""
+[import sqlite3 - Interface DB-API 2.0 pour les bases de données SQLite](https://docs.python.org/3/library/sqlite3.html)
+
+Exemple d'utilisation :  Base de données d'un prototype de films Monty Python
+"""
+
+
+def print_data(cursor, table_name: str, output_title: str) -> any:
+    result = cursor.execute(f"SELECT * FROM {table_name}")
+    fetched_data = result.fetchall()  # query.fetchmany(size=) or query.fetchone()
+    return fetched_data
+
+
+from pathlib import Path
+import sqlite3
+
+if not Path("movies").exists():
+    Path("movies").mkdir()
+
+# Tout d'abord, nous devons créer une nouvelle base de données et ouvrir une connexion à la base de données pour permettre à sqlite3 de travailler avec elle.
+with sqlite3.connect("movies/movies.db") as connection_object: # on-disk database
+
+    # Créer un curseur de base de données afin d'exécuter des instructions SQL et de récupérer des résultats de requêtes SQL.
+    cursor_object = connection_object.cursor()  # objet itérable
+
+    # créer une table de base de données film avec des colonnes pour le titre, l'année de sortie et la note de critique.
+    # Grâce à la fonctionnalité de typage flexible de SQLite, la spécification des types de données est facultative.
+    cursor_object.execute("DROP TABLE IF EXISTS movie")
+    cursor_object.execute("CREATE TABLE IF NOT EXISTS movie(title,year,score)")
+
+    # cursor_object.executemany(sql: TEXT, seq_of_parameters) cursor_object.executescript(sql_script: TEXT)
+    cursor_object.execute("""INSERT INTO movie VALUES('movie1', 1988, 3)""")
+
+    # L'instruction INSERT ouvre implicitement une transaction, qui doit être validée (con_commit()) avant que les
+    # modifications ne soient enregistrées dans la base de données.
+    connection_object.commit() # Toujours l'exécuter après avoir modifié l'état de la base de données
+
+    # Vérifier si la table movie a été crée et les donnés on été inséré
+    cursor_object.execute("SELECT name FROM sqlite_master")
+    print(f"\nData from ROM : \n{cursor_object.fetchone()}")
+    cursor_object.execute("SELECT * FROM movie")
+    print(f"{cursor_object.fetchall()}") # query.fetchmany(size=) or query.fetchone()
+
+    data = [('movie'+str(x), 1988+x, 3+x) for x in range(2,5)]
+    # Remarquez que les caractères de remplacement ? sont utilisés pour lier les données à la requête. Utilisez toujours les
+    # caractères de remplacement au lieu du formatage des chaînes pour lier les valeurs Python aux instructions SQL, afin
+    # d'éviter les attaques par injection SQL.
+    cursor_object.executemany("INSERT INTO movie values(?,?, ?)", data)
+    connection_object.commit()
+
+    connection_object.executescript("INSERT INTO movie VALUES('movie10', 1999, 9.5);")
+    cursor_object.executescript(open("movies/movie_records.sql").read())
+    connection_object.commit()
+    print(f"\nData from ROM :")
+    for row in cursor_object.execute("SELECT year, title, score FROM movie order by year"):
+        print(f"{row}")
+
+with sqlite3.connect(":memory:") as connection_object_ram: # in-memory database
+    cursor_object_ram = connection_object_ram.cursor()
+    cursor_object_ram.execute("DROP TABLE IF EXISTS movie_ram")
+    cursor_object_ram.execute("CREATE TABLE IF NOT EXISTS movie_ram(title_r,year_r,score_r)")
+
+    db_result_ram = cursor_object_ram.execute("""INSERT INTO movie_ram VALUES('movie1_r', 1988, 3)""")
+
+    connection_object_ram.commit()
+
+    cursor_object_ram.execute("SELECT name FROM sqlite_master")
+    print(f"\nData from RAM : \n{cursor_object_ram.fetchone()}")
+    cursor_object_ram.execute("SELECT * FROM movie_ram")
+    print(f"{cursor_object_ram.fetchall()}") # query.fetchmany(size=) or query.fetchone()
+
+    db_result_ram = cursor_object_ram.executemany("INSERT INTO movie_ram values(?,?, ?)", data)
+    connection_object_ram.commit()
+    print(f"\n\nData from RAM :")
+    for row in cursor_object_ram.execute("SELECT * FROM movie_ram"):
+        print(f"{row}")
+
+# Créer une sauvegarde
+with sqlite3.connect("movies/movie_backup.db") as connection_object_backup:
+    connection_object.backup(connection_object_backup)
+    cursor_object_backup = connection_object_backup.cursor()
+    connection_object_backup.commit()
+    print(f"\n\nBackup content")
+    for row in cursor_object_backup.execute("SELECT * FROM movie"):
+        print(f"{row}")
+
+# Fermer toutes les connexions
+#connection_object.close()
+#connection_object_ram.close()
+#connection_object_backup.close()

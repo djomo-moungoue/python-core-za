@@ -548,7 +548,7 @@ with sqlite3.connect("movies/movies.db") as connection_object: # on-disk databas
     cursor_object.execute("CREATE TABLE IF NOT EXISTS movie(title,year,score)")
 
     # cursor_object.executemany(sql: TEXT, seq_of_parameters) cursor_object.executescript(sql_script: TEXT)
-    cursor_object.execute("""INSERT INTO movie VALUES('movie1', 1988, 3)""")
+    cursor_object.execute("INSERT INTO movie VALUES('movie1', 1988, 3)")
 
     # L'instruction INSERT ouvre implicitement une transaction, qui doit être validée (con_commit()) avant que les
     # modifications ne soient enregistrées dans la base de données.
@@ -579,7 +579,7 @@ with sqlite3.connect(":memory:") as connection_object_ram: # in-memory database
     cursor_object_ram.execute("DROP TABLE IF EXISTS movie_ram")
     cursor_object_ram.execute("CREATE TABLE IF NOT EXISTS movie_ram(title_r,year_r,score_r)")
 
-    db_result_ram = cursor_object_ram.execute("""INSERT INTO movie_ram VALUES('movie1_r', 1988, 3)""")
+    db_result_ram = cursor_object_ram.execute("INSERT INTO movie_ram VALUES('movie1_r', 1988, 3)")
 
     connection_object_ram.commit()
 
@@ -597,13 +597,51 @@ with sqlite3.connect(":memory:") as connection_object_ram: # in-memory database
 # Créer une sauvegarde
 with sqlite3.connect("movies/movie_backup.db") as connection_object_backup:
     connection_object.backup(connection_object_backup)
-    cursor_object_backup = connection_object_backup.cursor()
-    connection_object_backup.commit()
     print(f"\n\nBackup content")
-    for row in cursor_object_backup.execute("SELECT * FROM movie"):
+    print(connection_object_backup.execute("SELECT name FROM sqlite_master").fetchone())
+    for row in connection_object_backup.cursor().execute("SELECT * FROM movie"):
         print(f"{row}")
 
 # Fermer toutes les connexions
 #connection_object.close()
 #connection_object_ram.close()
 #connection_object_backup.close()
+
+
+
+# Projet final : implémenter une classe qui exporte-importe les données entre les fichiers csv, json et sql
+
+from pathlib import Path
+class DataLoader:
+
+    def load_from_into(self, source_file: str, destination_file: str) -> str:
+        if not Path(source_file).exists():
+            return f"{source_file} doesn't exist"
+        if not Path(destination_file).exists():
+            return f"{destination_file} doesn't exist"
+        suffixes = ('.csv', '.json', '.sql')
+        if Path(source_file).suffix not in suffixes:
+            return f"Source file suffix '{Path(source_file).suffix}' should be among {str(suffixes)}"
+        if Path(destination_file).suffix not in suffixes:
+            return f"Destination file suffix '{Path(destination_file).suffix}' suffix should be among {str(suffixes)}"
+        source_extention = Path(source_file).suffix
+        destination_extention = Path(destination_file).suffix
+
+
+    def csv_sql(self, csv, sql) -> str:
+        pass
+
+    def sql_csv(self, sql, csv) -> str:
+        pass
+
+    def json_sql(self, json, sql) -> str:
+        pass
+
+    def sql_json(self, sql, json) -> str:
+        pass
+
+    def csv_json(self, csv, json) -> str:
+        pass
+
+    def json_csv(self, json, csv) -> str:
+        pass

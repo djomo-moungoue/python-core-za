@@ -130,6 +130,8 @@ print(f"(1, 2, 2, 3)[0] : {(1, 2, 2, 3)[0]}")
 # print(f"len(set([1, 2, 2, 3])) : {set([1, 2, 2, 3])[0]}") #  TypeError: 'set' object is not subscriptable
 print(f"dict(a=1, b=2, c=2, d=3)['a']) : {dict(a=1, b=2, c=2, d=3)['a']}")
 """
+import os
+
 """
 print(f"\n del iterable[index|key]")
 string = '1224'
@@ -521,7 +523,7 @@ print(f"Tagcloud : {tagcloud}")
 [import sqlite3 - Interface DB-API 2.0 pour les bases de données SQLite](https://docs.python.org/3/library/sqlite3.html)
 
 Exemple d'utilisation :  Base de données d'un prototype de films Monty Python
-"""
+
 
 
 def print_data(cursor, table_name: str, output_title: str) -> any:
@@ -606,42 +608,45 @@ with sqlite3.connect("movies/movie_backup.db") as connection_object_backup:
 #connection_object.close()
 #connection_object_ram.close()
 #connection_object_backup.close()
+"""
 
+"""
+# [import time](https://docs.python.org/3/library/time.html)
 
+import time
+import platform
+print(f"{platform.system()} {platform.release()} {platform.version()}'s Epoch : {time.gmtime(0)}")
+current_time_sec = time.time()
+print(f"time() -> float : {current_time_sec}")
+print(f"sleep(sec) --> None ... ")
+time.sleep(5)
+print(f"asctime([tuple] | [struct_time]) -> str : {time.asctime()}")
+utc_time = time.gmtime(current_time_sec)
+print(f"Empty Arg gmtime(sec) -> struct_time : {utc_time}")
+print(f"UTC struct_time asctime([tuple] | [struct_time]) -> str : {time.asctime(utc_time)}")
+local_time = time.localtime(current_time_sec)
+print(f"localtime(0) -> struct_time : {local_time}")
+print(f"Local struct_time asctime([tuple] | [struct_time]) -> str : {time.asctime(local_time)}")
+print(f"Tuple('Day Mon Date Hour:Min:Sec Year') asctime([tuple] | [struct_time]) -> str : {time.asctime((2022, 10, 23, 13, 50, 32, 6, 295, 0))}")
+print(f"strftime(format[, t]) -> struct_time : {time.strftime('23/10/2022 13:50:32.0', time.gmtime())}")
+print(f"strftime(format[, t]) -> struct_time : {time.strftime('23/10/2022 13:50:32.0', time.localtime())}")
+"""
 
-# Projet final : implémenter une classe qui exporte-importe les données entre les fichiers csv, json et sql
-
-from pathlib import Path
-class DataLoader:
-
-    def load_from_into(self, source_file: str, destination_file: str) -> str:
-        if not Path(source_file).exists():
-            return f"{source_file} doesn't exist"
-        if not Path(destination_file).exists():
-            return f"{destination_file} doesn't exist"
-        suffixes = ('.csv', '.json', '.sql')
-        if Path(source_file).suffix not in suffixes:
-            return f"Source file suffix '{Path(source_file).suffix}' should be among {str(suffixes)}"
-        if Path(destination_file).suffix not in suffixes:
-            return f"Destination file suffix '{Path(destination_file).suffix}' suffix should be among {str(suffixes)}"
-        source_extention = Path(source_file).suffix
-        destination_extention = Path(destination_file).suffix
-
-
-    def csv_sql(self, csv, sql) -> str:
-        pass
-
-    def sql_csv(self, sql, csv) -> str:
-        pass
-
-    def json_sql(self, json, sql) -> str:
-        pass
-
-    def sql_json(self, sql, json) -> str:
-        pass
-
-    def csv_json(self, csv, json) -> str:
-        pass
-
-    def json_csv(self, json, csv) -> str:
-        pass
+"""
+class datetime.datetime
+"""
+from datetime import datetime, timedelta
+import time
+print(f"Now : {datetime.now()}")
+print(f'Datetime object : {datetime(2022, 10, 25)}')
+user_input = "2018/01/01"
+dt = datetime.fromtimestamp(time.time())
+print(f'time converted to datetime object : {dt}')
+print(f'string converted to datetime object : {datetime.strptime(user_input, "%Y/%m/%d")}')
+print(f'datetime object converted to string : {dt.strftime("%Y/%m/%d")}')
+print(f'datetime object attributes : {dt.year}-{dt.month}')
+duration = datetime.now() - datetime(1988, 5, 19)
+print(f"Duration : {duration}")
+print(f"Duration.days : {duration.days} - Duration.seconds : {duration.seconds} - Duration.microseconds : {duration.microseconds}")
+print(f"Duration.total_seconds() : {duration.total_seconds()}")
+print(f"Duration.total_seconds() : {tim)}")

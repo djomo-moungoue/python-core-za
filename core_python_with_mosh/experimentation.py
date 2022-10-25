@@ -690,7 +690,6 @@ print(f"LocaleHTMLCalendar().formatmonth(theyear, themonth, w=0, l=0) -> str {lh
 
 """
 ## [import random](https://docs.python.org/3/library/random.html)
-"""
 from random import Random
 
 r = Random()
@@ -743,3 +742,53 @@ print(f"r.sample(self, population, k, counts) -> list[_T] : {r.sample(list_of_in
 # [19, 13, 5] - [3, 5, 7, 11, 13, 17, 19, 23, 29]
 print(f"r.shuffle(self, x: MutableSequence, random: () -> float) -> None] :  {r.shuffle(list_of_int)} - {list_of_int}")  # shuffle list x in-place, and return None.
 # None - [5, 7, 3, 13, 11, 29, 23, 17, 19]
+"""
+
+"""
+secrets
+"""
+import string
+import secrets
+
+
+# Generate a middle strong alphanumeric password of minimum eight-characters.
+def generate_middle_strong_password(pw_length=8) -> str:
+    valid_length = pw_length if pw_length > 8 else 8
+    alphabet = string.ascii_letters + string.punctuation + string.digits
+    password = ''.join(secrets.choice(alphabet) for i in range(valid_length))
+    return password
+
+
+# Generate a very strong alphanumeric password of minimum elevent-character with at least one lowercase character,
+# at least one uppercase character, and at least three digits.
+def generate_very_strong_password(pw_length=11) -> str:
+    valid_length = pw_length if pw_length > 11 else 11
+    alphabet = string.ascii_letters + string.punctuation + string.digits
+    while True:
+        password = ''.join(secrets.choice(alphabet) for i in range(valid_length))
+        if (any(c.islower() for c in password)
+                and any(c.isupper() for c in password)
+                and sum(c.isdigit() for c in password) >= 3):
+            break
+    return password
+
+
+def generate_security_token(token_lenght=32) -> str:
+    valid_length = token_lenght if token_lenght > 32 else 32
+    return secrets.token_hex(valid_length)
+
+
+# Generate a hard-to-guess temporary URL containing a security token suitable for password recovery applications:
+def generate_url_security_token(token_lenght=32) -> str:
+    valid_length = token_lenght if token_lenght > 32 else 32
+    return 'https://ngenmbhi.com/reset=' + secrets.token_urlsafe(valid_length)
+
+
+print(f"generate_middle_strong_password = {generate_middle_strong_password()}")
+# ]qG]J_T?
+print(f"generate_very_strong_password = {generate_very_strong_password()}")
+# 7S0S;QNo1`T
+print(f"generate_security_token = {generate_security_token()}")
+# 4bec89befea22d1040c74758ef7fdd8386d13667b9816ba904f60efebf6b0860
+print(f"generate_url_security_token = {generate_url_security_token()}")
+# https://ngenmbhi.com/reset=izfdYYdJw_rZNJxAdsrMFtNbWakrPNsxO90n6AiGTQY

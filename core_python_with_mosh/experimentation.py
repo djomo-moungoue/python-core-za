@@ -132,6 +132,7 @@ print(f"dict(a=1, b=2, c=2, d=3)['a']) : {dict(a=1, b=2, c=2, d=3)['a']}")
 """
 import calendar
 import os
+import string
 
 """
 print(f"\n del iterable[index|key]")
@@ -689,7 +690,7 @@ print(f"LocaleHTMLCalendar().formatmonth(theyear, themonth, w=0, l=0) -> str {lh
 
 """
 ## [import random](https://docs.python.org/3/library/random.html)
-
+"""
 from random import Random
 
 r = Random()
@@ -734,8 +735,11 @@ print(f"r.choice(self, seq : [_T]]) -> _T :  {r.choice(list_of_int)} - {list_of_
 # 19 - [3, 5, 7, 11, 13, 17, 19, 23, 29]
 print(f"r.choices(self, seq : [_T]]) -> list[_T] : {r.choices(list_of_int, k=3)} - {list_of_int}")  # return a k sized list of population elements chosen with replacement.
 # [13, 3, 23] - [3, 5, 7, 11, 13, 17, 19, 23, 29]
+import string
+ascii_letters_punctuation_digits = string.ascii_letters + string.punctuation + string.digits
+print(f"Password Generator - r.choices(self, seq : [_T]]) -> list[_T] : Password = {''.join(r.choices(ascii_letters_punctuation_digits, k=11))} - {ascii_letters_punctuation_digits}")  # return a k sized list of population elements chosen with replacement.
+# Password = 1BM+4OZR|iX - abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~0123456789
 print(f"r.sample(self, population, k, counts) -> list[_T] : {r.sample(list_of_int, k=3)} - {list_of_int}")  # choose k unique random from a population sequence or set.
 # [19, 13, 5] - [3, 5, 7, 11, 13, 17, 19, 23, 29]
 print(f"r.shuffle(self, x: MutableSequence, random: () -> float) -> None] :  {r.shuffle(list_of_int)} - {list_of_int}")  # shuffle list x in-place, and return None.
 # None - [5, 7, 3, 13, 11, 29, 23, 17, 19]
-"""

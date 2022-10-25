@@ -689,20 +689,53 @@ print(f"LocaleHTMLCalendar().formatmonth(theyear, themonth, w=0, l=0) -> str {lh
 
 """
 ## [import random](https://docs.python.org/3/library/random.html)
-"""
+
 from random import Random
 
 r = Random()
 print(f"r.seed(self, a, version: int) -> None :  {r.seed('ngenmbhi')}")  # initialize internal state from seed.
+# None
 print(f"r.getstate() -> tuple[Any,...] :  {r.getstate()}")  # return internal state.
-print(f"r.random(self) -> float : {r.random()}")  # x in the interval [0,1).
-print(f"r.randbytes(self, n: int) -> bytes : {r.randbytes(3)}") # Generate n random byte
-print(f"r.randint(self, a: int, b: int) -> int : {r.randint(3,17)}")  # x in the interval [a,b].
-print(f"r.randrange(self, stop: int) -> int : {r.randrange(7)}")  # choose a number from range(stop).
+# (3, (2147483648, 3333549157, ...), None)
+print(f"r.getrandbits(self, __k : int]) -> int : {r.getrandbits(3)}")  # Generates an int with k random bits.
+# 2
+print(f"r.random(self) -> float : {r.random()}")  # Return the next random floating point number in the range [0.0, 1.0).
+# 0.5256290398186351
+print(f"r.randbytes(self, n: int) -> bytes : {r.randbytes(3)}") # Generate n random byte.
+# b'\x00\xc2\xc8'
+print(f"r.randint(self, a: int, b: int) -> int : {r.randint(3,7)}")  # Return random integer in range [a,b], including both end points.
+# 6
+print(f"r.uniform(self, a: float, b: float) -> float : {r.uniform(3,7)}")  # get a random number in the range [a, b) or [a,b] depending on rounding.
+# 4.695754849113669
+print(f"r.betavariate(self, alpha: float, beta: float) -> float : {r.betavariate(3,7)}")  # Beta distribution.
+# 0.3861382875872988
+print(f"r.paretovariate(self, alpha: float) -> float : {r.paretovariate(3)}")  # Pareto distribution.
+# 2.0368719163678737
+print(f"r.weibullvariate(self, alpha: float, beta: float) -> float : {r.weibullvariate(3, 7)}")  # Weibull distribution.
+# 2.5490671176594866
+print(f"r.gammavariate(self, alpha: float, beta: float) -> float : {r.gammavariate(3,7)}")  # Gamma distribution. Not the gamma function.
+# 39.56772790819366
+print(f"r.gauss(self, mu: float, sigma: float) -> float : {r.gauss(3,7)}")  # Guassian distribution. mu is the mean and sigma is the standard deviation
+# 8.63510815629511
+print(f"r.lognormvariate(self, mu: float, sigma: float) -> float : {r.lognormvariate(3,7)}")  # Log normal distribution.
+# 0.04122541965238508
+print(f"r.normalvariate(self, mu: float, sigma: float) -> float : {r.normalvariate(3,7)}")  # Normal distribution.
+# -8.279819328460663
+print(f"r.triangular(self, low: float, high: float,  mode: float) -> float : {r.triangular(3,7, 5)}")  # Triangular distribution.
+# 5.69067439940498
+print(f"r.expovariate(self, lambd: float) -> float : {r.expovariate(7)}")  # Exponential distribution.
+# 0.24713808366190912
+print(f"r.randrange(self, stop: int) -> int : {r.randrange(3)}")  # choose a random item from range(stop).
+# 0
 print(f"r.randrange(self, start: int, stop: int[, step : int]) -> int : {r.randrange(3, 7)}")  # choose a number from range(start,stop[,step]).
-print(f"r.getrandbits(self, __k : int]) -> int : {r.getrandbits(3)}")  # choose a number from range(start,stop[,step]).
+# 4
 list_of_int = [3, 5, 7, 11, 13, 17, 19, 23, 29]
 print(f"r.choice(self, seq : [_T]]) -> _T :  {r.choice(list_of_int)} - {list_of_int}")  # choose a random element from a non-empty sequence.
-print(f"r.choices(self, seq : [_T]]) -> list[_T] : {r.choices(list_of_int, k=3)} - {list_of_int}")  # return a k sized list of population elements with replacement.
+# 19 - [3, 5, 7, 11, 13, 17, 19, 23, 29]
+print(f"r.choices(self, seq : [_T]]) -> list[_T] : {r.choices(list_of_int, k=3)} - {list_of_int}")  # return a k sized list of population elements chosen with replacement.
+# [13, 3, 23] - [3, 5, 7, 11, 13, 17, 19, 23, 29]
 print(f"r.sample(self, population, k, counts) -> list[_T] : {r.sample(list_of_int, k=3)} - {list_of_int}")  # choose k unique random from a population sequence or set.
-print(f"r.shuffle(self, x: MutableSequence, random: () -> float) -> None] :  {r.shuffle(list_of_int)} - {list_of_int}")  # choose k unique random from a population sequence or set.
+# [19, 13, 5] - [3, 5, 7, 11, 13, 17, 19, 23, 29]
+print(f"r.shuffle(self, x: MutableSequence, random: () -> float) -> None] :  {r.shuffle(list_of_int)} - {list_of_int}")  # shuffle list x in-place, and return None.
+# None - [5, 7, 3, 13, 11, 29, 23, 17, 19]
+"""

@@ -130,6 +130,7 @@ print(f"(1, 2, 2, 3)[0] : {(1, 2, 2, 3)[0]}")
 # print(f"len(set([1, 2, 2, 3])) : {set([1, 2, 2, 3])[0]}") #  TypeError: 'set' object is not subscriptable
 print(f"dict(a=1, b=2, c=2, d=3)['a']) : {dict(a=1, b=2, c=2, d=3)['a']}")
 """
+import calendar
 import os
 
 """
@@ -634,7 +635,7 @@ print(f"strftime(format[, t]) -> struct_time : {time.strftime('23/10/2022 13:50:
 
 """
 class datetime.datetime
-"""
+
 from datetime import datetime, timedelta
 import time
 print(f"Now : {datetime.now()}")
@@ -650,3 +651,34 @@ print(f"Duration : {duration}")
 print(f"Duration.days : {duration.days} - Duration.seconds : {duration.seconds} - Duration.microseconds : {duration.microseconds}")
 print(f"Duration.total_seconds() : {duration.total_seconds()}")
 print(f"Duration.total_seconds() : {tim)}")
+"""
+
+"""
+## [import calendar](https://docs.python.org/3/library/calendar.html)
+"""
+from calendar import Calendar, TextCalendar, HTMLCalendar, LocaleTextCalendar, LocaleHTMLCalendar
+import locale
+c = Calendar()
+print(f"Calendar().monthdatescalendar(year, month) -> [list[list[int]] : {c.monthdatescalendar(2022, 10)}")
+print(f"Calendar().monthdayscalendar(year, month) -> [list[list[int]] : {c.monthdayscalendar(2022, 10)}")
+print(f"Calendar().yeardayscalendar(year) -> [list[list[int]] : {c.yeardayscalendar(2022)}")
+
+print(f"locale.locale_alias : {locale.locale_alias}")
+print(f"locale.locale_encoding_alias : {locale.locale_encoding_alias}")
+print(f"locale.windows_locale) : {locale.windows_locale}")
+print(f"locale.normalize(localename) : {locale.normalize('de_de')}")
+
+tc = TextCalendar()
+print(f"TextCalendar().formatyear(theyear, w=2, l=1, c=6, m=3) -> str {tc.formatyear(2022, m=6)}")
+print(f"TextCalendar().formatmonth(theyear, themonth, w=0, l=0) -> str\n {tc.formatmonth(2022, 10)}")
+ltc = LocaleTextCalendar(locale='fr')
+print(f"LocaleTextCalendar(firstweekday=0, locale=None).formatyear(theyear, w=2, l=1, c=6, m=3) -> str {ltc.formatyear(2022, w=6, l=1, c=6, m=6)}")
+print(f"LocaleTextCalendar(firstweekday=0, locale=None).formatmonth(theyear, themonth, w=0, l=0) -> str\n {ltc.formatmonth(2022, 10)}")
+
+hc = HTMLCalendar()
+print(f"HTMLCalendar().formatyear(theyear, width) -> str {hc.formatyear(2022, width=6)}")
+print(f"HTMLCalendar().formatmonth(theyear, themonth, w=0, l=0) -> str\n {hc.formatmonth(2022, 10, True)}")
+lhc = LocaleHTMLCalendar(calendar.MONDAY, 'de_DE')
+print(f"LocaleHTMLCalendar : {lhc}")
+print(f"LocaleHTMLCalendar().formatyearpage(theyear, width, css=None, encoding=None) -> str {lhc.formatyearpage(2022, width=3, css=None, encoding='utf-8')}")
+print(f"LocaleHTMLCalendar().formatmonth(theyear, themonth, w=0, l=0) -> str {lhc.formatmonth(2022, 10, True)}")

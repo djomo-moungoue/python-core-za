@@ -655,7 +655,7 @@ print(f"Duration.total_seconds() : {tim)}")
 
 """
 ## [import calendar](https://docs.python.org/3/library/calendar.html)
-"""
+
 import locale
 from calendar import Calendar, TextCalendar, HTMLCalendar, LocaleTextCalendar, LocaleHTMLCalendar
 
@@ -685,3 +685,24 @@ lhc = LocaleHTMLCalendar(calendar.MONDAY, 'de_DE')
 print(f"LocaleHTMLCalendar : {lhc}")
 print(f"LocaleHTMLCalendar().formatyearpage(theyear, width, css=None, encoding=None) -> str {lhc.formatyearpage(2022, width=3, css=None, encoding='utf-8')}")
 print(f"LocaleHTMLCalendar().formatmonth(theyear, themonth, w=0, l=0) -> str {lhc.formatmonth(2022, 10, True)}")
+"""
+
+"""
+## [import random](https://docs.python.org/3/library/random.html)
+"""
+from random import Random
+
+r = Random()
+print(f"r.seed(self, a, version: int) -> None :  {r.seed('ngenmbhi')}")  # initialize internal state from seed.
+print(f"r.getstate() -> tuple[Any,...] :  {r.getstate()}")  # return internal state.
+print(f"r.random(self) -> float : {r.random()}")  # x in the interval [0,1).
+print(f"r.randbytes(self, n: int) -> bytes : {r.randbytes(3)}") # Generate n random byte
+print(f"r.randint(self, a: int, b: int) -> int : {r.randint(3,17)}")  # x in the interval [a,b].
+print(f"r.randrange(self, stop: int) -> int : {r.randrange(7)}")  # choose a number from range(stop).
+print(f"r.randrange(self, start: int, stop: int[, step : int]) -> int : {r.randrange(3, 7)}")  # choose a number from range(start,stop[,step]).
+print(f"r.getrandbits(self, __k : int]) -> int : {r.getrandbits(3)}")  # choose a number from range(start,stop[,step]).
+list_of_int = [3, 5, 7, 11, 13, 17, 19, 23, 29]
+print(f"r.choice(self, seq : [_T]]) -> _T :  {r.choice(list_of_int)} - {list_of_int}")  # choose a random element from a non-empty sequence.
+print(f"r.choices(self, seq : [_T]]) -> list[_T] : {r.choices(list_of_int, k=3)} - {list_of_int}")  # return a k sized list of population elements with replacement.
+print(f"r.sample(self, population, k, counts) -> list[_T] : {r.sample(list_of_int, k=3)} - {list_of_int}")  # choose k unique random from a population sequence or set.
+print(f"r.shuffle(self, x: MutableSequence, random: () -> float) -> None] :  {r.shuffle(list_of_int)} - {list_of_int}")  # choose k unique random from a population sequence or set.

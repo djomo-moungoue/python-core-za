@@ -656,17 +656,20 @@ print(f"Duration.total_seconds() : {tim)}")
 """
 ## [import calendar](https://docs.python.org/3/library/calendar.html)
 """
-from calendar import Calendar, TextCalendar, HTMLCalendar, LocaleTextCalendar, LocaleHTMLCalendar
 import locale
+from calendar import Calendar, TextCalendar, HTMLCalendar, LocaleTextCalendar, LocaleHTMLCalendar
+
+print(f"locale.locale_alias -> dict[str, str] : {locale.locale_alias.items()}")
+# dict_items([..., ('fr', 'fr_FR.ISO8859-1'), ('fr_be', 'fr_BE.ISO8859-1'), ('fr_ca', 'fr_CA.ISO8859-1'), ('fr_ch', 'fr_CH.ISO8859-1'), ('fr_fr', 'fr_FR.ISO8859-1'), ('fr_lu', 'fr_LU.ISO8859-1'), ('français', 'fr_FR.ISO8859-1'), ('fre_fr', 'fr_FR.ISO8859-1'), ('french', 'fr_FR.ISO8859-1'), ('french.iso88591', 'fr_CH.ISO8859-1'), ('french_france', 'fr_FR.ISO8859-1'), ...])
+print(f"locale.locale_encoding_alias -> dict[str, str]  : {locale.locale_encoding_alias.items()}\n")
+# dict_items([..., ('utf8', 'UTF-8')])
+print(f"locale.windows_locale -> dict[int, str]  : {locale.windows_locale.items()}\n")
+# dict_items([..., (1036, 'fr_FR'), (2060, 'fr_BE'), (3084, 'fr_CA'), (4108, 'fr_CH'), (5132, 'fr_LU'), (6156, 'fr_MC'),...])
+
 c = Calendar()
 print(f"Calendar().monthdatescalendar(year, month) -> [list[list[int]] : {c.monthdatescalendar(2022, 10)}")
 print(f"Calendar().monthdayscalendar(year, month) -> [list[list[int]] : {c.monthdayscalendar(2022, 10)}")
 print(f"Calendar().yeardayscalendar(year) -> [list[list[int]] : {c.yeardayscalendar(2022)}")
-
-print(f"locale.locale_alias : {locale.locale_alias}")
-print(f"locale.locale_encoding_alias : {locale.locale_encoding_alias}")
-print(f"locale.windows_locale) : {locale.windows_locale}")
-print(f"locale.normalize(localename) : {locale.normalize('de_de')}")
 
 tc = TextCalendar()
 print(f"TextCalendar().formatyear(theyear, w=2, l=1, c=6, m=3) -> str {tc.formatyear(2022, m=6)}")
